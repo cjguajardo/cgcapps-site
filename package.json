@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@astrojs/tailwind": "^5.0.0",
+    "astro": "^3.0.13",
+    "tailwindcss": "^3.0.24"
+  },
+  "name": "cgcapps-site",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "type": "module",
+  "version": "0.0.1",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
+}

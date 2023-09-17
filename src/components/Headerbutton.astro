@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  isActive?: boolean;
+}
+
+const { href, isActive } = Astro.props;
+---
+
+<a
+  class:list={[
+    'flex-row justify-center cursor-pointer text-center inline-flex items-center gap-x-2 px-5 py-2 font-medium hover:animate-pulse',
+    { 'drop-shadow-lg text-white font-bold uppercase': isActive },
+    { 'text-slate-400': !isActive },
+  ]}
+  href={href}
+  target="_self"
+>
+  <slot name="before" />
+  <slot />
+  <slot name="after" />
+</a>

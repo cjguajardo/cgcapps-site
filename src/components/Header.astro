@@ -1,0 +1,34 @@
+---
+import Headerbutton from './Headerbutton.astro';
+import Code from './icons/Code.astro';
+import Github from './icons/Github.astro';
+import Linkedin from './icons/Linkedin.astro';
+import Home from './icons/Home.astro';
+
+const url = Astro.url.pathname;
+
+console.log({ url });
+---
+
+<header class="py-8 px-4 mx-auto max-w-xl lg:py-16 lg:px-6">
+  <nav
+    class="flex flex-col items-center justify-between w-full texte-center md:flex-row"
+  >
+    <Headerbutton href="/" isActive={url === '/'}>
+      <Home slot="before" />
+       Home
+    </Headerbutton>
+    <Headerbutton href="/portfolio" isActive={url === '/portfolio'}>
+      <Code slot="before" />
+       Portfolio
+    </Headerbutton>
+    <Headerbutton href="https://github.com/cjguajardo">
+      <Github slot="before" />
+       GitHub
+    </Headerbutton>
+    <Headerbutton href="https://linkedin.com/in/cjguajardo">
+      <Linkedin slot="before" />
+       LinkedIn
+    </Headerbutton>
+  </nav>
+</header>

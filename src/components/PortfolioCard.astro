@@ -1,0 +1,27 @@
+---
+import { type Project } from '../types.d';
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div
+  class="rounded opacity-50 hover:opacity-100 hover:shadow-lg hover:uppercase hover:scale-105 ease-in cursor-pointer mb-8"
+>
+  <h2 class="text-xl">
+    {project.name}
+    <span>&rarr;</span>
+  </h2>
+  <a href={project.url}>
+    <p>
+      {project.description}
+    </p>
+  </a>
+  <div
+    class={`bg-cover bg-center bg-no-repeat w-full h-48 rounded-lg shadow-md m-4`}
+    style={`background-image: url('${project.image}');`}
+  >
+  </div>
+</div>

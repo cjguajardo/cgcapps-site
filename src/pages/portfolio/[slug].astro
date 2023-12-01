@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Tech from '../../components/Tech.astro';
+import projects from '../../data/projects.json';
+import { type Project } from '../../types.d';
+import { getBadge } from '../../services/badges';
+import Headerbutton from '../../components/Headerbutton.astro';
+
+export const getStaticPaths = () => {
+  return projects.map((project: Project) => {
+    return {
+      params: {
+        slug: project.slug,
+      },
+      props: {
+        project,
+      },
+    };
+  });
+};
+
+const { project } = Astro.props;
+---
+
+<Layout title={project.name}>
+  <a href="/portfolio">Go back</a>
+  <h1
+    class="text-3xl font-bold text-indigo-100 px-4 py-2"
+    transition:name={`${project.slug}-project-name`}
+  >
+    {project.name}
+  </h1>
+
+  <div
+    class="mt-1 mb-5 h-80 w-full p-4 items-end bg-auto bg-center rounded bg-fixed"
+    style={{
+      backgroundImage: `url(${project.image})`,
+    }}
+    transition:name={`${project.slug}-project-image`}
+  >
+    <div
+      class="grid grid-flow-col auto-cols-max px-2"
+      transition:name={`${project.slug}-project-stack`}
+    >
+      {project.stack.map((tech) => <Tech tech={tech} size="md" />)}
+    </div>
+  </div>
+
+  <p>{project.longDescription}</p>
+
+  <div class="mt-4 p-4 text-center">
+    <Headerbutton href={project.github} itemsAlign="start">
+      <img
+        slot="before"
+        src={getBadge('Github')}
+        alt="Github"
+        class="w-5 h-5"
+      />
+       &nbsp;Go to repo
+    </Headerbutton>
+  </div>
+</Layout>

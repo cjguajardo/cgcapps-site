@@ -1,5 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Skills from '../sections/Skills.astro';
+
+import Social from '../components/Social.astro';
 ---
 
-<Layout title="CGCApps" />
+<Layout title="Home">
+  <section class="mb-12">
+    <div class="flex items-center mb-6 z-10">
+      <img
+        src="/images/profile-image.jpeg"
+        alt="Profile Image"
+        class="w-32 h-32 rounded-full mr-4"
+      />
+      <div>
+        <div
+          class="text-indigo-300 text-4xl text-center font-bold uppercase flex flex-col justify-around"
+        >
+          <span>Carlos Guajardo</span>
+          <div class="overflow-hidden h-9 text-sm">
+            <div class="animate-slide">
+              <span
+                class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
+                >Fullstack Developer</span
+              >
+            </div>
+            <div>
+              <span
+                class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
+                >Mobile Development</span
+              >
+            </div>
+            <div>
+              <span
+                class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
+                >Web Development</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <Social />
+      </div>
+    </div>
+  </section>
+
+  <Skills />
+</Layout>

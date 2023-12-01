@@ -1,0 +1,26 @@
+---
+import SkillList from '../components/SkillList.astro';
+import Section from '../components/Section.astro';
+
+import skills from '../data/skills.json';
+
+const maxExperience =
+  new Date().getFullYear() -
+  Math.min(
+    ...[...skills.languages, ...skills.other]
+      .filter((skill) => skill.since > 0)
+      .map((skill) => skill.since)
+  );
+const sortedLanguages = skills.languages.sort((a, b) => a.since - b.since);
+const sortedOther = skills.other.sort((a, b) => a.since - b.since);
+---
+
+<Section title="Skills" name="skills">
+  <SkillList
+    title="Languages/Frameworks"
+    list={sortedLanguages}
+    maxExp={maxExperience}
+  />
+  <SkillList title="Other" list={sortedOther} maxExp={maxExperience} />
+  <SkillList title="Soft skills" list={skills.soft} maxExp={maxExperience} />
+</Section>

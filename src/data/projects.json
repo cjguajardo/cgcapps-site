@@ -1,0 +1,114 @@
+[
+  {
+    "description": "A lightweight library that allows you to render components outside of their parent hierarchy.",
+    "longDescription": "React Native Simple Portal is a lightweight library that allows you to render components outside of their parent hierarchy. It provides a simple API to create portals and manage the rendering of components in different parts of your app.",
+    "github": "https://github.com/cjguajardo/cgc-portal",
+    "image": "/images/portal.png",
+    "video": "/videos/PortalDemo.mp4",
+    "name": "Portal",
+    "stack": [
+      "React Native",
+      "Typescript"
+    ],
+    "tags": [
+      "React",
+      "TypeScript",
+      "Portal",
+      "React Native"
+    ],
+    "slug": "Portal"
+  },
+  {
+    "description": "A PHP library to output data in a prettier way.",
+    "longDescription": "This project is a PHP library to output data and includes a class named PrettyPrint that can be used to print data in a visually appealing way.",
+    "github": "https://github.com/cjguajardo/PrettyPrint",
+    "image": "/images/pretty-print.png",
+    "name": "PrettyPrint",
+    "stack": [
+      "PHP",
+      "CSS3",
+      "Composer"
+    ],
+    "tags": [
+      "PHP",
+      "Composer",
+      "pretty-print"
+    ],
+    "slug": "PrettyPrint"
+  },
+  {
+    "description": "An API service to interact with AI for English practice.",
+    "longDescription": "An API service to interact with AI for English practice. Uses Amazon Polly and Chat GPT.",
+    "github": "https://github.com/cjguajardo/talk-a-bot-server",
+    "image": "/images/not_found.jpg",
+    "name": "Talk a Bot (API)",
+    "stack": [
+      "Node.js",
+      "Typescript",
+      "Handlebars"
+    ],
+    "tags": [
+      "Server",
+      "TypeScript",
+      "Micro-Service",
+      "Amazon Polly",
+      "Chat GPT"
+    ],
+    "slug": "TalkABot"
+  },
+  {
+    "description": "A simple Node.js microservice to interact with ChatGPT",
+    "longDescription": "A simple Node.js microservice to interact with ChatGPT for general purposes (text and image generation requests).",
+    "github": "https://github.com/cjguajardo/NGPTServer",
+    "image": "/images/not_found.jpg",
+    "name": "NGPTServer",
+    "stack": [
+      "Node.js",
+      "JavaScript",
+      "Docker",
+      "Python"
+    ],
+    "tags": [
+      "API",
+      "ChatGPT",
+      "Micro-Service",
+      "Server"
+    ],
+    "slug": "NGPTServer"
+  },
+  {
+    "description": "This is a React Native project that communicates through the Deriv API.",
+    "longDescription": "DerivPseudoBot is a mobile application built with React Native that allows users to interact with the Deriv API using websockets. It provides real-time data retrieval and manipulation capabilities, enabling users to access and update information from the Deriv platform.",
+    "github": "https://github.com/cjguajardo/DerivPseudoBot",
+    "image": "/images/not_found.jpg",
+    "name": "DerivPseudoBot",
+    "stack": [
+      "React Native",
+      "Typescript"
+    ],
+    "tags": [
+      "React Native",
+      "Deriv",
+      "Websockets",
+      "Chart Library"
+    ],
+    "slug": "DerivPseudoBot"
+  },
+  {
+    "description": "A simple bash script to help with docker commands.",
+    "longDescription": "It is a helper script to facilitate the task of dockerizing a Laravel/Lumen environment, especially. It allows generating an image in development and production modes. In development mode, you can see the changes reflected in real time. It also allows or facilitates the task of publishing an image to an AWS ECR repository, as well as executing certain extra tasks.",
+    "github": "https://github.com/cjguajardo/docker_helper",
+    "image": "/images/not_found.jpg",
+    "name": "docker_helper",
+    "stack": [
+      "Bash",
+      "Docker"
+    ],
+    "tags": [
+      "Docker",
+      "Bash",
+      "Shell Script"
+    ],
+    "slug": "DockerHelper"
+  }
+]

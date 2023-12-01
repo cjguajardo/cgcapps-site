@@ -1,0 +1,56 @@
+---
+import { getBadge } from '../services/badges.ts';
+
+const { skill, maxExperience } = Astro.props;
+
+const badge = getBadge(skill.name);
+const year = new Date().getFullYear();
+const years = year - skill.since;
+const p = Math.round((years * 100) / maxExperience);
+
+// takes the skill name and converts it to a key
+const key = 'popover_' + skill.name.toLowerCase().replace(/ /g, '-');
+---
+
+<div
+  class:list={[
+    'grid-cols-3 overflow-hidden h-9 rounded-full',
+    'text-[10px] md:text-sm text-white mx-2 mb-2 z-5',
+    'md:w-56 sm:w-48 w-44 overflow-hidden cursor-pointer',
+    'border border-opacity-50 skill-container',
+    {
+      'border-gray-600 bg-gray-700 hover:bg-orange-900': skill.type === 'soft',
+      'border-gray-700 bg-gray-800 hover:bg-indigo-900': skill.type !== 'soft',
+    },
+    ['lang', 'other'].indexOf(skill.type) !== -1 && [
+      'hover:drop-shadow-lg transition-shadow duration-300',
+      'hover:shadow-lg transition-shadow duration-300',
+      'hover:z-10 transition-all duration-100',
+      'hover:grid transition-all duration-300',
+      'transform hover:scale-110 hover:perspective-1500 hover:rotate-y-180 transition-transform duration-300',
+    ],
+  ]}
+  aria-label={skill.name}
+>
+  <div class="col-span-2 flex justify-center align-center items-center h-9">
+    <img
+      src={badge}
+      alt={skill.name}
+      class="scaleable-image w-4 h-4 inline-block mr-2"
+    />
+    {skill.name}
+  </div>
+  {
+    ['lang', 'other'].indexOf(skill.type) !== -1 && (
+      <div
+        class:list={[
+          'flex justify-center align-center items-center',
+          'text-[12px] md:text-sm',
+          'bg-gradient-to-b from-indigo-500 to-indigo-700',
+        ]}
+      >
+        ~{years === 0 ? years + 1 : years}y
+      </div>
+    )
+  }
+</div>

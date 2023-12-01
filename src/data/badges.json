@@ -1,0 +1,142 @@
+[
+  {
+    "name": "PHP",
+    "url": "/images/badges/php.svg"
+  },
+  {
+    "name": "CSS3",
+    "url": "/images/badges/css3.svg"
+  },
+  {
+    "name": "Node.js",
+    "url": "/images/badges/nodejs.svg"
+  },
+  {
+    "name": "Typescript",
+    "url": "/images/badges/ts.svg"
+  },
+  {
+    "name": "JavaScript",
+    "url": "/images/badges/js.svg"
+  },
+  {
+    "name": "Docker",
+    "url": "/images/badges/docker.svg"
+  },
+  {
+    "name": "Python",
+    "url": "/images/badges/python.svg"
+  },
+  {
+    "name": "Bash",
+    "url": "/images/badges/bash.svg"
+  },
+  {
+    "name": "React Native",
+    "url": "/images/badges/react.svg"
+  },
+  {
+    "name": "React.js",
+    "url": "/images/badges/react.svg"
+  },
+  {
+    "name": "Composer",
+    "url": "/images/badges/composer.svg"
+  },
+  {
+    "name": "Handlebars",
+    "url": "/images/badges/handlebars.svg"
+  },
+  {
+    "name": "Flutter",
+    "url": "/images/badges/flutter.svg"
+  },
+  {
+    "name": "Laravel",
+    "url": "/images/badges/laravel.svg"
+  },
+  {
+    "name": "Lumen",
+    "url": "/images/badges/lumen.svg"
+  },
+  {
+    "name": "Linkedin",
+    "url": "/images/badges/linkedin.svg"
+  },
+  {
+    "name": "Home",
+    "url": "/images/badges/home.svg"
+  },
+  {
+    "name": "Git",
+    "url": "/images/badges/git.svg"
+  },
+  {
+    "name": "Portfolio",
+    "url": "/images/badges/portfolio.svg"
+  },
+  {
+    "name": "Tools",
+    "url": "/images/badges/tools.svg"
+  },
+  {
+    "name": "Github",
+    "url": "/images/badges/github.svg"
+  },
+  {
+    "name": "Nginx",
+    "url": "/images/badges/nginx.svg"
+  },
+  {
+    "name": "Next.js",
+    "url": "/images/badges/nextjs.svg"
+  },
+  {
+    "name": "Express.js",
+    "url": "/images/badges/expressjs.svg"
+  },
+  {
+    "name": "Firebase",
+    "url": "/images/badges/firebase.svg"
+  },
+  {
+    "name": "AWS ECS",
+    "url": "/images/badges/aws.svg"
+  },
+  {
+    "name": "AWS ECR",
+    "url": "/images/badges/aws.svg"
+  },
+  {
+    "name": "AWS S3",
+    "url": "/images/badges/aws.svg"
+  },
+  {
+    "name": "Supportive",
+    "url": "/images/badges/supportive.svg"
+  },
+  {
+    "name": "Fast learner",
+    "url": "/images/badges/fast.svg"
+  },
+  {
+    "name": "Team player",
+    "url": "/images/badges/team.svg"
+  },
+  {
+    "name": "Flexible",
+    "url": "/images/badges/flexible.svg"
+  },
+  {
+    "name": "Problem solver",
+    "url": "/images/badges/problem.svg"
+  },
+  {
+    "name": "Contact",
+    "url": "/images/badges/contact.svg"
+  },
+  {
+    "name": "default",
+    "url": "/images/badges/default.svg"
+  }
+]

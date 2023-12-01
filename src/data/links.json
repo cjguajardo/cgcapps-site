@@ -1,0 +1,26 @@
+[
+  {
+    "url": "/",
+    "text": "Home",
+    "icon": "Home",
+    "target": "_self"
+  },
+  {
+    "url": "/portfolio",
+    "text": "Portfolio",
+    "icon": "Portfolio",
+    "target": "_self"
+  },
+  {
+    "url": "/tools",
+    "text": "Tools",
+    "icon": "Tools",
+    "target": "_self"
+  },
+  {
+    "url": "/contact",
+    "text": "Contact",
+    "icon": "Contact",
+    "target": "_self"
+  }
+]

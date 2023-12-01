@@ -1,0 +1,5 @@
+.skill-container:hover .scaleable-image {
+  transform: scale(1.5);
+  /* Adjust as needed */
+  transition: transform 0.3s ease-in-out;
+}

@@ -1,0 +1,25 @@
+---
+import type { SkillType } from '../types';
+import Skill from './Skill.astro';
+
+interface Props {
+  title: string;
+  list: SkillType[];
+  maxExp: number;
+}
+
+const { list, maxExp, title } = Astro.props;
+---
+
+{
+  list.length > 0 && (
+    <div class="mb-4 py-4">
+      <h6 class="text-md font-bold mb-4 text-center">{title}</h6>
+      <div class="flex flex-wrap space-x-2 justify-evenly">
+        {list.map((skill) => (
+          <Skill skill={skill} maxExperience={maxExp} />
+        ))}
+      </div>
+    </div>
+  )
+}

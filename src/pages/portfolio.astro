@@ -1,14 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PortfolioCard from '../components/PortfolioCard.astro';
-
-import projects from '../data/projects';
+import projects from '../data/projects.json';
 ---
 
 <Layout title="Porfolio">
-  <h1>Portfolio</h1>
-
   <p>Here are some of my projects:</p>
 
-  {projects.map((project) => <PortfolioCard project={project} />)}
+  <p class="text-center text-red-200 animate-pulse text-xl">
+    Work in progress!!
+  </p>
+
+  <div class="mt-5 md:columns-2 xl:columns-3 gap-5">
+    {projects.map((project) => <PortfolioCard project={project} />)}
+  </div>
 </Layout>

@@ -1,0 +1,42 @@
+---
+type Props = { id: string; className?: string };
+
+const { id, className = '' } = Astro.props as Props;
+---
+
+<atropos-wrapper data-id={id}>
+  <div class={`atropos ${id} ${className}`}>
+    <!-- scale container (required) -->
+    <div class="atropos-scale">
+      <!-- rotate container (required) -->
+      <div class="atropos-rotate">
+        <!-- inner container (required) -->
+        <div class="atropos-inner">
+          <!-- put your custom content here -->
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</atropos-wrapper>
+
+<script>
+  import Atropos from 'atropos';
+
+  class AtroposWrapper extends HTMLElement {
+    constructor() {
+      super();
+
+      if (this.dataset.id) {
+        Atropos({
+          el: `.${this.dataset.id}`,
+          activeOffset: 100,
+          shadowScale: 1.25,
+          // shadowOffset: 50,
+        });
+      }
+    }
+  }
+
+  customElements.define('atropos-wrapper', AtroposWrapper);
+</script>

@@ -1,0 +1,128 @@
+{
+  "languages": [
+    {
+      "name": "PHP",
+      "since": 2009,
+      "type": "lang"
+    },
+    {
+      "name": "JavaScript",
+      "since": 2009,
+      "type": "lang"
+    },
+    {
+      "name": "Laravel",
+      "since": 2018,
+      "type": "lang"
+    },
+    {
+      "name": "React.js",
+      "since": 2019,
+      "type": "lang"
+    },
+    {
+      "name": "Lumen",
+      "since": 2019,
+      "type": "lang"
+    },
+    {
+      "name": "Python",
+      "since": 2022,
+      "type": "lang"
+    },
+    {
+      "name": "Next.js",
+      "since": 2020,
+      "type": "lang"
+    },
+    {
+      "name": "Express.js",
+      "since": 2020,
+      "type": "lang"
+    },
+    {
+      "name": "React Native",
+      "since": 2021,
+      "type": "lang"
+    }
+  ],
+  "other": [
+    {
+      "name": "Storybook",
+      "since": 2023,
+      "type": "other"
+    },
+    {
+      "name": "Jest",
+      "since": 2022,
+      "type": "other"
+    },
+    {
+      "name": "PHPUnit",
+      "since": 2022,
+      "type": "other"
+    },
+    {
+      "name": "Git",
+      "since": 2018,
+      "type": "other"
+    },
+    {
+      "name": "AWS S3",
+      "since": 2019,
+      "type": "other"
+    },
+    {
+      "name": "Nginx",
+      "since": 2019,
+      "type": "other"
+    },
+    {
+      "name": "Firebase",
+      "since": 2020,
+      "type": "other"
+    },
+    {
+      "name": "Docker",
+      "since": 2020,
+      "type": "other"
+    },
+    {
+      "name": "AWS ECR",
+      "since": 2021,
+      "type": "other"
+    },
+    {
+      "name": "AWS ECS",
+      "since": 2021,
+      "type": "other"
+    }
+  ],
+  "soft": [
+    {
+      "name": "Supportive",
+      "since": 0,
+      "type": "soft"
+    },
+    {
+      "name": "Goal Oriented",
+      "since": 0,
+      "type": "soft"
+    },
+    {
+      "name": "Team player",
+      "since": 0,
+      "type": "soft"
+    },
+    {
+      "name": "Flexible",
+      "since": 0,
+      "type": "soft"
+    },
+    {
+      "name": "Problem solver",
+      "since": 0,
+      "type": "soft"
+    }
+  ]
+}

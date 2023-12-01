@@ -1,5 +1,7 @@
 ---
 import { type Project } from '../types.d';
+import Tech from './Tech.astro';
+import AtroposWrapper from './AtroposWrapper.astro';
 interface Props {
   project: Project;
 }
@@ -7,21 +9,42 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<div
-  class="rounded opacity-50 hover:opacity-100 hover:shadow-lg hover:uppercase hover:scale-105 ease-in cursor-pointer mb-8"
->
-  <h2 class="text-xl">
-    {project.name}
-    <span>&rarr;</span>
-  </h2>
-  <a href={project.url}>
-    <p>
-      {project.description}
-    </p>
-  </a>
-  <div
-    class={`bg-cover bg-center bg-no-repeat w-full h-48 rounded-lg shadow-md m-4`}
-    style={`background-image: url('${project.image}');`}
-  >
-  </div>
-</div>
+<a href={`/portfolio/${project.slug}`} class="mb-8 mt-2">
+  <AtroposWrapper id={project.slug} className="mb-8">
+    <div
+      class:list={[
+        'bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70',
+        'hover:opacity-100 hover:shadow-lg hover:scale-105',
+        'ease-in-out duration-300 transform transition',
+        'bg-cover bg-center bg-no-repeat h-48 rounded-lg',
+      ]}
+      style={`background-image: url('${project.image}');`}
+      data-atropos-offset="0"
+    >
+      <div
+        class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
+      >
+        <h3
+          class="text-xl text-indigo-100 font-bold px-4 py-2"
+          transition:name={`${project.slug}-project-name`}
+          data-atropos-offset="5"
+        >
+          {project.name}
+        </h3>
+        <div
+          class="grid grid-flow-col auto-cols-max px-2"
+          transition:name={`${project.slug}-project-stack`}
+          data-atropos-offset="-5"
+        >
+          {project.stack.map((tech) => <Tech tech={tech} size="sm" />)}
+        </div>
+        <div
+          class="absolute bottom-0 bg-slate-950/80 p-3 w-full"
+          data-atropos-offset="2"
+        >
+          {project.description}
+        </div>
+      </div>
+    </div>
+  </AtroposWrapper>
+</a>

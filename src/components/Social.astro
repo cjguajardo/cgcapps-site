@@ -1,0 +1,30 @@
+---
+import { getBadge } from '../services/badges';
+
+import Headerbutton from '../components/Headerbutton.astro';
+---
+
+<div class="flex space-x-4">
+  <Headerbutton
+    href="https://github.com/cjguajardo"
+    itemsAlign="start"
+    transition:name="social-github"
+    transition:animate="slide"
+  >
+    <img slot="before" src={getBadge('Github')} alt="Github" class="w-5 h-5" />
+     &nbsp;Github
+  </Headerbutton>
+  <Headerbutton
+    href="https://linkedin.com/in/cjguajardo"
+    itemsAlign="start"
+    transition:name="social-linkedin"
+    transition:animate="slide"
+  >
+    <img
+      slot="before"
+      src={getBadge('Linkedin')}
+      alt="Linkedin"
+      class="w-5 h-5"
+    /> &nbsp;Linkedin
+  </Headerbutton>
+</div>

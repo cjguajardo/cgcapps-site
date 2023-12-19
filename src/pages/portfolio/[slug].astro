@@ -1,10 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Tech from '../../components/Tech.astro';
-import projects from '../../data/projects.json';
-import { type Project } from '../../types.d';
-import { getBadge } from '../../services/badges';
-import Headerbutton from '../../components/Headerbutton.astro';
+import Layout from '@layouts/Layout.astro';
+import Tech from '@components/Tech.astro';
+import projects from '@data/projects.json';
+import { type Project } from '@types';
+import { getBadge } from '@services/badges';
+import Headerbutton from '@components/Headerbutton.astro';
 
 export const getStaticPaths = () => {
   return projects.map((project: Project) => {
@@ -23,7 +23,15 @@ const { project } = Astro.props;
 ---
 
 <Layout title={project.name}>
-  <a href="/portfolio">Go back</a>
+  <Headerbutton href="/portfolio" itemsAlign="start">
+    <img
+      slot="before"
+      src={getBadge('ArrowLeft')}
+      alt="ArrowLeft"
+      class="w-5 h-5 text-white"
+    />
+     &nbsp;Go back
+  </Headerbutton>
   <h1
     class="text-3xl font-bold text-indigo-100 px-4 py-2"
     transition:name={`${project.slug}-project-name`}
@@ -47,6 +55,22 @@ const { project } = Astro.props;
   </div>
 
   <p>{project.longDescription}</p>
+
+  {
+    project.video && (
+      <div class="mt-4 p-4 text-center">
+        <h4 class="text-xl font-bold text-indigo-100">Demo</h4>
+        <video
+          controls
+          src={project.video}
+          muted
+          class="w-full"
+          transition:name={`${project.slug}-project-video`}
+        />
+        <p>{project.videoDescription}</p>
+      </div>
+    )
+  }
 
   <div class="mt-4 p-4 text-center">
     <Headerbutton href={project.github} itemsAlign="start">

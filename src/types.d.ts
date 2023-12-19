@@ -5,8 +5,10 @@ export type Project = {
   longDescription: string
   image: string
   video?: string
+  videoDescription?: string
   slug: string
   github: string
+  website?: string
   tags: string[]
   stack: string[]
 }

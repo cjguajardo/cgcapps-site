@@ -44,6 +44,11 @@
       "name": "React Native",
       "since": 2021,
       "type": "lang"
+    },
+    {
+      "name": "Astro",
+      "since": 2023,
+      "type": "lang"
     }
   ],
   "other": [
@@ -55,6 +60,11 @@
     {
       "name": "Jest",
       "since": 2022,
+      "type": "other"
+    },
+    {
+      "name": "Vitest",
+      "since": 2023,
       "type": "other"
     },
     {

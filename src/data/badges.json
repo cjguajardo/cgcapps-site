@@ -8,6 +8,26 @@
     "url": "/images/badges/css3.svg"
   },
   {
+    "name": "Vitest",
+    "url": "/images/badges/vitest.svg"
+  },
+  {
+    "name": "Astro",
+    "url": "/images/badges/astro.svg"
+  },
+  {
+    "name": "PHPUnit",
+    "url": "/images/badges/phpunit.svg"
+  },
+  {
+    "name": "Jest",
+    "url": "/images/badges/jest.svg"
+  },
+  {
+    "name": "Storybook",
+    "url": "/images/badges/storybook.svg"
+  },
+  {
     "name": "Node.js",
     "url": "/images/badges/nodejs.svg"
   },
@@ -134,6 +154,10 @@
   {
     "name": "Contact",
     "url": "/images/badges/contact.svg"
+  },
+  {
+    "name": "ArrowLeft",
+    "url": "/images/badges/arrowleft.svg"
   },
   {
     "name": "default",

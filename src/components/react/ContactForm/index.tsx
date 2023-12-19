@@ -1,7 +1,6 @@
-import React from 'react'
-import InputError from './InputError'
-import { SUCCESS, ERROR, LOADING } from '../../constants'
-import useContactForm from '../../hooks/useContactForm'
+import InputError from '../InputError'
+import { SUCCESS, ERROR, LOADING } from '@constants'
+import useContactForm from './hooks/useContactForm'
 
 const ContactForm = () => {
   const { state, nameRef, emailRef, messageRef, handleClick } = useContactForm()

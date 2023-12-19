@@ -1,6 +1,6 @@
 ---
 title: 'React Native Simple Portal'
-layout: '../../../layouts/Layout.astro'
+layout: '@layouts/Layout.astro'
 ---
 
 # React Native Simple Portal

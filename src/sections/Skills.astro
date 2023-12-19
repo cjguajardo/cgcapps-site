@@ -1,8 +1,8 @@
 ---
-import SkillList from '../components/SkillList.astro';
-import Section from '../components/Section.astro';
+import SkillList from '@components/SkillList.astro';
+import Section from '@components/Section.astro';
 
-import skills from '../data/skills.json';
+import skills from '@data/skills.json';
 
 const maxExperience =
   new Date().getFullYear() -
@@ -15,12 +15,12 @@ const sortedLanguages = skills.languages.sort((a, b) => a.since - b.since);
 const sortedOther = skills.other.sort((a, b) => a.since - b.since);
 ---
 
-<Section title="Skills" name="skills">
+<Section title="Stack" name="skills">
   <SkillList
-    title="Languages/Frameworks"
+    title="Development"
     list={sortedLanguages}
     maxExp={maxExperience}
   />
-  <SkillList title="Other" list={sortedOther} maxExp={maxExperience} />
+  <SkillList title="Tools & Tech" list={sortedOther} maxExp={maxExperience} />
   <SkillList title="Soft skills" list={skills.soft} maxExp={maxExperience} />
 </Section>

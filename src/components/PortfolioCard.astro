@@ -1,5 +1,5 @@
 ---
-import { type Project } from '../types.d';
+import { type Project } from '@types';
 import Tech from './Tech.astro';
 import AtroposWrapper from './AtroposWrapper.astro';
 interface Props {
@@ -10,8 +10,8 @@ const { project } = Astro.props;
 ---
 
 <a href={`/portfolio/${project.slug}`} class="mb-8 mt-2">
-  <AtroposWrapper id={project.slug} className="mb-8">
-    <div
+  <AtroposWrapper id={project.slug} className="mb-12 md:mb-8 mx-6 md:mx-0">
+    <article
       class:list={[
         'bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70',
         'hover:opacity-100 hover:shadow-lg hover:scale-105',
@@ -45,6 +45,6 @@ const { project } = Astro.props;
           {project.description}
         </div>
       </div>
-    </div>
+    </article>
   </AtroposWrapper>
 </a>

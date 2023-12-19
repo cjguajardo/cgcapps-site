@@ -1,6 +1,6 @@
 ---
 title: 'PrettyPrint'
-layout: '../../../layouts/Layout.astro'
+layout: '@layouts/Layout.astro'
 ---
 
 ## PrettyPrint

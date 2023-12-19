@@ -1,6 +1,6 @@
 ---
 title: 'NGPTServer'
-layout: '../../../layouts/Layout.astro'
+layout: '@layouts/Layout.astro'
 ---
 
 # docker_helper

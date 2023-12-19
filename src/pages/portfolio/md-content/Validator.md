@@ -1,6 +1,6 @@
 ---
 title: 'Input validator'
-layout: '../../../layouts/Layout.astro'
+layout: '@layouts/Layout.astro'
 ---
 
 # Input validator

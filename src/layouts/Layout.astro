@@ -1,8 +1,8 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
-import Magic from '../components/react/Magic';
+import Magic from '@components/react/Magic';
 
 import 'atropos/css';
 
@@ -29,7 +29,7 @@ const { title } = Astro.props;
     <Magic client:only />
     <Header />
     <main
-      class="max-w-4xl px-4 m-auto pb-2 flex items-center flex-col pt-28 md:pt-32 z-10"
+      class="mx-auto md:max-w-7xl px-4 pb-2 flex items-center flex-col pt-28 md:pt-32 z-10"
     >
       <slot />
     </main>
@@ -42,6 +42,8 @@ const { title } = Astro.props;
         background: #0c001c;
         background-size: 224px;
         color-scheme: dark light;
+        width: 100vw;
+        height: 100vh;
       }
     </style>
   </body>

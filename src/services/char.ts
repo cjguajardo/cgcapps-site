@@ -1,5 +1,5 @@
 export const genRandomChar = (): string => {
-  const chars = '¡™£¢∞§¶•ªº–≠œ∑´®†¥¨ˆøπ“‘åß∂ƒ©˙∆˚¬æ≈ç√∫˜µ≤≥÷'
+  const chars = '¡™£¢∞§¶ªº–≠œ∑®†¥øπåß∂ƒ©∆¬æ≈ç√∫#@$%&*µ≤≥÷'
   return chars.charAt(Math.floor(Math.random() * chars.length))
 }
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useReducer } from 'react'
 import validator from 'cgc-validator'
-import { SUCCESS, ERROR, LOADING } from '../constants'
+import { SUCCESS, ERROR, LOADING } from '@constants'
 
 type StateType = {
   show: null | string,
   errors: { name: null | string, email: null | string, message: null | string }
   canSendMail?: boolean
+  token?: string | null
 }
 type ActionType = {
   type: string,
@@ -33,6 +34,8 @@ function useContactForm () {
         return { ...state, errors: { name: null, email: null, message: null } }
       case 'can-send-mail':
         return { ...state, canSendMail: action.payload === 'true' }
+      case 'set-token':
+        return { ...state, token: action.payload }
       default:
         return state
     }
@@ -40,7 +43,8 @@ function useContactForm () {
   const initialState: StateType = {
     show: null,
     errors: { name: null, email: null, message: null },
-    canSendMail: false
+    canSendMail: false,
+    token: null
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -69,19 +73,19 @@ function useContactForm () {
       console.log('validation success')
       const response = await fetch('https://contacto.cgcapps.cl', {
         method: 'POST',
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, token: state.token }),
         headers: {
           'Content-Type': 'application/json',
         },
         mode: 'no-cors'
-      })
+      }).catch(error => console.log({ error }))
 
       if (response && response.status === 200) {
         const json = await response.json()
         console.log(json)
         dispatch({ type: 'show-success' })
       } else {
-        // console.log({ response })
+        console.log({ response })
         dispatch({ type: 'show-error' })
       }
     }
@@ -99,12 +103,16 @@ function useContactForm () {
   }, [state.show])
 
   React.useEffect(() => {
+    //@ts-ignore
     window.onloadTurnstileCallback = function () {
+      //@ts-ignore
       if (typeof window.turnstile !== 'undefined') {
+        //@ts-ignore
         window.turnstile.render('#captcha-container', {
           sitekey: '0x4AAAAAAAN5nJP-g1lrI6nT',
           callback: function (token: string) {
             dispatch({ type: 'can-send-mail', payload: 'true' })
+            dispatch({ type: 'set-token', payload: token })
           },
           'expired-callback': function () {
             dispatch({ type: 'can-send-mail', payload: 'false' })

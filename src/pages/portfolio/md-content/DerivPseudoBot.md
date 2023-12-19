@@ -1,6 +1,6 @@
 ---
 title: 'DerivPseudoBot'
-layout: '../../../layouts/Layout.astro'
+layout: '@layouts/Layout.astro'
 ---
 
 # DerivPseudoBot

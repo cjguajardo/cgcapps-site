@@ -2,11 +2,18 @@
 const year = new Date().getFullYear();
 ---
 
-<footer>
-  <div class="max-w-4xl px-4 m-auto pb-2 flex items-center flex-col">
-    <div class="flex flex-col">
-      <div class="text-center">cgcapps.cl © {year}</div>
-      <div class="text-center">Built with Astro</div>
+<footer class="bg-indigo-800/30 absolute bottom-0 w-full h-24 shadow-md z-50">
+  <article
+    class="mx-0 max-w-7xl py-auto px-2 sm:px-6 lg:px-8 flex flex-col items-center content-center"
+  >
+    <div class="mt-4">cgcapps.cl © {year}</div>
+    <div class="mt-1">
+      Built with Astro
+      <img
+        src="/images/badges/astro.svg"
+        alt="Astro Logo"
+        class="inline-block h-4 w-4"
+      />
     </div>
-  </div>
+  </article>
 </footer>

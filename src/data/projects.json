@@ -5,6 +5,7 @@
     "github": "https://github.com/cjguajardo/cgc-portal",
     "image": "/images/portal.png",
     "video": "/videos/PortalDemo.mp4",
+    "videoDescription": "To the left, you can see a simple loading indicator that is rendered on top of all app content. To the right, you can see a modal with custom content that is rendered on top of all app.",
     "name": "Portal",
     "stack": [
       "React Native",
@@ -16,7 +17,8 @@
       "Portal",
       "React Native"
     ],
-    "slug": "Portal"
+    "slug": "Portal",
+    "highlight": true
   },
   {
     "description": "A PHP library to output data in a prettier way.",
@@ -54,7 +56,8 @@
       "Amazon Polly",
       "Chat GPT"
     ],
-    "slug": "TalkABot"
+    "slug": "TalkABot",
+    "highlight": true
   },
   {
     "description": "A simple Node.js microservice to interact with ChatGPT",
@@ -92,7 +95,8 @@
       "Websockets",
       "Chart Library"
     ],
-    "slug": "DerivPseudoBot"
+    "slug": "DerivPseudoBot",
+    "highlight": true
   },
   {
     "description": "A simple bash script to help with docker commands.",

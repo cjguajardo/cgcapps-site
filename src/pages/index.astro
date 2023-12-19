@@ -1,23 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@layouts/Layout.astro';
 import Skills from '../sections/Skills.astro';
 
-import Social from '../components/Social.astro';
+import Social from '@components/Social.astro';
+import PortfolioPreview from '../sections/PortfolioPreview.astro';
 ---
 
 <Layout title="Home">
   <section class="mb-12">
-    <div class="flex items-center mb-6 z-10">
+    <article class="flex items-center mb-6 z-10">
       <img
         src="/images/profile-image.jpeg"
-        alt="Profile Image"
+        alt="Carlos Guajardo"
         class="w-32 h-32 rounded-full mr-4"
       />
       <div>
         <div
-          class="text-indigo-300 text-4xl text-center font-bold uppercase flex flex-col justify-around"
+          class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around"
         >
-          <span>Carlos Guajardo</span>
+          <div class="text-[2.5rem]">Carlos Guajardo</div>
           <div class="overflow-hidden h-9 text-sm">
             <div class="animate-slide">
               <span
@@ -42,8 +43,9 @@ import Social from '../components/Social.astro';
 
         <Social />
       </div>
-    </div>
+    </article>
   </section>
 
+  <PortfolioPreview />
   <Skills />
 </Layout>

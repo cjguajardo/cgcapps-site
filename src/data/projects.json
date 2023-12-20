@@ -60,6 +60,31 @@
     "highlight": true
   },
   {
+    "name": "GEA",
+    "description": "A web platform for inventory and asset management.",
+    "longDescription": "GEA is a web platform for inventory and asset management. It allows users to manage their inventory and assets, as well as their clients and suppliers. It also provides a dashboard with useful information about the company's inventory and assets.",
+    "image": "/images/gea.png",
+    "website": "https://demo-gea.cgcapps.cl",
+    "stack": [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS3",
+      "HTML5"
+    ],
+    "tags": [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "CSS3",
+      "HTML5"
+    ],
+    "slug": "GEA",
+    "highlight": true
+  },
+  {
     "description": "A simple Node.js microservice to interact with ChatGPT",
     "longDescription": "A simple Node.js microservice to interact with ChatGPT for general purposes (text and image generation requests).",
     "github": "https://github.com/cjguajardo/NGPTServer",

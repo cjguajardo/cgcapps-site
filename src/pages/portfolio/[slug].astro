@@ -40,7 +40,7 @@ const { project } = Astro.props;
   </h1>
 
   <div
-    class="mt-1 mb-5 h-80 w-full p-4 items-end bg-auto bg-center rounded bg-fixed"
+    class="mt-1 mb-5 h-80 w-full p-4 items-end bg-contain bg-center rounded bg-fixed"
     style={{
       backgroundImage: `url(${project.image})`,
     }}
@@ -73,14 +73,31 @@ const { project } = Astro.props;
   }
 
   <div class="mt-4 p-4 text-center">
-    <Headerbutton href={project.github} itemsAlign="start">
-      <img
-        slot="before"
-        src={getBadge('Github')}
-        alt="Github"
-        class="w-5 h-5"
-      />
-       &nbsp;Go to repo
-    </Headerbutton>
+    {
+      project.github && (
+        <Headerbutton href={project.github} itemsAlign="start">
+          <img
+            slot="before"
+            src={getBadge('Github')}
+            alt="Github"
+            class="w-5 h-5"
+          />
+          &nbsp;Go to repo
+        </Headerbutton>
+      )
+    }
+    {
+      project.website && (
+        <Headerbutton href={project.website} itemsAlign="start" target="_blank">
+          <img
+            slot="before"
+            src={getBadge('Website')}
+            alt={project.website}
+            class="w-5 h-5"
+          />
+          &nbsp;Go to website
+        </Headerbutton>
+      )
+    }
   </div>
 </Layout>

@@ -7,7 +7,7 @@ export type Project = {
   video?: string
   videoDescription?: string
   slug: string
-  github: string
+  github?: string
   website?: string
   tags: string[]
   stack: string[]

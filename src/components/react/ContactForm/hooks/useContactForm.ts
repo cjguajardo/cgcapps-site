@@ -77,7 +77,6 @@ function useContactForm () {
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'no-cors'
       }).catch(error => console.log({ error }))
 
       if (response && response.status === 200) {

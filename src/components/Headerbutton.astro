@@ -3,9 +3,10 @@ interface Props {
   href: string;
   isActive?: boolean;
   itemsAlign?: 'start' | 'center' | 'end';
+  target?: '_blank' | '_self';
 }
 
-const { href, isActive, itemsAlign } = Astro.props;
+const { href, isActive, itemsAlign, target } = Astro.props;
 let finalItemsAlign = itemsAlign;
 if (itemsAlign === undefined) finalItemsAlign = 'center';
 ---
@@ -23,7 +24,7 @@ if (itemsAlign === undefined) finalItemsAlign = 'center';
     'hover:md:rotate-3 hover:md:scale-110 hover:drop-shadow-lg transition-all duration-300 ease-in-out hover:z-10',
   ]}
   href={href}
-  target="_self"
+  target={target || '_self'}
 >
   <slot name="before" />
   <slot />

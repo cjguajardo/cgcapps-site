@@ -1,51 +1,14 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import Skills from '../sections/Skills.astro';
-
-import Social from '@components/Social.astro';
+import Me from '../sections/Me.astro';
 import PortfolioPreview from '../sections/PortfolioPreview.astro';
 ---
 
-<Layout title="Home">
-  <section class="mb-12">
-    <article class="flex items-center mb-6 z-10">
-      <img
-        src="/images/profile-image.jpeg"
-        alt="Carlos Guajardo"
-        class="w-32 h-32 rounded-full mr-4"
-      />
-      <div>
-        <div
-          class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around"
-        >
-          <div class="text-[2.5rem]">Carlos Guajardo</div>
-          <div class="overflow-hidden h-9 text-sm">
-            <div class="animate-slide">
-              <span
-                class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
-                >Fullstack Developer</span
-              >
-            </div>
-            <div>
-              <span
-                class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
-                >Mobile Development</span
-              >
-            </div>
-            <div>
-              <span
-                class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
-                >Web Development</span
-              >
-            </div>
-          </div>
-        </div>
-
-        <Social />
-      </div>
-    </article>
-  </section>
+<Layout title="Home" hidePageTitle>
+  <Me />
 
   <PortfolioPreview />
+
   <Skills />
 </Layout>

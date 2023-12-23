@@ -8,7 +8,7 @@ const highlightedProjects = projects.filter((project) => project.highlight);
 ---
 
 <Section title="Projects" name="projects">
-  <div class="mt-5 columns-1 md:columns-2 xl:columns-3 gap-3">
+  <div class="w-full mt-5 columns-1 md:columns-2 xl:columns-3 gap-3">
     {highlightedProjects.map((project) => <PortfolioCard project={project} />)}
   </div>
 

@@ -11,7 +11,7 @@ const { id, className = '' } = Astro.props as Props;
       <!-- rotate container (required) -->
       <div class="atropos-rotate">
         <!-- inner container (required) -->
-        <div class="atropos-inner">
+        <div class="atropos-inner rounded-lg">
           <!-- put your custom content here -->
           <slot />
         </div>
@@ -30,9 +30,9 @@ const { id, className = '' } = Astro.props as Props;
       if (this.dataset.id) {
         Atropos({
           el: `.${this.dataset.id}`,
-          activeOffset: 100,
-          shadowScale: 1.25,
-          // shadowOffset: 50,
+          activeOffset: 150,
+          shadowScale: 0.9,
+          shadowOffset: 50,
         });
       }
     }

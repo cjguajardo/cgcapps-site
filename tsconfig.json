@@ -23,6 +23,9 @@
       "@constants": [
         "src/constants.ts"
       ],
+      "@images/*": [
+        "src/images/*"
+      ]
     },
   },
 }

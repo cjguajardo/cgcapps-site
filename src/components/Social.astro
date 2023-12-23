@@ -1,7 +1,10 @@
 ---
-import { getBadge } from '@services//badges';
+import { Image } from 'astro:assets';
 
 import Headerbutton from '@components/Headerbutton.astro';
+
+import githubImage from '@images/badges/github.svg';
+import linkedinImage from '@images/badges/linkedin.svg';
 ---
 
 <div class="flex space-x-4 items-center justify-center">
@@ -11,8 +14,8 @@ import Headerbutton from '@components/Headerbutton.astro';
     transition:name="social-github"
     transition:animate="slide"
   >
-    <img slot="before" src={getBadge('Github')} alt="Github" class="w-5 h-5" />
-     &nbsp;Github
+    <Image slot="before" src={githubImage} alt="Github" class="w-5 h-5" />
+    &nbsp;Github
   </Headerbutton>
   <Headerbutton
     href="https://linkedin.com/in/cjguajardo"
@@ -20,11 +23,11 @@ import Headerbutton from '@components/Headerbutton.astro';
     transition:name="social-linkedin"
     transition:animate="slide"
   >
-    <img
+    <Image
       slot="before"
-      src={getBadge('Linkedin')}
+      src={linkedinImage}
       alt="Linkedin"
       class="w-5 h-5"
-    /> &nbsp;Linkedin
+    />&nbsp;Linkedin
   </Headerbutton>
 </div>

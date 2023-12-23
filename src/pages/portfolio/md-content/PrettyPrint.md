@@ -90,7 +90,7 @@ $pp->print($data);
 This will print the data in a visually appealing way.
 
 ![App Screenshot](https://github.com/cjguajardo/PrettyPrint/blob/main/assets/pretty-print.gif)
-![App Screenshot](https://github.com/cjguajardo/PrettyPrint/blob/main/assets/pretty-print.png)
+![App Screenshot](https://github.com/cjguajardo/PrettyPrint/blob/main/assets/pretty-print.webp)
 
 ### License
 

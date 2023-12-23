@@ -1,6 +1,7 @@
 ---
-import { getBadge } from '@services//badges.ts';
-
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { getBadge } from '@services/badges.ts';
 const { skill, maxExperience } = Astro.props;
 
 const badge = getBadge(skill.name);
@@ -10,6 +11,9 @@ const p = Math.round((years * 100) / maxExperience);
 
 // takes the skill name and converts it to a key
 const key = 'popover_' + skill.name.toLowerCase().replace(/ /g, '-');
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/badges/*.svg'
+);
 ---
 
 <div
@@ -33,10 +37,10 @@ const key = 'popover_' + skill.name.toLowerCase().replace(/ /g, '-');
   aria-label={skill.name}
 >
   <div class="col-span-2 flex justify-center align-center items-center h-9">
-    <img
-      src={badge}
+    <Image
+      src={images[`/src${badge}`]()}
       alt={skill.name}
-      class="scaleable-image w-4 h-4 inline-block mr-2"
+      class="w-4 h-4 inline-block mr-2"
     />
     {skill.name}
   </div>

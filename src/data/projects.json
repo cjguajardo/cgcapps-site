@@ -3,7 +3,7 @@
     "description": "A lightweight library that allows you to render components outside of their parent hierarchy.",
     "longDescription": "React Native Simple Portal is a lightweight library that allows you to render components outside of their parent hierarchy. It provides a simple API to create portals and manage the rendering of components in different parts of your app.",
     "github": "https://github.com/cjguajardo/cgc-portal",
-    "image": "/images/portal.png",
+    "image": "/portal.webp",
     "video": "/videos/PortalDemo.mp4",
     "videoDescription": "To the left, you can see a simple loading indicator that is rendered on top of all app content. To the right, you can see a modal with custom content that is rendered on top of all app.",
     "name": "Portal",
@@ -24,7 +24,7 @@
     "description": "A PHP library to output data in a prettier way.",
     "longDescription": "This project is a PHP library to output data and includes a class named PrettyPrint that can be used to print data in a visually appealing way.",
     "github": "https://github.com/cjguajardo/PrettyPrint",
-    "image": "/images/pretty-print.png",
+    "image": "/pretty-print.webp",
     "name": "PrettyPrint",
     "stack": [
       "PHP",
@@ -42,7 +42,7 @@
     "description": "An API service to interact with AI for English practice.",
     "longDescription": "An API service to interact with AI for English practice. Uses Amazon Polly and Chat GPT.",
     "github": "https://github.com/cjguajardo/talk-a-bot-server",
-    "image": "/images/not_found.jpg",
+    "image": "/not_found.webp",
     "name": "Talk a Bot (API)",
     "stack": [
       "Node.js",
@@ -63,7 +63,7 @@
     "name": "GEA",
     "description": "A web platform for inventory and asset management.",
     "longDescription": "GEA is a web platform for inventory and asset management. It allows users to manage their inventory and assets, as well as their clients and suppliers. It also provides a dashboard with useful information about the company's inventory and assets.",
-    "image": "/images/gea.png",
+    "image": "/gea.webp",
     "website": "https://demo-gea.cgcapps.cl",
     "stack": [
       "Laravel",
@@ -88,7 +88,7 @@
     "description": "A simple Node.js microservice to interact with ChatGPT",
     "longDescription": "A simple Node.js microservice to interact with ChatGPT for general purposes (text and image generation requests).",
     "github": "https://github.com/cjguajardo/NGPTServer",
-    "image": "/images/not_found.jpg",
+    "image": "/not_found.webp",
     "name": "NGPTServer",
     "stack": [
       "Node.js",
@@ -108,7 +108,7 @@
     "description": "This is a React Native project that communicates through the Deriv API.",
     "longDescription": "DerivPseudoBot is a mobile application built with React Native that allows users to interact with the Deriv API using websockets. It provides real-time data retrieval and manipulation capabilities, enabling users to access and update information from the Deriv platform.",
     "github": "https://github.com/cjguajardo/DerivPseudoBot",
-    "image": "/images/not_found.jpg",
+    "image": "/not_found.webp",
     "name": "DerivPseudoBot",
     "stack": [
       "React Native",
@@ -127,7 +127,7 @@
     "description": "A simple bash script to help with docker commands.",
     "longDescription": "It is a helper script to facilitate the task of dockerizing a Laravel/Lumen environment, especially. It allows generating an image in development and production modes. In development mode, you can see the changes reflected in real time. It also allows or facilitates the task of publishing an image to an AWS ECR repository, as well as executing certain extra tasks.",
     "github": "https://github.com/cjguajardo/docker_helper",
-    "image": "/images/not_found.jpg",
+    "image": "/not_found.webp",
     "name": "docker_helper",
     "stack": [
       "Bash",

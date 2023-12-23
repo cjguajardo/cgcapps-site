@@ -1,8 +1,11 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Headerbutton from './Headerbutton.astro';
 import { getBadge } from '@services//badges';
 import links from '@data/links.json';
 import Social from './Social.astro';
+import Logo from '@images/logo.svg';
 
 const url = Astro.url.pathname;
 
@@ -11,13 +14,16 @@ let activeLink = url;
 if (url.indexOf('/portfolio') !== -1) {
   activeLink = '/portfolio';
 }
-console.log({ url });
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '/src/images/badges/*.svg'
+);
 ---
 
 <nav
   class="bg-indigo-950 bg-opacity-30 backdrop-filter backdrop-blur-lg fixed top-0 w-full shadow-md z-50"
 >
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+  <div class="mx-auto md:max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
@@ -72,7 +78,7 @@ console.log({ url });
         class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
       >
         <div class="flex flex-shrink-0 items-center">
-          <img class="h-8 w-auto" src="/images/logo.svg" alt="CGCApps" />
+          <Image src={Logo} alt="CGCApps" class="h-8 w-auto" />
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
@@ -83,9 +89,8 @@ console.log({ url });
                   href={link.url}
                   isActive={activeLink === link.url}
                 >
-                  <img
-                    slot="before"
-                    src={getBadge(link.icon)}
+                  <Image
+                    src={images[`/src${getBadge(link.icon)}`]()}
                     alt={link.icon}
                     class="w-5 h-5"
                   />
@@ -122,9 +127,8 @@ console.log({ url });
             isActive={url === link.url}
             itemsAlign="start"
           >
-            <img
-              slot="before"
-              src={getBadge(link.icon)}
+            <Image
+              src={images[`/src${getBadge(link.icon)}`]()}
               alt={link.icon}
               class="w-5 h-5"
             />

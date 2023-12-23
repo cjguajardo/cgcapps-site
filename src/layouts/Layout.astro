@@ -4,18 +4,23 @@ import Footer from '@components/Footer.astro';
 import { ViewTransitions } from 'astro:transitions';
 import Magic from '@components/react/Magic';
 import Geo from '@components/react/Geo';
-
+import Title from '@components/Title.astro';
 import 'atropos/css';
-
+import Bg from '../images/background.png';
 interface Props {
   title: string;
+  hidePageTitle?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, hidePageTitle } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="fade">
+<html
+  lang="en"
+  transition:animate="fade"
+  style={`background-image: url(${Bg.src});`}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -26,13 +31,16 @@ const { title } = Astro.props;
     <ViewTransitions fallback="none" />
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body class="dark:bg-indigo-950/60 bg-blend-multiply min-h-screen relative">
+  <body
+    class="dark:bg-indigo-950/60 bg-blend-multiply min-h-screen relative overflow-x-hidden"
+  >
     <Magic client:only />
     <Geo client:only />
     <Header />
     <main
-      class="mx-auto md:max-w-7xl px-4 pb-2 flex items-center flex-col pt-28 md:pt-32 z-10"
+      class="mx-auto md:max-w-7xl px-4 pb-2 flex items-center flex-col pt-28 md:pt-32 z-10 overflow-x-hidden mb-12"
     >
+      {!hidePageTitle && <Title text={title} />}
       <slot />
     </main>
     <Footer />
@@ -43,7 +51,7 @@ const { title } = Astro.props;
         font-family: system-ui, sans-serif;
         /* background: #0c001c; */
         background-size: 224px;
-        background-image: url(/images/background.png);
+        /* background-image: url(/images/background.png); */
         background-size: cover;
         background-repeat: no-repeat;
         color-scheme: dark light;

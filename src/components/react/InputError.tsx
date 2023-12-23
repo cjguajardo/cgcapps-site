@@ -4,7 +4,7 @@ const InputError = ({ message }: { message: string | null }) => {
   if (message === null) return (<></>)
 
   return (
-    <span className="animate-pulse text-red-500 text-xs italic ms-6">{message}</span>
+    <span className="animate-pulse text-red-500 text-[9px] italic ms-6">{message}</span>
   )
 }
 

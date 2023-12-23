@@ -1,16 +1,14 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
+import notFoundImage from '@images/not_found.webp';
 ---
 
 <Layout title="Page not found">
   <p class="text-2xl mb-4">
     Sorry, the page you are looking for could not be found.
   </p>
-  <img
-    src="/images/not_found.jpg"
-    alt="Page not found"
-    class="h-[50vh] my-12"
-  />
+  <Image src={notFoundImage} alt="Page not found" class="h-[50vh] my-12" />
   <a
     href="/"
     class="text-center bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-1/2 sm:w/4"

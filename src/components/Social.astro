@@ -1,10 +1,6 @@
 ---
-import { Image } from 'astro:assets';
-
 import Headerbutton from '@components/Headerbutton.astro';
 
-import githubImage from '@images/badges/github.svg';
-import linkedinImage from '@images/badges/linkedin.svg';
 ---
 
 <div class="flex space-x-4 items-center justify-center">
@@ -14,7 +10,7 @@ import linkedinImage from '@images/badges/linkedin.svg';
     transition:name="social-github"
     transition:animate="slide"
   >
-    <Image slot="before" src={githubImage} alt="Github" class="w-5 h-5" />
+    <img src="/images/badges/github.svg" alt="Github" class="w-5 h-5" />
     &nbsp;Github
   </Headerbutton>
   <Headerbutton
@@ -23,11 +19,7 @@ import linkedinImage from '@images/badges/linkedin.svg';
     transition:name="social-linkedin"
     transition:animate="slide"
   >
-    <Image
-      slot="before"
-      src={linkedinImage}
-      alt="Linkedin"
-      class="w-5 h-5"
-    />&nbsp;Linkedin
+    <img src="/images/badges/linkedin.svg" alt="Linkedin" class="w-5 h-5" />
+    &nbsp;Linkedin
   </Headerbutton>
 </div>

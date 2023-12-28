@@ -1,17 +1,26 @@
 ---
 import { Image } from 'astro:assets';
-import Layout from '@layouts/Layout.astro';
+import Layout from '@layouts/NotFoundLayout.astro';
 import notFoundImage from '@images/not_found.webp';
+import Subtitle from '@components/Subtitle.astro';
+import Section from '@components/Section.astro';
 ---
 
 <Layout title="Page not found">
-  <p class="text-2xl mb-4">
-    Sorry, the page you are looking for could not be found.
-  </p>
-  <Image src={notFoundImage} alt="Page not found" class="h-[50vh] my-12" />
-  <a
-    href="/"
-    class="text-center bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-1/2 sm:w/4"
-    >Go back to Safety</a
-  >
+  <Subtitle text="Sorry, the page you are looking for could not be found." />
+
+  <Section name="page-not-found">
+    <article class="mx-auto flex flex-col items-center z-10">
+      <Image src={notFoundImage} alt="Page not found" class="h-[50vh] mt-12" />
+      <p class="text-center text-gray-500 text-sm my-6">
+        You may have mistyped the address or the page may have moved.
+      </p>
+      <a
+      href="/"
+      class="text-center bg-indigo-500 hover:bg-indigo-700 text-white py-2 px-4 rounded-full focus:outline-none focus:shadow-outline w-1/2 sm:w/4"
+      >Go back to Safety</a
+      >
+    </article>
+  </Section>
+
 </Layout>

@@ -5,9 +5,7 @@ import Tech from '@components/Tech.astro';
 import projects from '@data/projects.json';
 import { type Project } from '@types';
 import Headerbutton from '@components/Headerbutton.astro';
-import githubImage from '@images/badges/github.svg';
-import websiteImage from '@images/badges/home.svg';
-import arrowLeftImage from '@images/badges/arrowleft.svg';
+import { getBadge } from '@services/badges';
 
 export const getStaticPaths = () => {
   return projects.map((project: Project) => {
@@ -27,7 +25,7 @@ const { project } = Astro.props;
 
 <Layout title={project.name}>
   <Headerbutton href="/portfolio" itemsAlign="start">
-    <Image slot="before" src={arrowLeftImage} alt="go back" class="w-5 h-5" />
+    <img slot="before" src={getBadge('ArrowLeft')} alt="go back" class="w-5 h-5" />
      &nbsp;Go back
   </Headerbutton>
 
@@ -68,9 +66,9 @@ const { project } = Astro.props;
     {
       project.github && (
         <Headerbutton href={project.github} itemsAlign="start">
-          <Image
+          <img
             slot="before"
-            src={githubImage}
+            src={getBadge('Github')}
             alt={project.github}
             class="w-5 h-5"
           />
@@ -81,9 +79,9 @@ const { project } = Astro.props;
     {
       project.website && (
         <Headerbutton href={project.website} itemsAlign="start" target="_blank">
-          <Image
+          <img
             slot="before"
-            src={websiteImage}
+            src={getBadge('ExternalLink')}
             alt={project.website}
             class="w-5 h-5"
           />

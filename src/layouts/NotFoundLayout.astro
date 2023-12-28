@@ -1,0 +1,54 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Title from '@components/Title.astro';
+import Bg from '../images/background.png';
+interface Props {
+  title: string;
+  hidePageTitle?: boolean;
+}
+
+const { title, hidePageTitle } = Astro.props;
+---
+
+<!doctype html>
+<html
+  lang="en"
+  transition:animate="fade"
+  style={`background-image: url(${Bg.src});`}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions fallback="none" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body
+    class="dark:bg-indigo-950/60 bg-blend-multiply min-h-screen relative overflow-x-hidden"
+  >
+    <main
+      class="mx-auto md:max-w-7xl px-4 pb-2 flex items-center flex-col pt-12 md:pt-12 z-10 overflow-x-hidden mb-12"
+    >
+      {!hidePageTitle && <Title text={title} />}
+      <slot />
+    </main>
+
+    <style is:global>
+      html {
+        scroll-behavior: smooth;
+        font-family: system-ui, sans-serif;
+        /* background: #0c001c; */
+        background-size: 224px;
+        /* background-image: url(/images/background.png); */
+        background-size: cover;
+        background-repeat: no-repeat;
+        color-scheme: dark light;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </body>
+</html>

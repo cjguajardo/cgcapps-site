@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import { getBadge } from '@services/badges.ts';
 
 interface Props {
@@ -11,9 +10,6 @@ interface Props {
 const { tech, size } = Astro.props;
 const badge = getBadge(tech);
 const computedSize = size || 'md';
-const images = import.meta.glob<{ default: ImageMetadata }>(
-  '/src/images/badges/*.svg'
-);
 ---
 
 <span
@@ -27,8 +23,8 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
     },
   ]}
 >
-  <Image
-    src={images[`/src${badge}`]()}
+  <img
+    src={badge}
     alt={badge}
     class:list={[
       {

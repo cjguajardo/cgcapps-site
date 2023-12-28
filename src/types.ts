@@ -1,4 +1,3 @@
-/* ts */
 export type Project = {
   name: string
   description: string
@@ -21,4 +20,15 @@ export type SkillType = {
 export type getHeightProps = {
   since: number
   maxExperience: number
+}
+
+export type StateType = {
+  show: null | string,
+  errors: { name: null | string, email: null | string, message: null | string }
+  canSendMail?: boolean
+  token?: string | null
+}
+export type ActionType = {
+  type: string,
+  payload?: string | null
 }

@@ -18,7 +18,7 @@
         "src/services/*"
       ],
       "@types": [
-        "src/types.d.ts"
+        "src/types.ts"
       ],
       "@constants": [
         "src/constants.ts"

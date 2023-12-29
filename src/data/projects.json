@@ -42,7 +42,7 @@
     "description": "An API service to interact with AI for English practice.",
     "longDescription": "An API service to interact with AI for English practice. Uses Amazon Polly and Chat GPT.",
     "github": "https://github.com/cjguajardo/talk-a-bot-server",
-    "image": "/not_found.webp",
+    "image": "/default.webp",
     "name": "Talk a Bot (API)",
     "stack": [
       "Node.js",
@@ -88,7 +88,7 @@
     "description": "A simple Node.js microservice to interact with ChatGPT",
     "longDescription": "A simple Node.js microservice to interact with ChatGPT for general purposes (text and image generation requests).",
     "github": "https://github.com/cjguajardo/NGPTServer",
-    "image": "/not_found.webp",
+    "image": "/default.webp",
     "name": "NGPTServer",
     "stack": [
       "Node.js",
@@ -108,7 +108,7 @@
     "description": "This is a React Native project that communicates through the Deriv API.",
     "longDescription": "DerivPseudoBot is a mobile application built with React Native that allows users to interact with the Deriv API using websockets. It provides real-time data retrieval and manipulation capabilities, enabling users to access and update information from the Deriv platform.",
     "github": "https://github.com/cjguajardo/DerivPseudoBot",
-    "image": "/not_found.webp",
+    "image": "/default.webp",
     "name": "DerivPseudoBot",
     "stack": [
       "React Native",
@@ -127,7 +127,7 @@
     "description": "A simple bash script to help with docker commands.",
     "longDescription": "It is a helper script to facilitate the task of dockerizing a Laravel/Lumen environment, especially. It allows generating an image in development and production modes. In development mode, you can see the changes reflected in real time. It also allows or facilitates the task of publishing an image to an AWS ECR repository, as well as executing certain extra tasks.",
     "github": "https://github.com/cjguajardo/docker_helper",
-    "image": "/not_found.webp",
+    "image": "/default.webp",
     "name": "docker_helper",
     "stack": [
       "Bash",

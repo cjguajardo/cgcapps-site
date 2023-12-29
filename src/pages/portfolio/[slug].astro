@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import Tech from '@components/Tech.astro';
 import projects from '@data/projects.json';
@@ -25,17 +24,24 @@ const { project } = Astro.props;
 
 <Layout title={project.name}>
   <Headerbutton href="/portfolio" itemsAlign="start">
-    <img slot="before" src={getBadge('ArrowLeft')} alt="go back" class="w-5 h-5" />
+    <img
+      slot="before"
+      src={getBadge('ArrowLeft')}
+      alt="go back"
+      class="w-5 h-5"
+    />
      &nbsp;Go back
   </Headerbutton>
 
   <div
-    class="mt-3 mb-5 h-80 w-full p-4 items-end bg-contain bg-center rounded bg-fixed"
-    style={{
-      backgroundImage: `url(/src/images/portfolio${project.image}`,
-    }}
+    class="mt-3 mb-5 h-80 w-full p-4 items-end rounded relative"
     transition:name={`${project.slug}-project-image`}
   >
+    <img
+      src={`/images/portfolio/${project.image}`}
+      alt={project.name}
+      class="h-80 w-full bg-contain bg-center bg-fixed absolute top-0 left-0 rounded"
+    />
     <div
       class="grid grid-flow-col auto-cols-max px-2"
       transition:name={`${project.slug}-project-stack`}

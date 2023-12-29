@@ -2,6 +2,7 @@
 import { type Project } from '@types';
 import Tech from './Tech.astro';
 import AtroposWrapper from './AtroposWrapper.astro';
+import { Image } from 'astro:assets';
 interface Props {
   project: Project;
 }
@@ -19,11 +20,15 @@ const { project } = Astro.props;
         'bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70',
         'hover:opacity-100 hover:shadow-lg hover:scale-105',
         'ease-in-out duration-300 transform transition',
-        'bg-cover bg-center bg-no-repeat h-48 rounded-lg',
+        'relative h-48 rounded-lg',
       ]}
-      style={`background-image: url('/src/images/portfolio${project.image}');`}
       data-atropos-offset="0"
     >
+      <img
+        src={`/images/portfolio/${project.image}`}
+        alt={project.name}
+        class="h-80 w-full bg-contain bg-center bg-fixed absolute top-0 left-0 rounded"
+      />
       <div
         class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
       >

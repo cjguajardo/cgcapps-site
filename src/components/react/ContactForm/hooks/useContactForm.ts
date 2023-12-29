@@ -3,6 +3,7 @@ import validator from 'cgc-validator'
 import { SUCCESS, ERROR, LOADING } from '@constants'
 import type { ActionType } from '@types'
 import type { StateType } from '@types'
+import axios from 'axios'
 
 function useContactForm() {
   const reducer = (
@@ -62,22 +63,20 @@ function useContactForm() {
     if ( validation.success ) {
       dispatch( { type: 'show-loading' } )
       console.log( 'validation success' )
-      const response = await fetch( 'https://contacto.cgcapps.cl', {
-        method: 'POST',
-        body: JSON.stringify( { name, email, message, token: state.token } ),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      } ).catch( error => console.log( { error } ) )
-
-      if ( response && response.status === 200 ) {
-        const json = await response.json()
-        console.log( json )
-        dispatch( { type: 'show-success' } )
-      } else {
-        console.log( { response } )
+      // const data = window.btoa(JSON.stringify( { name, email, message, token: state.token } ))
+      const body = JSON.stringify( { name, email, message, token: state.token } )
+      // const url = 'http://localhost:3000/api/mail'
+      const url = 'https://cgcapps-api.vercel.app/api/mail'
+      axios.post(url , {body} )
+      .then(response=>{
+        console.log( {response} )
+        if(response.data===true) dispatch( { type: 'show-success' } )
+        else dispatch( { type: 'show-error' } )
+      })
+      .catch( error => {
+        console.log( { error } )
         dispatch( { type: 'show-error' } )
-      }
+      } )
 
       // reset catpcha
       //@ts-ignore  

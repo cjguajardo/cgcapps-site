@@ -12,6 +12,12 @@ export type Project = {
   stack: string[]
 }
 
+export type Tool = {
+  name: string
+  description: string
+  slug: string
+}
+
 export type SkillType = {
   name: string
   since: number
@@ -27,6 +33,7 @@ export type StateType = {
   errors: { name: null | string, email: null | string, message: null | string }
   canSendMail?: boolean
   token?: string | null
+  formKey: number
 }
 export type ActionType = {
   type: string,

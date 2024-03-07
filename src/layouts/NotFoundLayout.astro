@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import Title from '@components/Title.astro';
-import Bg from '../images/background.png';
+import Bg from '../images/background.webp';
 interface Props {
   title: string;
   hidePageTitle?: boolean;
@@ -40,9 +40,7 @@ const { title, hidePageTitle } = Astro.props;
       html {
         scroll-behavior: smooth;
         font-family: system-ui, sans-serif;
-        /* background: #0c001c; */
         background-size: 224px;
-        /* background-image: url(/images/background.png); */
         background-size: cover;
         background-repeat: no-repeat;
         color-scheme: dark light;

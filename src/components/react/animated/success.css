@@ -1,0 +1,26 @@
+svg#success {
+  width: 24px;
+  height: 24px;
+
+  /* position: absolute; */
+  top: 50px;
+  left: 50%;
+  margin-left: -50px;
+}
+
+svg.animate path {
+  animation: dash 0.75s linear both;
+  animation-delay: 0.5s;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 210;
+  }
+  75% {
+    stroke-dashoffset: -220;
+  }
+  100% {
+    stroke-dashoffset: -205;
+  }
+}

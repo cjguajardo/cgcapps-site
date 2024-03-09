@@ -1,22 +1,20 @@
-export const fileToBase64 = (file: Blob) => {
+export const fileToBase64 = (file: Blob):  Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new window.FileReader();
     reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
+    reader.onload = () => {
+      if (typeof reader.result !== 'string')
+        {reject(new Error('Invalid base64 string'));}
+      else {resolve(reader.result || '');}
+    };
     reader.onerror = (error) => reject(error);
   });
 };
 
-/**
- * Calculates the size of a base64 encoded file in megabytes.
- *
- * @param {string} base64String - The base64 encoded file.
- * @returns {number} The size of the file in megabytes.
- */
-export const getBase64Size = (
-  base64String: string,
-  rounded = false
-): string => {
+
+export const getBase64Size = (base64String: string, rounded = false): string => {
+  if(!base64String) return '';
+
   // Step 1: Remove MIME type if present
   var commaIndex = base64String.indexOf(',');
   if (commaIndex !== -1) {
@@ -47,4 +45,27 @@ export const getBase64Size = (
     return Math.round(fileSizeInMB * 1024) + ' Kb';
   }
   return `${parseFloat((fileSizeInMB * 1024).toFixed(2))} Kb`;
+};
+
+export const getBase64Mime = (base64String: string): string => {
+  if (!base64String) return '';
+  if  (!base64String.includes('data:')) return '';
+
+  return base64String.split(';')[0].split(':')[1];
+};
+
+export type ImageDimensions = {
+  width: number;
+  height: number;
+};
+
+export const getBase64Dimensions = (base64String: string): Promise<ImageDimensions> => {
+  if (!base64String) return Promise.resolve({ width: 0, height: 0 });
+
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = base64String;
+    img.onload = () => resolve({ width: img.naturalWidth, height: img.naturalHeight });
+    img.onerror = (error) => reject(error);
+  });
 };

@@ -30,7 +30,7 @@ const { project } = Astro.props;
       alt="go back"
       class="w-5 h-5"
     />
-     &nbsp;Go back
+    &nbsp;Go back
   </Headerbutton>
 
   <div
@@ -68,6 +68,23 @@ const { project } = Astro.props;
     )
   }
 
+  {
+    project.gallery && (
+      <div class="mt-4 p-4 text-center">
+        <h4 class="text-xl font-bold text-indigo-100">Gallery</h4>
+        <div class="grid grid-cols-2 gap-4 w-[720px] h-[480px] overflow-y-auto">
+          {project.gallery.map((picture, index) => (
+            <img
+              src={`/images/portfolio/${picture}`}
+              alt="gester"
+              class="w-[400px] h-[250px] rounded"
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+
   <div class="mt-4 p-4 text-center">
     {
       project.github && (
@@ -96,4 +113,6 @@ const { project } = Astro.props;
       )
     }
   </div>
+
+  <div class="mb-4">&nbsp;</div>
 </Layout>

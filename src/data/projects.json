@@ -1,5 +1,26 @@
 [
   {
+    "description": "Web platform to facilitate communication between comunities.",
+    "longDescription": "Web platform that leverages Next.js to facilitate seamless communication and collaboration between communities, social groups and the municipality.",
+    "image": "/gester.webp",
+    "website": "https://gester.appceo.cl",
+    "name": "Gester",
+    "stack": ["Next.js", "sqlite", "React.js", "JavaScript"],
+    "tags": ["React.js", "JavaScript", "Next.js", "sqlite"],
+    "slug": "Gester",
+    "highlight": true,
+    "gallery": [
+      "gester/1.webp",
+      "gester/2.webp",
+      "gester/3.webp",
+      "gester/4.webp",
+      "gester/5.webp",
+      "gester/6.webp",
+      "gester/7.webp",
+      "gester/8.webp"
+    ]
+  },
+  {
     "description": "A lightweight library that allows you to render components outside of their parent hierarchy.",
     "longDescription": "React Native Simple Portal is a lightweight library that allows you to render components outside of their parent hierarchy. It provides a simple API to create portals and manage the rendering of components in different parts of your app.",
     "github": "https://github.com/cjguajardo/cgc-portal",
@@ -7,16 +28,8 @@
     "video": "/videos/PortalDemo.mp4",
     "videoDescription": "To the left, you can see a simple loading indicator that is rendered on top of all app content. To the right, you can see a modal with custom content that is rendered on top of all app.",
     "name": "Portal",
-    "stack": [
-      "React Native",
-      "Typescript"
-    ],
-    "tags": [
-      "React",
-      "TypeScript",
-      "Portal",
-      "React Native"
-    ],
+    "stack": ["React Native", "Typescript"],
+    "tags": ["React", "TypeScript", "Portal", "React Native"],
     "slug": "Portal",
     "highlight": true
   },
@@ -26,16 +39,8 @@
     "github": "https://github.com/cjguajardo/PrettyPrint",
     "image": "/pretty-print.webp",
     "name": "PrettyPrint",
-    "stack": [
-      "PHP",
-      "CSS3",
-      "Composer"
-    ],
-    "tags": [
-      "PHP",
-      "Composer",
-      "pretty-print"
-    ],
+    "stack": ["PHP", "CSS3", "Composer"],
+    "tags": ["PHP", "Composer", "pretty-print"],
     "slug": "PrettyPrint"
   },
   {
@@ -44,11 +49,7 @@
     "github": "https://github.com/cjguajardo/talk-a-bot-server",
     "image": "/default.webp",
     "name": "Talk a Bot (API)",
-    "stack": [
-      "Node.js",
-      "Typescript",
-      "Handlebars"
-    ],
+    "stack": ["Node.js", "Typescript", "Handlebars"],
     "tags": [
       "Server",
       "TypeScript",
@@ -65,22 +66,8 @@
     "longDescription": "GEA is a web platform for inventory and asset management. It allows users to manage their inventory and assets, as well as their clients and suppliers. It also provides a dashboard with useful information about the company's inventory and assets.",
     "image": "/gea.webp",
     "website": "https://demo-gea.cgcapps.cl",
-    "stack": [
-      "Laravel",
-      "PHP",
-      "MySQL",
-      "JavaScript",
-      "CSS3",
-      "HTML5"
-    ],
-    "tags": [
-      "Laravel",
-      "PHP",
-      "MySQL",
-      "JavaScript",
-      "CSS3",
-      "HTML5"
-    ],
+    "stack": ["Laravel", "PHP", "MySQL", "JavaScript", "CSS3", "HTML5"],
+    "tags": ["Laravel", "PHP", "MySQL", "JavaScript", "CSS3", "HTML5"],
     "slug": "GEA",
     "highlight": true
   },
@@ -90,18 +77,8 @@
     "github": "https://github.com/cjguajardo/NGPTServer",
     "image": "/default.webp",
     "name": "NGPTServer",
-    "stack": [
-      "Node.js",
-      "JavaScript",
-      "Docker",
-      "Python"
-    ],
-    "tags": [
-      "API",
-      "ChatGPT",
-      "Micro-Service",
-      "Server"
-    ],
+    "stack": ["Node.js", "JavaScript", "Docker", "Python"],
+    "tags": ["API", "ChatGPT", "Micro-Service", "Server"],
     "slug": "NGPTServer"
   },
   {
@@ -110,16 +87,8 @@
     "github": "https://github.com/cjguajardo/DerivPseudoBot",
     "image": "/default.webp",
     "name": "DerivPseudoBot",
-    "stack": [
-      "React Native",
-      "Typescript"
-    ],
-    "tags": [
-      "React Native",
-      "Deriv",
-      "Websockets",
-      "Chart Library"
-    ],
+    "stack": ["React Native", "Typescript"],
+    "tags": ["React Native", "Deriv", "Websockets", "Chart Library"],
     "slug": "DerivPseudoBot",
     "highlight": true
   },
@@ -129,15 +98,9 @@
     "github": "https://github.com/cjguajardo/docker_helper",
     "image": "/default.webp",
     "name": "docker_helper",
-    "stack": [
-      "Bash",
-      "Docker"
-    ],
-    "tags": [
-      "Docker",
-      "Bash",
-      "Shell Script"
-    ],
+    "stack": ["Bash", "Docker"],
+    "tags": ["Docker", "Bash", "Shell Script"],
     "slug": "DockerHelper"
   }
 ]
+

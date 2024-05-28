@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import Headerbutton from './Headerbutton.astro';
-import { getBadge } from '@services//badges';
+import { getBadge } from '@services/badges';
 import links from '@data/links.json';
 import Social from './Social.astro';
 import Logo from '@images/logo.svg';
-import dynamicLoad from '@services/dynamicLoader';
+// import dynamicLoad from '@services/dynamicLoader';
 
 const url = Astro.url.pathname;
 let activeLink = url;
@@ -14,8 +14,8 @@ if (url.indexOf('/portfolio') !== -1) {
   activeLink = '/portfolio';
 }
 
-const icons = links.map((link) => `/images/${getBadge(link.icon)}`)
-const images = dynamicLoad(icons);
+const icons = links.map((link) => `/images/${getBadge(link.icon)}`);
+// const images = dynamicLoad(icons);
 ---
 
 <nav
@@ -125,11 +125,7 @@ const images = dynamicLoad(icons);
             isActive={url === link.url}
             itemsAlign="start"
           >
-            <img
-              src={getBadge(link.icon)}
-              alt={link.icon}
-              class="w-5 h-5"
-            />
+            <img src={getBadge(link.icon)} alt={link.icon} class="w-5 h-5" />
             &nbsp;{link.text}
           </Headerbutton>
         ))

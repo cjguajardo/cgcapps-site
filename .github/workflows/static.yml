@@ -13,13 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build
-        run: npm run build
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+
+      - name: Install dependencies and build site
+        run: |
+          npm install
+          npm run build
 
       - name: Deploy to server
         uses: SamKirkland/FTP-Deploy-Action@v4.0.0
         with:
           server: ftp.cgcapps.cl
-          username: ${[ secrets.FTP_USER }}
+          username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PWD }}
           local-dir: ./dist

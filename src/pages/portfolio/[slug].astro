@@ -72,7 +72,7 @@ const { project } = Astro.props;
     project.gallery && (
       <div class="mt-4 p-4 text-center">
         <h4 class="text-xl font-bold text-indigo-100">Gallery</h4>
-        <div class="grid grid-cols-2 gap-4 w-[720px] h-[480px] overflow-y-auto">
+        <div class="grid grid-cols-2 gap-4 w-[720px] h-[300px] overflow-y-auto">
           {project.gallery.map((picture, index) => (
             <img
               src={`/images/portfolio/${picture}`}
@@ -85,7 +85,7 @@ const { project } = Astro.props;
     )
   }
 
-  <div class="mt-4 p-4 text-center">
+  <div class="my-4 p-4 text-center">
     {
       project.github && (
         <Headerbutton href={project.github} itemsAlign="start">
@@ -114,5 +114,5 @@ const { project } = Astro.props;
     }
   </div>
 
-  <div class="mb-4">&nbsp;</div>
+  <div class="mb-12">&nbsp;</div>
 </Layout>

@@ -56,7 +56,9 @@ function useGeo() {
       try {
         const response = await axios.get(url);
 
-        if (!response.data) return;
+        if (!response.data) {
+          return;
+        }
 
         const from = `${response.data.city}, ${response.data.country}`;
 

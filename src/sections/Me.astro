@@ -6,43 +6,50 @@ import MeImg from "@images/profile-image.webp";
 ---
 
 <Section name="me">
-    <article class="mx-auto flex items-center mb-6 z-10">
-        <Image
-            src={MeImg}
-            alt="Carlos Guajardo - Fullstack Developer profile picture"
-            class="w-32 h-32 rounded-full mr-4"
-            width={128}
-            height={128}
-            loading="eager"
-        />
-        <div>
-            <div
-                class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around"
+  <article class="mx-auto flex flex-col sm:flex-row items-center mb-6 z-10">
+    <Image
+      src={MeImg}
+      alt="Carlos Guajardo - Fullstack Developer profile picture"
+      class="w-32 h-32 rounded-full mb-4 sm:mb-0 sm:mr-4"
+      width={128}
+      height={128}
+      loading="eager"
+    />
+    <div>
+      <div
+        class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around mb-4"
+      >
+        <h1 class="text-3xl sm:text-4xl md:text-[2.5rem] mb-2">
+          Carlos Guajardo
+        </h1>
+        <div
+          class="overflow-hidden h-9 text-xs sm:text-sm relative"
+          aria-live="polite"
+        >
+          <div class="animate-slide">
+            <span
+              class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
+              >Fullstack Developer</span
             >
-                <h1 class="text-[2.5rem]">Carlos Guajardo</h1>
-                <div class="overflow-hidden h-9 text-sm" aria-live="polite">
-                    <div class="animate-slide">
-                        <span
-                            class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
-                            >Fullstack Developer</span
-                        >
-                    </div>
-                    <div>
-                        <span
-                            class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
-                            >Mobile Development</span
-                        >
-                    </div>
-                    <div>
-                        <span
-                            class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
-                            >Web Development</span
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <Social />
+          </div>
+          <div>
+            <span
+              class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
+              >Mobile Development</span
+            >
+          </div>
+          <div>
+            <span
+              class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
+              >Web Development</span
+            >
+          </div>
         </div>
-    </article>
+      </div>
+
+      <div class="relative z-20">
+        <Social />
+      </div>
+    </div>
+  </article>
 </Section>

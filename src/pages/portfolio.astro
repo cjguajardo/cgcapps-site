@@ -6,27 +6,27 @@ import Subtitle from "@components/Subtitle.astro";
 import Section from "@components/Section.astro";
 
 const description =
-    "Explore my portfolio of web and mobile development projects. From Laravel web platforms to React Native apps, Docker tools, and AI integrations. Open source and commercial projects showcasing modern web technologies.";
+  "Explore my portfolio of web and mobile development projects. From Laravel web platforms to React Native apps, Docker tools, and AI integrations. Open source and commercial projects showcasing modern web technologies.";
 ---
 
 <Layout title="Portfolio" description={description}>
-    <Subtitle text="My Projects & Work" />
-    <div class="text-center mb-8 max-w-2xl mx-auto">
-        <p class="text-gray-300 text-lg mb-2">
-            A collection of web applications, mobile apps, and development tools
-            I've built using modern technologies.
-        </p>
-        <p class="text-gray-400 text-sm">
-            From commercial platforms to open-source libraries, each project
-            showcases different aspects of fullstack development.
-        </p>
-    </div>
+  <Subtitle text="My Projects & Work" />
+  <div class="text-center mb-8 max-w-2xl mx-auto">
+    <p class="text-gray-300 text-lg mb-2">
+      A collection of web applications, mobile apps, and development tools I've
+      built using modern technologies.
+    </p>
+    <p class="text-gray-400 text-sm">
+      From commercial platforms to open-source libraries, each project showcases
+      different aspects of fullstack development.
+    </p>
+  </div>
 
-    <Section name="porfolio-projects">
-        <div
-            class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-12"
-        >
-            {projects.map((project) => <PortfolioCard project={project} />)}
-        </div>
-    </Section>
+  <Section name="porfolio-projects">
+    <div
+      class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-12"
+    >
+      {projects.map((project) => <PortfolioCard project={project} />)}
+    </div>
+  </Section>
 </Layout>

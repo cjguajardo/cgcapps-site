@@ -11,162 +11,162 @@ import Bg from "../images/background.webp";
 
 // Get API URL from environment variable
 const API_URL =
-    import.meta.env.PUBLIC_API_URL || "https://cgcapps-api.vercel.app";
+  import.meta.env.PUBLIC_API_URL || "https://cgcapps-api.vercel.app";
 
 interface Props {
-    title: string;
-    hidePageTitle?: boolean;
-    description?: string;
+  title: string;
+  hidePageTitle?: boolean;
+  description?: string;
 }
 
 const { title, hidePageTitle, description } = Astro.props;
 
 // Default description if not provided
 const metaDescription =
-    description ||
-    "Carlos Guajardo - Fullstack Developer specializing in web and mobile development. Experienced in React, React Native, Laravel, Next.js, and modern web technologies.";
+  description ||
+  "Carlos Guajardo - Fullstack Developer specializing in web and mobile development. Experienced in React, React Native, Laravel, Next.js, and modern web technologies.";
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content={metaDescription} />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <meta name="author" content="Carlos Guajardo" />
-        <meta
-            name="keywords"
-            content="Fullstack Developer, Web Development, Mobile Development, React, React Native, Laravel, Next.js, JavaScript, TypeScript"
-        />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metaDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Carlos Guajardo" />
+    <meta
+      name="keywords"
+      content="Fullstack Developer, Web Development, Mobile Development, React, React Native, Laravel, Next.js, JavaScript, TypeScript"
+    />
 
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={Astro.url} />
-        <meta property="og:title" content={`${title} - Carlos Guajardo`} />
-        <meta property="og:description" content={metaDescription} />
-        <meta
-            property="og:image"
-            content={new URL("/images/logo.webp", Astro.url)}
-        />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={`${title} - Carlos Guajardo`} />
+    <meta property="og:description" content={metaDescription} />
+    <meta
+      property="og:image"
+      content={new URL("/images/logo.webp", Astro.url)}
+    />
 
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={Astro.url} />
-        <meta property="twitter:title" content={`${title} - Carlos Guajardo`} />
-        <meta property="twitter:description" content={metaDescription} />
-        <meta
-            property="twitter:image"
-            content={new URL("/images/logo.webp", Astro.url)}
-        />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={`${title} - Carlos Guajardo`} />
+    <meta property="twitter:description" content={metaDescription} />
+    <meta
+      property="twitter:image"
+      content={new URL("/images/logo.webp", Astro.url)}
+    />
 
-        <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={Astro.url} />
 
-        <!-- Preload critical resources -->
-        <link rel="preload" href="/css/styles.css" as="style" />
-        <link rel="preload" href={Bg.src} as="image" type="image/webp" />
-        <link rel="dns-prefetch" href={API_URL} />
-        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/styles.css" as="style" />
+    <link rel="preload" href={Bg.src} as="image" type="image/webp" />
+    <link rel="dns-prefetch" href={API_URL} />
+    <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
 
-        <title>{title} - Carlos Guajardo | CGCApps</title>
-        <ViewTransitions fallback="none" />
-        <link rel="stylesheet" href="/css/styles.css" />
-    </head>
-    <body
-        class="dark:bg-indigo-950/60 bg-blend-multiply min-h-screen flex flex-col overflow-x-hidden"
+    <title>{title} - Carlos Guajardo | CGCApps</title>
+    <ViewTransitions fallback="none" />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body
+    class="dark:bg-indigo-950/60 bg-blend-multiply min-h-screen flex flex-col overflow-x-hidden"
+  >
+    <!-- Skip to main content link for keyboard navigation -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-500 focus:text-white focus:rounded"
     >
-        <!-- Skip to main content link for keyboard navigation -->
-        <a
-            href="#main-content"
-            class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-indigo-500 focus:text-white focus:rounded"
-        >
-            Skip to main content
-        </a>
-        <Magic client:idle />
-        <Geo client:idle />
-        <Header />
-        <main
-            id="main-content"
-            class="mx-auto md:max-w-7xl px-4 pb-8 flex items-center flex-col pt-28 md:pt-32 z-10 overflow-x-hidden flex-1 w-full"
-        >
-            {!hidePageTitle && <Title text={title} />}
-            <slot />
-        </main>
-        <Footer />
-        <ScrollToTop />
+      Skip to main content
+    </a>
+    <Magic client:idle />
+    <Geo client:idle />
+    <Header />
+    <main
+      id="main-content"
+      class="mx-auto md:max-w-7xl px-4 pb-8 flex items-center flex-col pt-28 md:pt-32 z-10 overflow-x-hidden flex-1 w-full"
+    >
+      {!hidePageTitle && <Title text={title} />}
+      <slot />
+    </main>
+    <Footer />
+    <ScrollToTop />
 
-        <style is:global define:vars={{ bgImage: `url(${Bg.src})` }}>
-            /* Custom page transition animations */
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+    <style is:global define:vars={{ bgImage: `url(${Bg.src})` }}>
+      /* Custom page transition animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-            @keyframes fadeOutDown {
-                from {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateY(-20px);
-                }
-            }
+      @keyframes fadeOutDown {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+      }
 
-            @keyframes scaleIn {
-                from {
-                    opacity: 0;
-                    transform: scale(0.95);
-                }
-                to {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-            }
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-            /* Apply smooth transitions to page navigation */
-            @view-transition {
-                navigation: auto;
-            }
+      /* Apply smooth transitions to page navigation */
+      @view-transition {
+        navigation: auto;
+      }
 
-            ::view-transition-old(root) {
-                animation: fadeOutDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            }
+      ::view-transition-old(root) {
+        animation: fadeOutDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            ::view-transition-new(root) {
-                animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
+      ::view-transition-new(root) {
+        animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            /* Smooth transitions for interactive elements */
-            a,
-            button {
-                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            }
+      /* Smooth transitions for interactive elements */
+      a,
+      button {
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            /* Page load animation */
-            body {
-                animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
+      /* Page load animation */
+      body {
+        animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-            html {
-                scroll-behavior: smooth;
-                font-family: system-ui, sans-serif;
-                background-image: var(--bgImage);
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                color-scheme: dark light;
-                width: 100vw;
-                height: 100vh;
-                lang: en;
-            }
-        </style>
-    </body>
+      html {
+        scroll-behavior: smooth;
+        font-family: system-ui, sans-serif;
+        background-image: var(--bgImage);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color-scheme: dark light;
+        width: 100vw;
+        height: 100vh;
+        lang: en;
+      }
+    </style>
+  </body>
 </html>

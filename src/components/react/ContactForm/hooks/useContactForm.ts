@@ -61,7 +61,9 @@ function useContactForm() {
       case "hide":
         return { ...state, show: null };
       case "set-errors":
-        if (!action.payload) return state;
+        if (!action.payload) {
+          return state;
+        }
         return {
           ...state,
           errors: { ...state.errors, ...JSON.parse(action.payload) },
@@ -92,7 +94,9 @@ function useContactForm() {
    * @returns {string} Sanitized input
    */
   const sanitizeInput = (input: string | undefined): string => {
-    if (!input) return "";
+    if (!input) {
+      return "";
+    }
     return DOMPurify.sanitize(input.trim(), {
       ALLOWED_TAGS: [],
       ALLOWED_ATTR: [],

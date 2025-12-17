@@ -2,105 +2,100 @@
 import { type Project } from "@types";
 import Tech from "./Tech.astro";
 import AtroposWrapper from "./AtroposWrapper.astro";
-import { Image } from "astro:assets";
 interface Props {
-    project: Project;
+  project: Project;
 }
 
 const { project } = Astro.props;
 ---
 
-<a href={`/portfolio/${project.slug}`} class="mb-8 mt-2 group">
-    <AtroposWrapper
-        id={project.slug}
-        className="mb-12 md:mb-8 mx-6 md:mx-0 rounded-lg"
+<a href={`/portfolio/${project.slug}`} class="mb-4 mt-2 group block">
+  <AtroposWrapper
+    id={project.slug}
+    className="mb-8 md:mb-8 mx-2 md:mx-0 rounded-lg"
+  >
+    <article
+      class:list={[
+        "bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70",
+        "hover:opacity-100 hover:shadow-lg hover:scale-105",
+        "ease-in-out duration-300 transform transition",
+        "relative h-56 sm:h-52 md:h-48 rounded-lg",
+      ]}
+      data-atropos-offset="0"
     >
-        <article
-            class:list={[
-                "bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70",
-                "hover:opacity-100 hover:shadow-lg hover:scale-105",
-                "ease-in-out duration-300 transform transition",
-                "relative h-48 rounded-lg",
-            ]}
-            data-atropos-offset="0"
-        >
-            <!-- Loading skeleton -->
-            <div
-                class="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 animate-pulse rounded"
-                data-skeleton
-            >
-            </div>
+      <!-- Loading skeleton -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 animate-pulse rounded"
+        data-skeleton
+      >
+      </div>
 
-            <img
-                src={`/images/portfolio/${project.image}`}
-                alt={`${project.name} - ${project.description}`}
-                class="h-80 w-full bg-contain bg-center bg-fixed absolute top-0 left-0 rounded portfolio-image transition-opacity duration-500"
-                loading="lazy"
-                data-portfolio-img
-            />
-            <div
-                class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
-            >
-                <h3
-                    class="text-2xl text-indigo-100 font-bold px-4 py-2 transform group-hover:translate-y-[-2px] transition-transform duration-200"
-                    transition:name={`${project.slug}-project-name`}
-                    data-atropos-offset="5"
-                >
-                    {project.name}
-                </h3>
-                <div
-                    class="grid grid-cols-3 px-2"
-                    transition:name={`${project.slug}-project-stack`}
-                    data-atropos-offset="-5"
-                >
-                    {
-                        project.stack.map((tech) => (
-                            <Tech tech={tech} size="sm" />
-                        ))
-                    }
-                </div>
-                <div
-                    class="absolute bottom-0 bg-slate-950/80 p-3 w-full transform group-hover:bg-slate-950/90 transition-colors duration-200"
-                    data-atropos-offset="2"
-                >
-                    {project.description}
-                </div>
-            </div>
-        </article>
-    </AtroposWrapper>
+      <img
+        src={`/images/portfolio/${project.image}`}
+        alt={`${project.name} - ${project.description}`}
+        class="h-80 w-full bg-contain bg-center bg-fixed absolute top-0 left-0 rounded portfolio-image transition-opacity duration-500"
+        loading="lazy"
+        data-portfolio-img
+      />
+      <div
+        class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
+      >
+        <h3
+          class="text-xl sm:text-2xl text-indigo-100 font-bold px-4 py-2 transform group-hover:translate-y-[-2px] transition-transform duration-200"
+          transition:name={`${project.slug}-project-name`}
+          data-atropos-offset="5"
+        >
+          {project.name}
+        </h3>
+        <div
+          class="grid grid-cols-3 px-2"
+          transition:name={`${project.slug}-project-stack`}
+          data-atropos-offset="-5"
+        >
+          {project.stack.map((tech) => <Tech tech={tech} size="sm" />)}
+        </div>
+        <div
+          class="absolute bottom-0 bg-slate-950/80 p-3 w-full transform group-hover:bg-slate-950/90 transition-colors duration-200 text-sm sm:text-base"
+          data-atropos-offset="2"
+        >
+          {project.description}
+        </div>
+      </div>
+    </article>
+  </AtroposWrapper>
 </a>
 
 <script>
-    function handlePortfolioImages() {
-        const images = document.querySelectorAll("[data-portfolio-img]");
+  function handlePortfolioImages() {
+    const images = document.querySelectorAll("[data-portfolio-img]");
 
-        images.forEach((img: Element) => {
-            const imgElement = img as HTMLImageElement;
-            const skeleton =
-                imgElement.parentElement?.querySelector("[data-skeleton]");
+    images.forEach((img: Element) => {
+      const imgElement = img as HTMLImageElement;
+      const skeleton =
+        imgElement.parentElement?.querySelector("[data-skeleton]");
 
-            const showImage = () => {
-                imgElement.style.opacity = "1";
-                skeleton?.remove();
-            };
+      const showImage = () => {
+        imgElement.style.opacity = "1";
+        skeleton?.remove();
+      };
 
-            const hideSkeletonOnError = () => {
-                skeleton?.remove();
-            };
+      const hideSkeletonOnError = () => {
+        skeleton?.remove();
+      };
 
-            // Check if image is already loaded (from cache)
-            if (imgElement.complete && imgElement.naturalHeight !== 0) {
-                showImage();
-            } else {
-                imgElement.addEventListener("load", showImage);
-                imgElement.addEventListener("error", hideSkeletonOnError);
-            }
-        });
-    }
+      // Check if image is already loaded (from cache)
+      if (imgElement.complete && imgElement.naturalHeight !== 0) {
+        showImage();
+      } else {
+        imgElement.addEventListener("load", showImage);
+        imgElement.addEventListener("error", hideSkeletonOnError);
+      }
+    });
+  }
 
-    // Initialize on page load
-    document.addEventListener("DOMContentLoaded", handlePortfolioImages);
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", handlePortfolioImages);
 
-    // Re-initialize on Astro view transitions
-    document.addEventListener("astro:page-load", handlePortfolioImages);
+  // Re-initialize on Astro view transitions
+  document.addEventListener("astro:page-load", handlePortfolioImages);
 </script>

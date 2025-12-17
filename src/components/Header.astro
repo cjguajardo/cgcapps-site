@@ -10,181 +10,214 @@ const url = Astro.url.pathname;
 let activeLink = url;
 
 if (url.indexOf("/portfolio") !== -1) {
-    activeLink = "/portfolio";
+  activeLink = "/portfolio";
 }
 ---
 
 <nav
-    class="bg-indigo-950 bg-opacity-30 backdrop-filter backdrop-blur-lg fixed top-0 w-full shadow-md z-50"
-    aria-label="Main navigation"
+  class="bg-indigo-950 bg-opacity-30 backdrop-filter backdrop-blur-lg fixed top-0 w-full shadow-md z-50"
+  aria-label="Main navigation"
 >
-    <div class="mx-auto md:max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div class="relative flex h-16 items-center justify-between">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Mobile menu button-->
-                <button
-                    type="button"
-                    id="mobile-menu-button"
-                    class="relative inline-flex items-center justify-center rounded-md p-2 text-indigo-400 hover:bg-indigo-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                    aria-controls="mobile-menu"
-                    aria-expanded="false"
-                    aria-label="Toggle mobile menu"
+  <div class="mx-auto md:max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+      <div class="flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button
+          type="button"
+          id="mobile-menu-button"
+          class="relative inline-flex items-center justify-center rounded-md p-3 text-indigo-400 hover:bg-indigo-700 active:bg-indigo-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white min-h-[44px] min-w-[44px] touch-manipulation z-50"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+          aria-label="Toggle mobile menu"
+        >
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <svg
+            id="menu-open-icon"
+            class="block h-6 w-6 pointer-events-none"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+          <svg
+            id="menu-close-icon"
+            class="hidden h-6 w-6 pointer-events-none"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div
+        class="flex flex-1 items-center justify-center sm:justify-start sm:ml-0"
+      >
+        <div class="flex flex-shrink-0 items-center">
+          <a href="/" aria-label="Go to home page">
+            <Image src={Logo} alt="CGCApps Logo" class="h-8 w-auto" />
+          </a>
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4" role="navigation">
+            {
+              links.map((link) => (
+                <Headerbutton
+                  href={link.url}
+                  isActive={activeLink === link.url}
                 >
-                    <span class="absolute -inset-0.5"></span>
-                    <span class="sr-only">Open main menu</span>
-                    <svg
-                        id="menu-open-icon"
-                        class="block h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                        ></path>
-                    </svg>
-                    <svg
-                        id="menu-close-icon"
-                        class="hidden h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <div
-                class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-            >
-                <div class="flex flex-shrink-0 items-center">
-                    <a href="/" aria-label="Go to home page">
-                        <Image
-                            src={Logo}
-                            alt="CGCApps Logo"
-                            class="h-8 w-auto"
-                        />
-                    </a>
-                </div>
-                <div class="hidden sm:ml-6 sm:block">
-                    <div class="flex space-x-4" role="navigation">
-                        {
-                            links.map((link) => (
-                                <Headerbutton
-                                    href={link.url}
-                                    isActive={activeLink === link.url}
-                                >
-                                    <img
-                                        src={getBadge(link.icon)}
-                                        alt=""
-                                        class="w-5 h-5"
-                                        width="20"
-                                        height="20"
-                                        aria-hidden="true"
-                                    />
-                                    &nbsp;{link.text}
-                                </Headerbutton>
-                            ))
-                        }
-                    </div>
-                </div>
-            </div>
-
-            {
-                url !== "/" && (
-                    <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-                        <Social />
-                    </div>
-                )
+                  <img
+                    src={getBadge(link.icon)}
+                    alt=""
+                    class="w-5 h-5"
+                    width="20"
+                    height="20"
+                    aria-hidden="true"
+                  />
+                  &nbsp;{link.text}
+                </Headerbutton>
+              ))
             }
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div
-        class="sm:hidden absolute z-10 w-full bg-indigo-950 hidden"
-        id="mobile-menu"
-    >
-        <div class="space-y-1 px-2 pb-3 pt-2" role="navigation">
-            {
-                links.map((link) => (
-                    <Headerbutton
-                        href={link.url}
-                        isActive={url === link.url}
-                        itemsAlign="start"
-                    >
-                        <img
-                            src={getBadge(link.icon)}
-                            alt=""
-                            class="w-5 h-5"
-                            width="20"
-                            height="20"
-                            aria-hidden="true"
-                        />
-                        &nbsp;{link.text}
-                    </Headerbutton>
-                ))
-            }
-        </div>
+      {
+        url !== "/" && (
+          <div class="hidden sm:flex flex-1 items-center sm:items-stretch sm:justify-end">
+            <Social />
+          </div>
+        )
+      }
     </div>
+  </div>
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div
+    class="sm:hidden absolute z-10 w-full bg-indigo-950 hidden"
+    id="mobile-menu"
+  >
+    <div class="space-y-1 px-2 pb-3 pt-2" role="navigation">
+      {
+        links.map((link) => (
+          <Headerbutton
+            href={link.url}
+            isActive={url === link.url}
+            itemsAlign="start"
+          >
+            <img
+              src={getBadge(link.icon)}
+              alt=""
+              class="w-5 h-5"
+              width="20"
+              height="20"
+              aria-hidden="true"
+            />
+            &nbsp;{link.text}
+          </Headerbutton>
+        ))
+      }
+    </div>
+  </div>
 </nav>
 
-<script>
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const menuOpenIcon = document.getElementById("menu-open-icon");
-    const menuCloseIcon = document.getElementById("menu-close-icon");
+<script is:inline>
+  (function () {
+    function setupMobileMenu() {
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuOpenIcon = document.getElementById("menu-open-icon");
+      const menuCloseIcon = document.getElementById("menu-close-icon");
 
-    if (mobileMenuButton && mobileMenu && menuOpenIcon && menuCloseIcon) {
-        mobileMenuButton.addEventListener("click", () => {
-            const isExpanded =
-                mobileMenuButton.getAttribute("aria-expanded") === "true";
+      if (!mobileMenuButton || !mobileMenu || !menuOpenIcon || !menuCloseIcon) {
+        return;
+      }
 
-            // Toggle aria-expanded
-            mobileMenuButton.setAttribute("aria-expanded", String(!isExpanded));
+      // Skip if already initialized
+      if (mobileMenuButton.hasAttribute("data-menu-initialized")) {
+        return;
+      }
+      mobileMenuButton.setAttribute("data-menu-initialized", "true");
 
-            // Toggle menu visibility
-            mobileMenu.classList.toggle("hidden");
+      function toggleMenu() {
+        const isHidden = mobileMenu.classList.contains("hidden");
 
-            // Toggle icons
-            menuOpenIcon.classList.toggle("hidden");
-            menuCloseIcon.classList.toggle("hidden");
-        });
+        if (isHidden) {
+          // Open menu
+          mobileMenu.classList.remove("hidden");
+          menuOpenIcon.classList.add("hidden");
+          menuCloseIcon.classList.remove("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "true");
+        } else {
+          // Close menu
+          mobileMenu.classList.add("hidden");
+          menuOpenIcon.classList.remove("hidden");
+          menuCloseIcon.classList.add("hidden");
+          mobileMenuButton.setAttribute("aria-expanded", "false");
+        }
+      }
 
-        // Close menu when pressing Escape
-        document.addEventListener("keydown", (e) => {
-            if (
-                e.key === "Escape" &&
-                !mobileMenu.classList.contains("hidden")
-            ) {
-                mobileMenuButton.setAttribute("aria-expanded", "false");
-                mobileMenu.classList.add("hidden");
-                menuOpenIcon.classList.remove("hidden");
-                menuCloseIcon.classList.add("hidden");
-            }
-        });
+      function closeMenu() {
+        mobileMenu.classList.add("hidden");
+        menuOpenIcon.classList.remove("hidden");
+        menuCloseIcon.classList.add("hidden");
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+      }
 
-        // Close menu when clicking outside
-        document.addEventListener("click", (e) => {
-            if (
-                !mobileMenu.contains(e.target as Node) &&
-                !mobileMenuButton.contains(e.target as Node) &&
-                !mobileMenu.classList.contains("hidden")
-            ) {
-                mobileMenuButton.setAttribute("aria-expanded", "false");
-                mobileMenu.classList.add("hidden");
-                menuOpenIcon.classList.remove("hidden");
-                menuCloseIcon.classList.add("hidden");
-            }
-        });
+      // Toggle on button click
+      mobileMenuButton.onclick = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+      };
+
+      // Close when clicking menu links
+      const links = mobileMenu.querySelectorAll("a");
+      links.forEach(function (link) {
+        link.onclick = function () {
+          closeMenu();
+        };
+      });
+
+      // Close on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !mobileMenu.classList.contains("hidden")) {
+          closeMenu();
+        }
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", function (e) {
+        if (
+          !mobileMenu.contains(e.target) &&
+          !mobileMenuButton.contains(e.target) &&
+          !mobileMenu.classList.contains("hidden")
+        ) {
+          closeMenu();
+        }
+      });
     }
+
+    // Run on page load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupMobileMenu);
+    } else {
+      setupMobileMenu();
+    }
+
+    // Re-run on Astro page transitions
+    document.addEventListener("astro:page-load", setupMobileMenu);
+  })();
 </script>

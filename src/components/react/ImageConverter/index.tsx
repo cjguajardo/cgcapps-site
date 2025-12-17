@@ -90,13 +90,15 @@ export default function ImageConverter() {
     >
       {/* Instructions */}
       <div className="mb-6 p-4 bg-indigo-900/20 rounded-lg border border-indigo-500/30">
-        <h2 className="text-lg font-bold text-indigo-300 mb-2">How to use:</h2>
-        <ol className="text-sm text-gray-300 space-y-1 list-decimal list-inside">
+        <h2 className="text-base sm:text-lg font-bold text-indigo-300 mb-2">
+          How to use:
+        </h2>
+        <ol className="text-sm sm:text-base text-gray-300 space-y-1 list-decimal list-inside">
           <li>Upload an image by dragging or clicking the box below</li>
           <li>Adjust quality, size, and choose output format</li>
           <li>Copy the base64 string or download the result</li>
         </ol>
-        <p className="text-xs text-gray-400 mt-2">
+        <p className="text-xs sm:text-sm text-gray-400 mt-2">
           Supported formats: PNG, JPG, WebP, GIF (max 10MB recommended)
         </p>
       </div>
@@ -105,12 +107,12 @@ export default function ImageConverter() {
       <div className="mb-4 w-full md:px-5 py-2">
         <label
           htmlFor="file-input"
-          className="block text-gray-400 font-bold mb-2"
+          className="block text-gray-400 font-bold mb-2 text-sm sm:text-base"
         >
           Upload Image
         </label>
         <div
-          className={`border-2 border-dashed rounded-t-lg p-4 w-full h-[200px] transition-all duration-200 ${
+          className={`border-2 border-dashed rounded-t-lg p-4 w-full h-[240px] sm:h-[200px] transition-all duration-200 ${
             isDragging
               ? "border-indigo-500 bg-indigo-500/10 scale-[1.02]"
               : hasImage
@@ -177,7 +179,7 @@ export default function ImageConverter() {
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
-                <p className="text-sm">
+                <p className="text-sm sm:text-base">
                   Drag an image here or{" "}
                   <span className="text-indigo-400 underline">
                     click to select
@@ -202,8 +204,10 @@ export default function ImageConverter() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <p className="text-sm">Image loaded successfully!</p>
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-sm sm:text-base">
+                  Image loaded successfully!
+                </p>
+                <p className="text-xs sm:text-sm text-gray-400 mt-1">
                   Click to select a different image
                 </p>
               </div>
@@ -230,11 +234,11 @@ export default function ImageConverter() {
       {/* Converted Image Output */}
       {state.compressed !== null && (
         <div className="mb-4 w-full md:px-5 py-2 animate-fadeIn">
-          <label className="block text-gray-400 font-bold mb-2">
+          <label className="block text-gray-400 font-bold mb-2 text-sm sm:text-base">
             Converted Image (Base64)
           </label>
           <div
-            className="border border-dashed rounded-t-lg border-green-500/50 bg-slate-900/50 p-4 w-full h-[200px] break-words overflow-y-auto overflow-x-hidden text-xs text-gray-300 font-mono"
+            className="border border-dashed rounded-t-lg border-green-500/50 bg-slate-900/50 p-4 w-full h-[240px] sm:h-[200px] break-words overflow-y-auto overflow-x-hidden text-xs sm:text-sm text-gray-300 font-mono"
             role="region"
             aria-label="Converted image base64 output"
             tabIndex={0}
@@ -250,7 +254,7 @@ export default function ImageConverter() {
 
           <div className="mb-4 w-full md:w-3/4 px-5 py-2 flex flex-col md:flex-row gap-2 justify-items-center m-auto">
             <button
-              className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white font-bold py-2 px-4 rounded-full w-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white font-bold py-3 sm:py-2 px-4 rounded-full w-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900 min-h-[44px]"
               onClick={handleCopyToClipboard}
               aria-label="Copy base64 string to clipboard"
             >
@@ -276,7 +280,7 @@ export default function ImageConverter() {
               )}
             </button>
             <a
-              className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white font-bold py-2 px-4 rounded-full w-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+              className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 text-white font-bold py-3 sm:py-2 px-4 rounded-full w-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 focus:ring-offset-slate-900 min-h-[44px]"
               download={downloadName}
               href={state.compressed || ""}
               aria-label={`Download converted image as ${downloadName}`}
@@ -311,12 +315,12 @@ export default function ImageConverter() {
         <div className="mb-4 w-full px-5 py-2">
           <label
             htmlFor="convertTo"
-            className="block px-4 py-2 uppercase text-sm font-bold text-gray-400"
+            className="block px-4 py-2 uppercase text-xs sm:text-sm font-bold text-gray-400"
           >
             Convert to:
           </label>
           <select
-            className="w-full sm:w-48 p-2 mt-2 rounded bg-slate-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+            className="w-full sm:w-48 p-3 sm:p-2 mt-2 rounded bg-slate-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all min-h-[44px]"
             name="convertTo"
             id="convertTo"
             value={state.convertTo}
@@ -334,7 +338,7 @@ export default function ImageConverter() {
         <div className="mb-4 w-full px-5 py-2">
           <label
             htmlFor="resize-slider"
-            className="block px-4 py-2 uppercase text-sm font-bold text-gray-400"
+            className="block px-4 py-2 uppercase text-xs sm:text-sm font-bold text-gray-400"
           >
             Resize:
           </label>
@@ -346,7 +350,7 @@ export default function ImageConverter() {
               max="200"
               step="5"
               value={state.ratioSize}
-              className="w-full sm:w-48 rounded accent-indigo-500"
+              className="w-full sm:w-48 rounded accent-indigo-500 h-8 sm:h-6"
               onChange={handleSize}
               aria-label={`Resize image to ${state.ratioSize} percent`}
               aria-valuemin={0}
@@ -370,7 +374,7 @@ export default function ImageConverter() {
         <div className="mb-4 w-full px-5 py-2">
           <label
             htmlFor="quality-slider"
-            className="block px-4 py-2 uppercase text-sm font-bold text-gray-400"
+            className="block px-4 py-2 uppercase text-xs sm:text-sm font-bold text-gray-400"
           >
             Quality:
           </label>
@@ -382,7 +386,7 @@ export default function ImageConverter() {
               max="100"
               step="5"
               value={state.quality}
-              className="w-full sm:w-48 rounded accent-indigo-500"
+              className="w-full sm:w-48 rounded accent-indigo-500 h-8 sm:h-6"
               onChange={handleQuality}
               aria-label={`Set compression quality to ${state.quality} percent`}
               aria-valuemin={0}
@@ -409,7 +413,7 @@ export default function ImageConverter() {
               hasImage
                 ? "bg-red-600 hover:bg-red-700 active:bg-red-800"
                 : "bg-gray-600 cursor-not-allowed opacity-50"
-            } text-white font-bold py-2 px-6 rounded-full w-full sm:w-auto transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-900`}
+            } text-white font-bold py-3 sm:py-2 px-6 rounded-full w-full sm:w-auto transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-900 min-h-[44px]`}
             onClick={handleResetWithConfirmation}
             disabled={!hasImage}
             aria-label="Reset image converter"

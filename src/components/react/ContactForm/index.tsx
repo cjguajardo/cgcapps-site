@@ -48,7 +48,7 @@ const ContactForm = () => {
 
         <div className="flex items-center justify-center pt-2 pb-4">
           <button
-            className={`${state.canSendMail ? "bg-indigo-500 hover:bg-indigo-700" : "bg-slate-400 cursor-not-allowed"} text-white py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all w-1/2 sm:w/4`}
+            className={`${state.canSendMail ? "bg-indigo-500 hover:bg-indigo-700" : "bg-slate-400 cursor-not-allowed"} text-white py-3 sm:py-2 px-6 sm:px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all w-full sm:w-1/2 md:w-1/4 min-h-[44px] text-base sm:text-sm font-semibold`}
             type="button"
             onClick={handleClick}
             disabled={!state.canSendMail}
@@ -78,8 +78,10 @@ const ContactForm = () => {
                       height="48"
                     />
                   </div>
-                  <div className="text-lg mb-2">Sending your message...</div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-base sm:text-lg mb-2">
+                    Sending your message...
+                  </div>
+                  <div className="text-sm sm:text-base text-gray-300">
                     Hang tight!, I'm working on it!
                   </div>
                   {/* Progress bar */}
@@ -99,10 +101,10 @@ const ContactForm = () => {
                       height="48"
                     />
                   </div>
-                  <div className="text-xl mb-2 text-green-400">
+                  <div className="text-lg sm:text-xl mb-2 text-green-400">
                     Message Sent!
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-sm sm:text-base text-gray-300">
                     Thanks for getting in touch, I appreciate it!
                   </div>
                 </div>
@@ -118,15 +120,15 @@ const ContactForm = () => {
                       height="48"
                     />
                   </div>
-                  <div className="text-xl mb-2 text-red-400">
+                  <div className="text-lg sm:text-xl mb-2 text-red-400">
                     Something went wrong
                   </div>
-                  <div className="text-sm text-gray-300">
+                  <div className="text-sm sm:text-base text-gray-300">
                     Oops, sorry about that! Looks like we hit a snag.
                   </div>
                   <button
                     onClick={handleClick}
-                    className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-6 rounded-full transition-colors"
+                    className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-3 sm:py-2 px-6 rounded-full transition-colors min-h-[44px]"
                   >
                     Try Again
                   </button>

@@ -78,15 +78,23 @@ export default function useImageConverter() {
    * @param {React.ChangeEvent<HTMLInputElement>} e - File input change event
    */
   const handleInputFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e === null) return;
+    if (e === null) {
+      return;
+    }
 
     const { target } = e;
 
-    if (typeof target === "undefined" || target === null) return;
-    if (target.files === null) return;
+    if (typeof target === "undefined" || target === null) {
+      return;
+    }
+    if (target.files === null) {
+      return;
+    }
 
     const file = target && target.files.length > 0 ? target.files[0] : null;
-    if (file === null) return;
+    if (file === null) {
+      return;
+    }
 
     dispatch({ type: action.NAME, payload: file.name });
 
@@ -189,8 +197,12 @@ export default function useImageConverter() {
 
     const file = e.dataTransfer.files[0] || null;
 
-    if (file === null) return;
-    if (fileSelectorRef.current === null) return;
+    if (file === null) {
+      return;
+    }
+    if (fileSelectorRef.current === null) {
+      return;
+    }
 
     fileSelectorRef.current.files = e.dataTransfer.files;
 
@@ -216,7 +228,9 @@ export default function useImageConverter() {
   };
 
   const handleCopyToClipboard = () => {
-    if (state.compressed === null) return;
+    if (state.compressed === null) {
+      return;
+    }
     navigator.clipboard.writeText(state.compressed);
 
     dispatch({ type: action.COPIED, payload: true });
@@ -227,7 +241,9 @@ export default function useImageConverter() {
   };
 
   useEffect(() => {
-    if (state.original === null) return;
+    if (state.original === null) {
+      return;
+    }
     handleConvert();
   }, [state.original, state.convertTo, deferredQuality, deferredRatioSize]);
 

@@ -80,12 +80,15 @@ export const FormInput: React.FC<FormInputProps> = ({
 }) => {
   return (
     <div className={`mb-4 w-full px-5 py-2 ${className}`}>
-      <label className="block text-gray-400 font-bold mb-2" htmlFor={id}>
+      <label
+        className="block text-gray-400 font-bold mb-2 text-sm sm:text-base"
+        htmlFor={id}
+      >
         {label} {error && <InputError message={error} />}
       </label>
       <input
         ref={inputRef}
-        className="border rounded-full w-full py-2 px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+        className="border rounded-full w-full py-3 sm:py-2 px-4 sm:px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all min-h-[44px] text-base"
         id={id}
         type={type}
         placeholder={placeholder}
@@ -132,12 +135,15 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
 }) => {
   return (
     <div className={`mb-4 w-full px-5 py-2 ${className}`}>
-      <label className="block text-gray-400 font-bold mb-2" htmlFor={id}>
+      <label
+        className="block text-gray-400 font-bold mb-2 text-sm sm:text-base"
+        htmlFor={id}
+      >
         {label} {error && <InputError message={error} />}
       </label>
       <textarea
         ref={textareaRef}
-        className="border rounded-xl w-full py-2 px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all resize-vertical"
+        className="border rounded-xl w-full py-3 sm:py-2 px-4 sm:px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all resize-vertical text-base"
         id={id}
         rows={rows}
         placeholder={placeholder}

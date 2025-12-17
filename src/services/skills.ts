@@ -65,7 +65,7 @@ class Skills {
    * getHeight(2020) // returns "w-25" (4 years / 15 = 26%)
    */
   getHeight = (since: number): string => {
-    if (since === 0) return "";
+    if (since === 0) {return "";}
 
     const years = this.year - since;
     const p = Math.floor((years * 100) / this.maxExperience);
@@ -76,11 +76,11 @@ class Skills {
      * @returns {number} Width value for Tailwind class
      */
     const getSize = (percentage: number): number => {
-      if (percentage < 10) return 10;
-      if (percentage >= 10 && percentage < 25) return 25;
-      if (percentage >= 25 && percentage < 50) return 50;
-      if (percentage >= 50 && percentage < 75) return 75;
-      if (percentage >= 75 && percentage < 85) return 85;
+      if (percentage < 10) {return 10;}
+      if (percentage >= 10 && percentage < 25) {return 25;}
+      if (percentage >= 25 && percentage < 50) {return 50;}
+      if (percentage >= 50 && percentage < 75) {return 75;}
+      if (percentage >= 75 && percentage < 85) {return 85;}
       return 100;
     };
 

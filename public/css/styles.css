@@ -1,5 +1,94 @@
+/* Touch-friendly interactions */
 .skill-container:hover .scaleable-image {
   transform: scale(1.5);
   /* Adjust as needed */
   transition: transform 0.3s ease-in-out;
+}
+
+/* Active state for touch devices */
+.skill-container:active .scaleable-image {
+  transform: scale(1.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure minimum touch target size (44x44px for iOS/Android guidelines) */
+button,
+a[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improve tap targets on mobile */
+@media (pointer: coarse) {
+  button,
+  a[role="button"],
+  [role="button"] {
+    padding: 12px 16px;
+  }
+}
+
+/* Better touch interaction for clickable elements */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch devices: use active instead of hover */
+  .hover\:scale-105:active {
+    transform: scale(1.05);
+  }
+
+  .hover\:opacity-100:active {
+    opacity: 1;
+  }
+
+  .hover\:bg-indigo-700:active {
+    background-color: rgb(67, 56, 202);
+  }
+
+  .hover\:bg-teal-700:active {
+    background-color: rgb(15, 118, 110);
+  }
+
+  .hover\:bg-red-700:active {
+    background-color: rgb(185, 28, 28);
+  }
+}
+
+/* Prevent text selection on buttons and interactive elements during touch */
+button,
+a[role="button"],
+[role="button"] {
+  -webkit-tap-highlight-color: rgba(99, 102, 241, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Improve readability on small screens */
+@media (max-width: 640px) {
+  body {
+    font-size: 16px; /* Prevent iOS zoom on input focus */
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Prevent iOS zoom on input focus */
+  }
+}
+
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

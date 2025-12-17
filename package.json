@@ -16,6 +16,16 @@
     "tailwindcss": "^3.4.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@typescript-eslint/eslint-plugin": "^8.50.0",
+    "@typescript-eslint/parser": "^8.50.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1",
     "standard": "^17.1.0",
     "ts-standard": "^12.0.2"
   },
@@ -25,7 +35,22 @@
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
-    "start": "astro dev --host"
+    "start": "astro dev --host",
+    "prepare": "husky",
+    "lint": "eslint . --ext .js,.ts,.tsx,.astro",
+    "lint:fix": "eslint . --ext .js,.ts,.tsx,.astro --fix",
+    "format": "prettier --write \"**/*.{js,ts,tsx,astro,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,ts,tsx,astro,json,md}\"",
+    "type-check": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "type": "module",
   "version": "0.0.1"

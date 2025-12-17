@@ -13,6 +13,7 @@
 - [x] Fix typo: "Porfolio" → "Portfolio" in portfolio.astro page title
 - [x] Make gallery section responsive (remove hardcoded w-[720px])
 - [x] Fix footer positioning (absolute may cause overlap issues)
+- [x] Make footer sticky to bottom using flexbox layout
 - [x] Add loading states for images
 - [x] Improve mobile menu toggle with proper state management
 - [x] Add smooth transitions between pages
@@ -155,3 +156,11 @@ See IMPROVEMENTS.md for detailed documentation of all changes.
   - Added Astro view transitions support
   - Fixed PortfolioCard image loading for cached images
   - Improved IntersectionObserver initialization
+
+- **Footer Sticky to Bottom**: Fixed footer positioning
+  - Changed body to flexbox layout (flex flex-col min-h-screen)
+  - Main content uses flex-1 to fill available space
+  - Footer uses mt-auto to stick to bottom
+  - Added border-top for visual separation
+  - Applied to both Layout and NotFoundLayout
+  - Better spacing and typography

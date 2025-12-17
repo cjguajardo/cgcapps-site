@@ -1,18 +1,41 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ToolCard from '@components/ToolCard.astro';
-import {type Tool} from '@types';
-import tools from '@data/tools.json';
-import Section from '@components/Section.astro';
+import Layout from "@layouts/Layout.astro";
+import ToolCard from "@components/ToolCard.astro";
+import { type Tool } from "@types";
+import tools from "@data/tools.json";
+import Section from "@components/Section.astro";
+import Subtitle from "@components/Subtitle.astro";
 ---
 
 <Layout title="Tools">
-  <h1>Work in progress...</h1>
-  <Section name="porfolio-projects">
-    <div
-      class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-12"
-    >
-      {tools.map((tool:Tool) => <ToolCard tool={tool} /> )}
-    </div>
-  </Section>
+    <Subtitle text="Development Tools & Utilities" />
+    <p class="text-center text-gray-400 mb-6">
+        Collection of web-based tools I've built to simplify development tasks.
+        More tools coming soon!
+    </p>
+
+    {
+        tools.length > 0 ? (
+            <Section name="tools-list">
+                <div class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                    {tools.map((tool: Tool) => (
+                        <ToolCard tool={tool} />
+                    ))}
+                </div>
+            </Section>
+        ) : (
+            <Section name="tools-empty">
+                <div class="flex flex-col items-center justify-center py-12">
+                    <div class="text-6xl mb-4">🛠️</div>
+                    <h2 class="text-2xl font-bold text-indigo-300 mb-2">
+                        Tools Coming Soon
+                    </h2>
+                    <p class="text-gray-400 text-center max-w-md">
+                        I'm currently developing a suite of developer tools.
+                        Check back soon for updates!
+                    </p>
+                </div>
+            </Section>
+        )
+    }
 </Layout>

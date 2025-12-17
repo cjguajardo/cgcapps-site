@@ -1,17 +1,20 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Section from '@components/Section.astro';
-import ContactForm from '@components/react/ContactForm/index';
+import Layout from "@layouts/Layout.astro";
+import Section from "@components/Section.astro";
+import ContactForm from "@components/react/ContactForm/index";
+import ErrorBoundary from "@components/react/ErrorBoundary";
 ---
 
 <Layout title="Contact">
-  <Section title="Contact Form" name="contact-form">
-    <div class="w-full">
-    <ContactForm client:visible />
-    </div>
-  </Section>
+    <Section title="Contact Form" name="contact-form">
+        <div class="w-full">
+            <ErrorBoundary client:only="react">
+                <ContactForm client:visible />
+            </ErrorBoundary>
+        </div>
+    </Section>
 </Layout>
 
 <script
-  src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
-  defer></script>
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+    defer></script>

@@ -49,6 +49,11 @@
       "name": "Astro",
       "since": 2023,
       "type": "lang"
+    },
+    {
+      "name": "Golang",
+      "since": 2024,
+      "type": "lang"
     }
   ],
   "other": [
@@ -141,4 +146,3 @@
     }
   ]
 }
-

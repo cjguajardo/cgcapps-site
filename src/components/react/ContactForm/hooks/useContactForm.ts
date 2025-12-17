@@ -1,9 +1,9 @@
-import React, { useEffect, useReducer } from 'react';
-import validator from 'cgc-validator';
-import { SUCCESS, ERROR, LOADING } from '@constants';
-import type { ActionType } from '@types';
-import type { StateType } from '@types';
-import axios from 'axios';
+import React, { useEffect, useReducer } from "react";
+import validator from "cgc-validator";
+import { SUCCESS, ERROR, LOADING } from "@constants";
+import type { ActionType } from "@types";
+import type { StateType } from "@types";
+import axios from "axios";
 
 const initialState: StateType = {
   show: null,
@@ -15,27 +15,27 @@ const initialState: StateType = {
 function useContactForm() {
   const reducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
-      case 'show-success':
+      case "show-success":
         return { ...state, show: SUCCESS, formKey: Math.random() };
-      case 'show-error':
+      case "show-error":
         return { ...state, show: ERROR };
-      case 'show-loading':
+      case "show-loading":
         return { ...state, show: LOADING };
-      case 'hide':
+      case "hide":
         return { ...state, show: null };
-      case 'set-errors':
+      case "set-errors":
         if (!action.payload) return state;
         return {
           ...state,
           errors: { ...state.errors, ...JSON.parse(action.payload) },
         };
-      case 'clear-errors':
+      case "clear-errors":
         return { ...state, errors: { name: null, email: null, message: null } };
-      case 'can-send-mail':
-        return { ...state, canSendMail: action.payload === 'true' };
-      case 'set-token':
+      case "can-send-mail":
+        return { ...state, canSendMail: action.payload === "true" };
+      case "set-token":
         return { ...state, token: action.payload };
-      case 'reset-form':
+      case "reset-form":
         return { ...state, formKey: Math.random() };
       default:
         return state;
@@ -49,39 +49,33 @@ function useContactForm() {
   const messageRef = React.useRef<HTMLTextAreaElement>(null);
 
   const handleClick = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ): Promise<void> => {
-    dispatch({ type: 'clear-errors' });
+    dispatch({ type: "clear-errors" });
     const name = nameRef.current?.value;
     const email = emailRef.current?.value;
     const message = messageRef.current?.value;
-    console.log(name, email, message);
 
     const rules = {
-      name: 'required;type=string;min=3;max=50;alias=Name',
-      email: 'required;type=email;alias=Email',
-      message: 'required;type=string;min=10;max=500;alias=Message',
+      name: "required;type=string;min=3;max=50;alias=Name",
+      email: "required;type=email;alias=Email",
+      message: "required;type=string;min=10;max=500;alias=Message",
     };
 
     const validation = validator({ name, email, message }, rules);
 
     if (validation.success) {
-      dispatch({ type: 'show-loading' });
-      console.log('validation success');
-      // const data = window.btoa(JSON.stringify( { name, email, message, token: state.token } ))
+      dispatch({ type: "show-loading" });
       const body = JSON.stringify({ name, email, message, token: state.token });
-      // const url = 'http://localhost:3000/api/mail'
-      const url = 'https://cgcapps-api.vercel.app/api/mail';
+      const url = "https://cgcapps-api.vercel.app/api/mail";
       axios
         .post(url, { body })
         .then((response) => {
-          console.log({ response });
-          if (response.data.success) dispatch({ type: 'show-success' });
-          else dispatch({ type: 'show-error' });
+          if (response.data.success) dispatch({ type: "show-success" });
+          else dispatch({ type: "show-error" });
         })
         .catch((error) => {
-          console.log({ error });
-          dispatch({ type: 'show-error' });
+          dispatch({ type: "show-error" });
         });
 
       // reset catpcha
@@ -89,7 +83,7 @@ function useContactForm() {
       window.turnstile.reset();
     } else {
       dispatch({
-        type: 'set-errors',
+        type: "set-errors",
         payload: JSON.stringify(validation.messages),
       });
     }
@@ -98,7 +92,7 @@ function useContactForm() {
   useEffect(() => {
     if (state.show === SUCCESS || state.show === ERROR) {
       setTimeout(() => {
-        dispatch({ type: 'hide' });
+        dispatch({ type: "hide" });
       }, 3000);
     }
   }, [state.show]);
@@ -107,16 +101,16 @@ function useContactForm() {
     //@ts-ignore
     window.onloadTurnstileCallback = function () {
       //@ts-ignore
-      if (typeof window.turnstile !== 'undefined') {
+      if (typeof window.turnstile !== "undefined") {
         //@ts-ignore
-        window.turnstile.render('#captcha-container', {
-          sitekey: '0x4AAAAAAAN5nJP-g1lrI6nT',
+        window.turnstile.render("#captcha-container", {
+          sitekey: "0x4AAAAAAAN5nJP-g1lrI6nT",
           callback: function (token: string) {
-            dispatch({ type: 'can-send-mail', payload: 'true' });
-            dispatch({ type: 'set-token', payload: token });
+            dispatch({ type: "can-send-mail", payload: "true" });
+            dispatch({ type: "set-token", payload: token });
           },
-          'expired-callback': function () {
-            dispatch({ type: 'can-send-mail', payload: 'false' });
+          "expired-callback": function () {
+            dispatch({ type: "can-send-mail", payload: "false" });
           },
         });
       }

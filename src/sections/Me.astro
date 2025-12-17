@@ -1,45 +1,48 @@
 ---
-import { Image } from 'astro:assets';
-import Section from '@components/Section.astro';
-import Social from '@components/Social.astro';
-import MeImg from '@images/profile-image.webp';
+import { Image } from "astro:assets";
+import Section from "@components/Section.astro";
+import Social from "@components/Social.astro";
+import MeImg from "@images/profile-image.webp";
 ---
 
 <Section name="me">
-  <article class="mx-auto flex items-center mb-6 z-10">
-    <Image
-      src={MeImg}
-      alt="Carlos Guajardo"
-      class="w-32 h-32 rounded-full mr-4"
-    />
-    <div>
-      <div
-        class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around"
-      >
-        <div class="text-[2.5rem]">Carlos Guajardo</div>
-        <div class="overflow-hidden h-9 text-sm">
-          <div class="animate-slide">
-            <span
-              class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
-              >Fullstack Developer</span
+    <article class="mx-auto flex items-center mb-6 z-10">
+        <Image
+            src={MeImg}
+            alt="Carlos Guajardo - Fullstack Developer profile picture"
+            class="w-32 h-32 rounded-full mr-4"
+            width={128}
+            height={128}
+            loading="eager"
+        />
+        <div>
+            <div
+                class="text-indigo-300 text-center font-bold uppercase flex flex-col justify-around"
             >
-          </div>
-          <div>
-            <span
-              class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
-              >Mobile Development</span
-            >
-          </div>
-          <div>
-            <span
-              class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
-              >Web Development</span
-            >
-          </div>
-        </div>
-      </div>
+                <h1 class="text-[2.5rem]">Carlos Guajardo</h1>
+                <div class="overflow-hidden h-9 text-sm" aria-live="polite">
+                    <div class="animate-slide">
+                        <span
+                            class="inline-block drop-shadow-md py-1 px-3 mt-1 mb-6 text-blue-500"
+                            >Fullstack Developer</span
+                        >
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block drop-shadow-md py-1 px-3 mb-6 text-green-500"
+                            >Mobile Development</span
+                        >
+                    </div>
+                    <div>
+                        <span
+                            class="inline-block drop-shadow-md py-1 px-3 mb-6 text-red-500"
+                            >Web Development</span
+                        >
+                    </div>
+                </div>
+            </div>
 
-      <Social />
-    </div>
-  </article>
+            <Social />
+        </div>
+    </article>
 </Section>

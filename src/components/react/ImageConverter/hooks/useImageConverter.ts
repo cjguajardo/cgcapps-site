@@ -1,10 +1,14 @@
-import { useReducer, useRef, useEffect, useDeferredValue } from 'react';
+import { useReducer, useRef, useEffect, useDeferredValue } from "react";
 import reducer, {
   initialState,
   action,
-} from '../reducer/ImageConverterReducer';
-import Compressor from 'compressorjs';
-import { fileToBase64, type ImageDimensions, getBase64Dimensions} from '@utils/image';
+} from "../reducer/ImageConverterReducer";
+import Compressor from "compressorjs";
+import {
+  fileToBase64,
+  type ImageDimensions,
+  getBase64Dimensions,
+} from "@utils/image";
 
 export default function useImageConverter() {
   const fileSelectorRef = useRef<HTMLInputElement>(null);
@@ -19,10 +23,10 @@ export default function useImageConverter() {
   };
 
   const setDropBoxBackground = (base64: string) => {
-    dropBoxRef.current?.style.setProperty('background-image', `url(${base64})`);
-    dropBoxRef.current?.style.setProperty('background-size', 'contain');
-    dropBoxRef.current?.style.setProperty('background-repeat', 'no-repeat');
-    dropBoxRef.current?.style.setProperty('background-position', 'center');
+    dropBoxRef.current?.style.setProperty("background-image", `url(${base64})`);
+    dropBoxRef.current?.style.setProperty("background-size", "contain");
+    dropBoxRef.current?.style.setProperty("background-repeat", "no-repeat");
+    dropBoxRef.current?.style.setProperty("background-position", "center");
   };
 
   const handleInputFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +34,7 @@ export default function useImageConverter() {
 
     const { target } = e;
 
-    if (typeof target === 'undefined' || target === null) return;
+    if (typeof target === "undefined" || target === null) return;
     if (target.files === null) return;
 
     const file = target && target.files.length > 0 ? target.files[0] : null;
@@ -41,7 +45,7 @@ export default function useImageConverter() {
     fileToBase64(file).then((base64: string) => {
       setDropBoxBackground(base64);
       dispatch({ type: action.ORIGINAL, payload: base64 });
-      getBase64Dimensions(base64).then((dimensions:ImageDimensions) => {
+      getBase64Dimensions(base64).then((dimensions: ImageDimensions) => {
         dispatch({ type: action.ORIGINAL_DIMENSIONS, payload: dimensions });
       });
     });
@@ -60,30 +64,31 @@ export default function useImageConverter() {
   };
 
   const handleReset = () => {
-    dispatch({ type: action.RESET, payload: '' });
-    dropBoxRef.current?.style.setProperty('background-image', 'none');
+    dispatch({ type: action.RESET, payload: "" });
+    dropBoxRef.current?.style.setProperty("background-image", "none");
   };
 
   const handleConvert = () => {
-
     const file = fileSelectorRef.current?.files
       ? fileSelectorRef.current?.files[0]
       : null;
 
     if (file === null) {
-      dispatch({ type: action.RESET, payload:'' })
+      dispatch({ type: action.RESET, payload: "" });
       return;
     }
 
-    const { width, height } = state.compressed_dimensions
+    const { width, height } = state.compressed_dimensions;
 
     new Compressor(file as File, {
       quality: deferredQuality / 100,
       convertSize: Infinity,
       mimeType: `image/${state.convertTo}`,
       convertTypes: [`image/${state.convertTo}`],
-      width, height,
-      maxWidth: width, maxHeight: height,
+      width,
+      height,
+      maxWidth: width,
+      maxHeight: height,
       success(result) {
         const reader = new FileReader();
         reader.readAsDataURL(result);
@@ -96,7 +101,7 @@ export default function useImageConverter() {
         };
       },
       error(err) {
-        console.error(err.message);
+        // Silently handle compression errors
       },
     });
   };
@@ -116,11 +121,10 @@ export default function useImageConverter() {
     fileToBase64(file).then((base64: string) => {
       setDropBoxBackground(base64);
       dispatch({ type: action.ORIGINAL, payload: base64 });
-      getBase64Dimensions(base64).then((dimensions:ImageDimensions) => {
+      getBase64Dimensions(base64).then((dimensions: ImageDimensions) => {
         dispatch({ type: action.ORIGINAL_DIMENSIONS, payload: dimensions });
         dispatch({ type: action.COMPRESSED_DIMENSIONS, payload: dimensions });
       });
-
     });
   };
 
@@ -139,16 +143,10 @@ export default function useImageConverter() {
     }, 2000);
   };
 
-  useEffect(()=>{
-    if(state.original===null) return;
-    console.log({deferredRatioSize, deferredQuality})
+  useEffect(() => {
+    if (state.original === null) return;
     handleConvert();
-  },[
-    state.original,
-    state.convertTo,
-    deferredQuality,
-    deferredRatioSize
-  ])
+  }, [state.original, state.convertTo, deferredQuality, deferredRatioSize]);
 
   return {
     state,

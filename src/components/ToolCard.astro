@@ -1,45 +1,50 @@
 ---
-import { type Tool } from '@types';
-import AtroposWrapper from './AtroposWrapper.astro';
+import { type Tool } from "@types";
+import AtroposWrapper from "./AtroposWrapper.astro";
 interface Props {
-  tool: Tool;
+    tool: Tool;
 }
 
 const { tool } = Astro.props;
 ---
 
-<a href={`/tools/${tool.slug}`} class="mb-8 mt-2">
-  <AtroposWrapper
-    id={tool.slug}
-    className="mb-12 md:mb-8 mx-6 md:mx-0 rounded-lg"
-  >
-    <article
-      class:list={[
-        'bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70',
-        'hover:opacity-100 hover:shadow-lg hover:scale-105',
-        'ease-in-out duration-300 transform transition',
-        'relative h-32 rounded-lg',
-      ]}
-      data-atropos-offset="0"
+<a
+    href={`/tools/${tool.slug}`}
+    class="mb-8 mt-2"
+    aria-label={`View ${tool.name} tool`}
+>
+    <AtroposWrapper
+        id={tool.slug}
+        className="mb-12 md:mb-8 mx-6 md:mx-0 rounded-lg"
     >
-      <div
-        class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
-      >
-        <h3
-          class="text-2xl text-center text-indigo-100 font-bold px-4 pt-5 pb-2"
-          transition:name={`${tool.slug}-project-name`}
-          data-atropos-offset="5"
+        <article
+            class:list={[
+                "bg-slate-50 rounded-xl overflow-hidden dark:bg-slate-900 opacity-70",
+                "hover:opacity-100 hover:shadow-lg hover:scale-105",
+                "ease-in-out duration-300 transform transition",
+                "relative h-32 rounded-lg",
+                "focus-within:ring-2 focus-within:ring-indigo-500",
+            ]}
+            data-atropos-offset="0"
         >
-          {tool.name}
-        </h3>
-        
-        <div
-          class="absolute bottom-0 bg-slate-950/80 p-3 w-full"
-          data-atropos-offset="2"
-        >
-          {tool.description}
-        </div>
-      </div>
-    </article>
-  </AtroposWrapper>
+            <div
+                class="flex flex-col h-full w-100 relative bg-gradient-to-t from-indigo-950/20 to-indigo-950/80 text-white"
+            >
+                <h3
+                    class="text-2xl text-center text-indigo-100 font-bold px-4 pt-5 pb-2"
+                    transition:name={`${tool.slug}-project-name`}
+                    data-atropos-offset="5"
+                >
+                    {tool.name}
+                </h3>
+
+                <div
+                    class="absolute bottom-0 bg-slate-950/80 p-3 w-full text-sm"
+                    data-atropos-offset="2"
+                >
+                    {tool.description}
+                </div>
+            </div>
+        </article>
+    </AtroposWrapper>
 </a>

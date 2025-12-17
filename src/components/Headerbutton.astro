@@ -1,32 +1,35 @@
 ---
 interface Props {
-  href: string;
-  isActive?: boolean;
-  itemsAlign?: 'start' | 'center' | 'end';
-  target?: '_blank' | '_self';
+    href: string;
+    isActive?: boolean;
+    itemsAlign?: "start" | "center" | "end";
+    target?: "_blank" | "_self";
+    rel?: string;
 }
 
-const { href, isActive, itemsAlign, target } = Astro.props;
+const { href, isActive, itemsAlign, target, rel } = Astro.props;
 let finalItemsAlign = itemsAlign;
-if (itemsAlign === undefined) finalItemsAlign = 'center';
+if (itemsAlign === undefined) finalItemsAlign = "center";
 ---
 
 <a
-  class:list={[
-    {
-      'bg-indigo-900 text-white block': isActive,
-      'text-indigo-300 hover:bg-indigo-700 hover:text-white  block': !isActive,
-    },
-    'z-5 text-base font-medium rounded-full px-3 py-2 text-center flex',
-    { 'items-start justify-start': finalItemsAlign === 'start' },
-    { 'items-center justify-center': finalItemsAlign === 'center' },
-    { 'items-end justify-end': finalItemsAlign === 'end' },
-    'hover:md:rotate-3 hover:md:scale-110 hover:drop-shadow-lg transition-all duration-300 ease-in-out hover:z-10',
-  ]}
-  href={href}
-  target={target || '_self'}
+    class:list={[
+        {
+            "bg-indigo-900 text-white block": isActive,
+            "text-indigo-300 hover:bg-indigo-700 hover:text-white  block":
+                !isActive,
+        },
+        "z-5 text-base font-medium rounded-full px-3 py-2 text-center flex",
+        { "items-start justify-start": finalItemsAlign === "start" },
+        { "items-center justify-center": finalItemsAlign === "center" },
+        { "items-end justify-end": finalItemsAlign === "end" },
+        "hover:md:rotate-3 hover:md:scale-110 hover:drop-shadow-lg transition-all duration-300 ease-in-out hover:z-10",
+    ]}
+    href={href}
+    target={target || "_self"}
+    rel={rel}
 >
-  <slot name="before" />
-  <slot />
-  <slot name="after" />
+    <slot name="before" />
+    <slot />
+    <slot name="after" />
 </a>

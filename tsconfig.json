@@ -4,31 +4,18 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@data/*": [
-        "src/data/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@types": [
-        "src/types.ts"
-      ],
-      "@constants": [
-        "src/constants.ts"
-      ],
-      "@images/*": [
-        "src/images/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-    },
-  },
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@data/*": ["src/data/*"],
+      "@services/*": ["src/services/*"],
+      "@types": ["src/types.ts"],
+      "@constants": ["src/constants.ts"],
+      "@images/*": ["src/images/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  }
 }

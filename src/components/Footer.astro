@@ -1,20 +1,26 @@
 ---
 const year = new Date().getFullYear();
-
 ---
 
-<footer class="bg-slate-950 absolute bottom-0 mt-12 w-full h-24 z-50">
-  <article
-    class="mx-auto max-w-7xl py-auto px-2 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
-  >
-    <div class="mt-4">cgcapps.cl © {year}</div>
-    <div class="mt-1">
-      Built with Astro
-      <img
-        src="/images/badges/astro.svg"
-        alt="Astro Logo"
-        class="inline-block h-4 w-4"
-      />
-    </div>
-  </article>
+<footer
+    class="bg-slate-950 relative mt-12 w-full h-24 z-50"
+    role="contentinfo"
+    aria-label="Site footer"
+>
+    <article
+        class="mx-auto max-w-7xl py-auto px-2 sm:px-6 lg:px-8 flex flex-col items-center justify-center h-full"
+    >
+        <div class="mt-4">
+            <span aria-label="Copyright">cgcapps.cl © {year}</span>
+        </div>
+        <div class="mt-1 flex items-center gap-1">
+            <span>Built with Astro</span>
+            <img
+                src="/images/badges/astro.svg"
+                alt="Astro"
+                class="inline-block h-4 w-4"
+                aria-hidden="true"
+            />
+        </div>
+    </article>
 </footer>

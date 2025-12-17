@@ -1,25 +1,36 @@
 ---
-import Headerbutton from '@components/Headerbutton.astro';
-
+import Headerbutton from "@components/Headerbutton.astro";
 ---
 
 <div class="flex space-x-4 items-center justify-center">
-  <Headerbutton
-    href="https://github.com/cjguajardo"
-    itemsAlign="start"
-    transition:name="social-github"
-    transition:animate="slide"
-  >
-    <img src="/images/badges/github.svg" alt="Github" class="w-5 h-5" />
-    &nbsp;Github
-  </Headerbutton>
-  <Headerbutton
-    href="https://linkedin.com/in/cjguajardo"
-    itemsAlign="start"
-    transition:name="social-linkedin"
-    transition:animate="slide"
-  >
-    <img src="/images/badges/linkedin.svg" alt="Linkedin" class="w-5 h-5" />
-    &nbsp;Linkedin
-  </Headerbutton>
+    <Headerbutton
+        href="https://github.com/cjguajardo"
+        itemsAlign="start"
+        transition:name="social-github"
+        transition:animate="slide"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <img
+            src="/images/badges/github.svg"
+            alt="Carlos Guajardo's Github Profile"
+            class="w-5 h-5"
+        />
+        &nbsp;Github
+    </Headerbutton>
+    <Headerbutton
+        href="https://linkedin.com/in/cjguajardo"
+        itemsAlign="start"
+        transition:name="social-linkedin"
+        transition:animate="slide"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <img
+            src="/images/badges/linkedin.svg"
+            alt="Carlos Guajardo's LinkedIn Profile"
+            class="w-5 h-5"
+        />
+        &nbsp;Linkedin
+    </Headerbutton>
 </div>

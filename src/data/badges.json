@@ -160,6 +160,10 @@
     "url": "/images/badges/arrowleft.svg"
   },
   {
+    "name": "Golang",
+    "url": "/images/badges/golang.svg"
+  },
+  {
     "name": "default",
     "url": "/images/badges/default.svg"
   }

@@ -16,19 +16,22 @@ const API_URL =
 interface Props {
     title: string;
     hidePageTitle?: boolean;
+    description?: string;
 }
 
-const { title, hidePageTitle } = Astro.props;
+const { title, hidePageTitle, description } = Astro.props;
+
+// Default description if not provided
+const metaDescription =
+    description ||
+    "Carlos Guajardo - Fullstack Developer specializing in web and mobile development. Experienced in React, React Native, Laravel, Next.js, and modern web technologies.";
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content="Carlos Guajardo - Fullstack Developer specializing in web and mobile development. Experienced in React, React Native, Laravel, Next.js, and modern web technologies."
-        />
+        <meta name="description" content={metaDescription} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
@@ -42,10 +45,7 @@ const { title, hidePageTitle } = Astro.props;
         <meta property="og:type" content="website" />
         <meta property="og:url" content={Astro.url} />
         <meta property="og:title" content={`${title} - Carlos Guajardo`} />
-        <meta
-            property="og:description"
-            content="Fullstack Developer specializing in web and mobile development"
-        />
+        <meta property="og:description" content={metaDescription} />
         <meta
             property="og:image"
             content={new URL("/images/logo.webp", Astro.url)}
@@ -55,10 +55,7 @@ const { title, hidePageTitle } = Astro.props;
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={Astro.url} />
         <meta property="twitter:title" content={`${title} - Carlos Guajardo`} />
-        <meta
-            property="twitter:description"
-            content="Fullstack Developer specializing in web and mobile development"
-        />
+        <meta property="twitter:description" content={metaDescription} />
         <meta
             property="twitter:image"
             content={new URL("/images/logo.webp", Astro.url)}

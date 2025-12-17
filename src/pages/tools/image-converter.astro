@@ -1,14 +1,16 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ImageConverter from '@components/react/ImageConverter/index';
-import Section from '@components/Section.astro';
+import Layout from "@layouts/Layout.astro";
+import ImageConverterComponent from "@components/react/ImageConverter/index";
+import Section from "@components/Section.astro";
+
+const description =
+    "Free online image converter and compressor. Convert images between PNG, JPG, WebP, and GIF formats. Adjust quality and size with real-time preview. No upload required - all processing happens in your browser.";
 ---
 
-<Layout title="Image Converter">
-  <Section title="" name="image-converter">
-    <div class="w-full">
-      <ImageConverter client:visible />    
-    </div>
-  </Section>
-
+<Layout title="Image Converter & Compressor" description={description}>
+    <Section title="Image Converter & Compressor" name="image-converter">
+        <div class="w-full">
+            <ImageConverterComponent client:visible />
+        </div>
+    </Section>
 </Layout>

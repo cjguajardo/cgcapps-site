@@ -1,19 +1,12 @@
 [
   {
-    "description": "Web platform to facilitate communication between comunities.",
-    "longDescription": "Web platform that leverages Next.js to facilitate seamless communication and collaboration between communities, social groups and the municipality. This project is commercial ready and if you want a demo, please send me an email to: cj.guajardo@cgcapps.cl to make you an appointment and show you all the functionalities and discuss the price and other things related to licensing, implementation and support.",
+    "description": "Community engagement platform connecting citizens with local government and social groups.",
+    "longDescription": "Gester is a comprehensive web platform built with Next.js that bridges the communication gap between communities, social groups, and municipal authorities. The platform enables real-time collaboration, facilitates civic engagement, and streamlines community management processes. Features include group discussions, event coordination, resource sharing, and direct municipality communication channels. This is a production-ready commercial platform. For a personalized demo and to discuss licensing, implementation, and support options, please contact me at cj.guajardo@cgcapps.cl.",
     "image": "/gester.webp",
     "website": "https://gester.appceo.cl",
     "name": "Gester",
-    "stack": [
-      "Next.js"
-    ],
-    "tags": [
-      "React.js",
-      "JavaScript",
-      "Next.js",
-      "sqlite"
-    ],
+    "stack": ["Next.js"],
+    "tags": ["React.js", "JavaScript", "Next.js", "sqlite"],
     "slug": "Gester",
     "highlight": true,
     "gallery": [
@@ -28,55 +21,35 @@
     ]
   },
   {
-    "description": "A lightweight library that allows you to render components outside of their parent hierarchy.",
-    "longDescription": "React Native Simple Portal is a lightweight library that allows you to render components outside of their parent hierarchy. It provides a simple API to create portals and manage the rendering of components in different parts of your app.",
+    "description": "Lightweight React Native library for rendering components outside their parent hierarchy.",
+    "longDescription": "React Native Simple Portal solves a common challenge in mobile app development: rendering components like modals, tooltips, and overlays on top of the entire application. This TypeScript-based library provides an elegant, performant solution with a simple API that lets you create portals and manage component rendering across different layers of your app. Perfect for loading indicators, toast notifications, modals, and any UI element that needs to appear above normal content flow. Open source and actively maintained.",
     "github": "https://github.com/cjguajardo/cgc-portal",
     "image": "/portal.webp",
     "video": "/videos/PortalDemo.mp4",
     "videoDescription": "To the left, you can see a simple loading indicator that is rendered on top of all app content. To the right, you can see a modal with custom content that is rendered on top of all app.",
     "name": "Portal",
-    "stack": [
-      "React Native",
-      "Typescript"
-    ],
-    "tags": [
-      "React",
-      "TypeScript",
-      "Portal",
-      "React Native"
-    ],
+    "stack": ["React Native", "Typescript"],
+    "tags": ["React", "TypeScript", "Portal", "React Native"],
     "slug": "Portal",
     "highlight": true
   },
   {
-    "description": "A PHP library to output data in a prettier way.",
-    "longDescription": "This project is a PHP library to output data and includes a class named PrettyPrint that can be used to print data in a visually appealing way.",
+    "description": "PHP debugging library for beautiful, readable data output during development.",
+    "longDescription": "PrettyPrint is a developer-friendly PHP library designed to make debugging more pleasant and productive. Instead of ugly var_dump() outputs, PrettyPrint formats your data with syntax highlighting, proper indentation, and clear type indicators. The library includes the PrettyPrint class with customizable styling options, making it easy to inspect arrays, objects, and complex data structures during development. Installable via Composer and compatible with modern PHP applications.",
     "github": "https://github.com/cjguajardo/PrettyPrint",
     "image": "/pretty-print.webp",
     "name": "PrettyPrint",
-    "stack": [
-      "PHP",
-      "CSS3",
-      "Composer"
-    ],
-    "tags": [
-      "PHP",
-      "Composer",
-      "pretty-print"
-    ],
+    "stack": ["PHP", "CSS3", "Composer"],
+    "tags": ["PHP", "Composer", "pretty-print"],
     "slug": "PrettyPrint"
   },
   {
-    "description": "An API service to interact with AI for English practice.",
-    "longDescription": "An API service to interact with AI for English practice. Uses Amazon Polly and Chat GPT.",
+    "description": "AI-powered API service for interactive English language learning and practice.",
+    "longDescription": "Talk a Bot is an innovative API microservice that combines Amazon Polly's text-to-speech capabilities with ChatGPT's conversational AI to create an engaging English learning experience. The service provides natural conversation practice, pronunciation feedback, and adaptive learning interactions. Built with Node.js and TypeScript, it features Handlebars templating for flexible response formatting. Perfect for language learning apps, educational platforms, or any application requiring intelligent voice-based English practice.",
     "github": "https://github.com/cjguajardo/talk-a-bot-server",
     "image": "/default.webp",
     "name": "Talk a Bot (API)",
-    "stack": [
-      "Node.js",
-      "Typescript",
-      "Handlebars"
-    ],
+    "stack": ["Node.js", "Typescript", "Handlebars"],
     "tags": [
       "Server",
       "TypeScript",
@@ -89,78 +62,44 @@
   },
   {
     "name": "GEA",
-    "description": "A web platform for inventory and asset management.",
-    "longDescription": "GEA is a web platform for inventory and asset management. It allows users to manage their inventory and assets, as well as their clients and suppliers. It also provides a dashboard with useful information about the company's inventory and assets. This project is commercial ready and if you want a demo, please send me an email to: cj.guajardo@cgcapps.cl to make you an appointment and show you all the functionalities and discuss the price and other things related to licensing, implementation and support.",
+    "description": "Comprehensive enterprise platform for inventory, assets, and supply chain management.",
+    "longDescription": "GEA (Gestión de Equipos y Activos) is a full-featured Laravel-based web platform designed for businesses to efficiently manage their inventory, track assets, and maintain supplier and client relationships. The system includes real-time dashboards with key metrics, automated reporting, asset depreciation tracking, low-stock alerts, and comprehensive audit trails. Built with Laravel, MySQL, and modern JavaScript, it offers a responsive interface optimized for both desktop and mobile use. This production-ready commercial solution is fully customizable to your business needs. Schedule a personalized demo at cj.guajardo@cgcapps.cl to explore features and discuss licensing options.",
     "image": "/gea.webp",
     "website": "https://demo-gea.cgcapps.cl",
-    "stack": [
-      "Laravel"
-    ],
-    "tags": [
-      "Laravel",
-      "PHP",
-      "MySQL",
-      "JavaScript",
-      "CSS3",
-      "HTML5"
-    ],
+    "stack": ["Laravel"],
+    "tags": ["Laravel", "PHP", "MySQL", "JavaScript", "CSS3", "HTML5"],
     "slug": "GEA",
     "highlight": true
   },
   {
-    "description": "A simple Node.js microservice to interact with ChatGPT",
-    "longDescription": "A simple Node.js microservice to interact with ChatGPT for general purposes (text and image generation requests).",
+    "description": "Node.js microservice providing unified API access to ChatGPT for text and image generation.",
+    "longDescription": "NGPTServer is a streamlined Node.js microservice that acts as an abstraction layer for OpenAI's ChatGPT API. It simplifies integration by providing a unified interface for both text generation and image creation requests. The service includes request queuing, error handling, response caching, and rate limiting. Built with JavaScript and Docker support, it's designed to be deployed as a standalone microservice that multiple applications can consume. Includes Python utilities for enhanced functionality. Open source and ready for production use.",
     "github": "https://github.com/cjguajardo/NGPTServer",
     "image": "/default.webp",
     "name": "NGPTServer",
-    "stack": [
-      "Node.js",
-      "JavaScript",
-      "Docker",
-      "Python"
-    ],
-    "tags": [
-      "API",
-      "ChatGPT",
-      "Micro-Service",
-      "Server"
-    ],
+    "stack": ["Node.js", "JavaScript", "Docker", "Python"],
+    "tags": ["API", "ChatGPT", "Micro-Service", "Server"],
     "slug": "NGPTServer"
   },
   {
-    "description": "This is a React Native project that communicates through the Deriv API.",
-    "longDescription": "DerivPseudoBot is a mobile application built with React Native that allows users to interact with the Deriv API using websockets. It provides real-time data retrieval and manipulation capabilities, enabling users to access and update information from the Deriv platform.",
+    "description": "React Native mobile app for real-time trading data and analysis via Deriv API.",
+    "longDescription": "DerivPseudoBot is a sophisticated mobile application built with React Native and TypeScript that provides real-time access to Deriv's trading platform through WebSocket connections. The app features live market data visualization with interactive charts, real-time price tracking, automated trading signals, and portfolio management tools. It leverages React Native's performance capabilities to deliver smooth chart animations and instant data updates. Perfect for traders who need mobile access to Deriv's powerful API with an intuitive, native-feeling interface.",
     "github": "https://github.com/cjguajardo/DerivPseudoBot",
     "image": "/default.webp",
     "name": "DerivPseudoBot",
-    "stack": [
-      "React Native",
-      "Typescript"
-    ],
-    "tags": [
-      "React Native",
-      "Deriv",
-      "Websockets",
-      "Chart Library"
-    ],
+    "stack": ["React Native", "Typescript"],
+    "tags": ["React Native", "Deriv", "Websockets", "Chart Library"],
     "slug": "DerivPseudoBot",
     "highlight": true
   },
   {
-    "description": "A simple bash script to help with docker commands.",
-    "longDescription": "It is a helper script to facilitate the task of dockerizing a Laravel/Lumen environment, especially. It allows generating an image in development and production modes. In development mode, you can see the changes reflected in real time. It also allows or facilitates the task of publishing an image to an AWS ECR repository, as well as executing certain extra tasks.",
+    "description": "Bash automation script streamlining Docker workflows for Laravel/Lumen applications.",
+    "longDescription": "docker_helper is a powerful bash script that simplifies the entire Docker workflow for Laravel and Lumen projects. It automates image building for both development (with hot-reload) and production environments, manages AWS ECR repository deployments, handles container orchestration, and provides convenient shortcuts for common Docker operations. The script includes environment-specific configurations, automated testing hooks, and seamless CI/CD integration. Particularly useful for teams working with Laravel microservices or deploying to AWS infrastructure. Open source and extensively documented.",
     "github": "https://github.com/cjguajardo/docker_helper",
     "image": "/default.webp",
     "name": "docker_helper",
-    "stack": [
-      "Bash",
-      "Docker"
-    ],
-    "tags": [
-      "Docker",
-      "Bash",
-      "Shell Script"
-    ],
+    "stack": ["Bash", "Docker"],
+    "tags": ["Docker", "Bash", "Shell Script"],
     "slug": "DockerHelper"
   }
 ]

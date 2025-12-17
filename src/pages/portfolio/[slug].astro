@@ -20,9 +20,12 @@ export const getStaticPaths = () => {
 };
 
 const { project } = Astro.props;
+
+// Create a meaningful meta description for the project
+const description = `${project.description} Built with ${project.stack.join(", ")}. ${project.github ? "Open source project available on GitHub." : ""}${project.website ? "Live demo available." : ""}`;
 ---
 
-<Layout title={project.name}>
+<Layout title={project.name} description={description}>
     <Headerbutton href="/portfolio" itemsAlign="start">
         <img
             slot="before"
@@ -35,92 +38,179 @@ const { project } = Astro.props;
         &nbsp;Go back
     </Headerbutton>
 
+    <div class="mb-8">
+        <h1
+            class="text-3xl md:text-4xl font-bold text-indigo-300 mb-3"
+            transition:name={`${project.slug}-project-name`}
+        >
+            {project.name}
+        </h1>
+        <p class="text-gray-400 text-lg mb-4">{project.description}</p>
+    </div>
+
     <div
-        class="mt-3 mb-5 h-80 w-full p-4 items-end rounded relative"
+        class="mt-3 mb-8 h-80 w-full p-4 items-end rounded relative shadow-xl"
         transition:name={`${project.slug}-project-image`}
     >
         <img
             src={`/images/portfolio/${project.image}`}
-            alt={project.name}
+            alt={`${project.name} project screenshot`}
             class="h-80 w-full bg-contain bg-center bg-fixed absolute top-0 left-0 rounded"
         />
         <div
-            class="grid grid-flow-col auto-cols-max px-2"
+            class="grid grid-flow-col auto-cols-max px-2 relative z-10"
             transition:name={`${project.slug}-project-stack`}
         >
             {project.stack.map((tech) => <Tech tech={tech} size="md" />)}
         </div>
     </div>
 
-    <p>{project.longDescription}</p>
+    <div class="bg-slate-900/30 border border-gray-700 rounded-lg p-6 mb-8">
+        <h2 class="text-xl font-bold text-indigo-200 mb-3">
+            About This Project
+        </h2>
+        <p class="text-gray-300 leading-relaxed">{project.longDescription}</p>
+
+        {
+            project.tags && project.tags.length > 0 && (
+                <div class="mt-4 pt-4 border-t border-gray-700">
+                    <h3 class="text-sm font-semibold text-gray-400 mb-2">
+                        Technologies Used:
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                            <span class="text-xs bg-indigo-900/40 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/30">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            )
+        }
+    </div>
 
     {
         project.video && (
-            <div class="mt-4 p-4 text-center">
-                <h4 class="text-xl font-bold text-indigo-100">Demo</h4>
+            <div class="mb-8 bg-slate-900/30 border border-gray-700 rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-indigo-200 mb-4 flex items-center gap-2">
+                    <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                        />
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                    </svg>
+                    Video Demo
+                </h2>
                 <video
                     controls
                     src={project.video}
                     muted
-                    class="w-full"
+                    class="w-full rounded-lg shadow-lg mb-4"
                     transition:name={`${project.slug}-project-video`}
+                    preload="metadata"
                 />
-                <p>{project.videoDescription}</p>
+                {project.videoDescription && (
+                    <p class="text-gray-400 text-sm">
+                        {project.videoDescription}
+                    </p>
+                )}
             </div>
         )
     }
 
     {
-        project.gallery && (
-            <div class="mt-4 p-4 text-center">
-                <h4 class="text-xl font-bold text-indigo-100">Gallery</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-4xl mx-auto max-h-[500px] overflow-y-auto">
-                    {project.gallery.map((picture, index) => (
-                        <img
-                            src={`/images/portfolio/${picture}`}
-                            alt={`${project.name} screenshot ${index + 1}`}
-                            class="w-full h-auto rounded object-cover"
-                            loading="lazy"
+        project.gallery && project.gallery.length > 0 && (
+            <div class="mb-8 bg-slate-900/30 border border-gray-700 rounded-lg p-6">
+                <h2 class="text-2xl font-bold text-indigo-200 mb-4 flex items-center gap-2">
+                    <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
+                    </svg>
+                    Project Gallery
+                </h2>
+                <p class="text-gray-400 text-sm mb-4">
+                    Browse through screenshots and features of this project
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-4xl mx-auto max-h-[600px] overflow-y-auto pr-2">
+                    {project.gallery.map((picture, index) => (
+                        <div class="group relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-[1.02]">
+                            <img
+                                src={`/images/portfolio/${picture}`}
+                                alt={`${project.name} screenshot ${index + 1}`}
+                                class="w-full h-auto object-cover"
+                                loading="lazy"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                                <span class="text-white text-sm font-semibold">
+                                    Screenshot {index + 1}
+                                </span>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>
         )
     }
 
-    <div class="my-4 p-4 text-center">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
         {
             project.github && (
-                <Headerbutton href={project.github} itemsAlign="start">
+                <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                >
                     <img
-                        slot="before"
                         src={getBadge("Github")}
-                        alt={project.github}
+                        alt="GitHub"
                         class="w-5 h-5"
                         width="20"
                         height="20"
                     />
-                    &nbsp;Go to repo
-                </Headerbutton>
+                    View on GitHub
+                </a>
             )
         }
         {
             project.website && (
-                <Headerbutton
+                <a
                     href={project.website}
-                    itemsAlign="start"
                     target="_blank"
+                    rel="noopener noreferrer"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-200 flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-slate-900"
                 >
                     <img
-                        slot="before"
                         src={getBadge("ExternalLink")}
-                        alt={project.website}
+                        alt="External link"
                         class="w-5 h-5"
                         width="20"
                         height="20"
                     />
-                    &nbsp;Go to website
-                </Headerbutton>
+                    Visit Live Site
+                </a>
             )
         }
     </div>

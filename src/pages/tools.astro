@@ -5,14 +5,26 @@ import { type Tool } from "@types";
 import tools from "@data/tools.json";
 import Section from "@components/Section.astro";
 import Subtitle from "@components/Subtitle.astro";
+
+const description =
+    "Free web-based development tools and utilities. Image converter, code formatters, and productivity tools for developers. All tools run locally in your browser - no data upload required.";
 ---
 
-<Layout title="Tools">
+<Layout title="Developer Tools" description={description}>
     <Subtitle text="Development Tools & Utilities" />
-    <p class="text-center text-gray-400 mb-6">
-        Collection of web-based tools I've built to simplify development tasks.
-        More tools coming soon!
-    </p>
+    <div class="text-center mb-8 max-w-2xl mx-auto">
+        <p class="text-gray-300 text-lg mb-3">
+            A collection of free, privacy-focused tools to make your development
+            workflow easier.
+        </p>
+        <p class="text-gray-400 text-sm mb-2">
+            All tools process data locally in your browser - nothing is uploaded
+            to any server. Your privacy and security are guaranteed.
+        </p>
+        <p class="text-indigo-400 text-sm font-semibold">
+            More tools are being developed. Check back soon!
+        </p>
+    </div>
 
     {
         tools.length > 0 ? (
@@ -25,14 +37,46 @@ import Subtitle from "@components/Subtitle.astro";
             </Section>
         ) : (
             <Section name="tools-empty">
-                <div class="flex flex-col items-center justify-center py-12">
-                    <div class="text-6xl mb-4">🛠️</div>
-                    <h2 class="text-2xl font-bold text-indigo-300 mb-2">
-                        Tools Coming Soon
+                <div class="flex flex-col items-center justify-center py-16">
+                    <div class="text-7xl mb-6 animate-bounce">🛠️</div>
+                    <h2 class="text-3xl font-bold text-indigo-300 mb-4">
+                        More Tools Coming Soon
                     </h2>
-                    <p class="text-gray-400 text-center max-w-md">
-                        I'm currently developing a suite of developer tools.
-                        Check back soon for updates!
+                    <p class="text-gray-300 text-center max-w-lg mb-4">
+                        I'm actively developing new tools to help developers
+                        work more efficiently.
+                    </p>
+                    <div class="bg-indigo-900/20 border border-indigo-500/30 rounded-lg p-6 max-w-md">
+                        <h3 class="text-lg font-semibold text-indigo-300 mb-3">
+                            Upcoming Tools:
+                        </h3>
+                        <ul class="text-gray-400 text-sm space-y-2 text-left">
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400">✓</span>
+                                JSON Formatter & Validator
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400">✓</span>
+                                Base64 Encoder/Decoder
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400">✓</span>
+                                Color Picker & Converter
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="text-green-400">✓</span>
+                                RegEx Tester
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-6">
+                        Want a specific tool?{" "}
+                        <a
+                            href="/contact"
+                            class="text-indigo-400 hover:text-indigo-300 underline"
+                        >
+                            Let me know!
+                        </a>
                     </p>
                 </div>
             </Section>

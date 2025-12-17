@@ -3,9 +3,28 @@ import Layout from "@layouts/Layout.astro";
 import Section from "@components/Section.astro";
 import ContactForm from "@components/react/ContactForm/index";
 import ErrorBoundary from "@components/react/ErrorBoundary";
+import Subtitle from "@components/Subtitle.astro";
+
+const description =
+    "Get in touch with Carlos Guajardo for web development projects, mobile app development, or technical consulting. Experienced fullstack developer available for freelance work and collaboration.";
 ---
 
-<Layout title="Contact">
+<Layout title="Contact" description={description}>
+    <Subtitle text="Let's Work Together" />
+    <div class="text-center mb-8 max-w-2xl mx-auto">
+        <p class="text-gray-300 text-lg mb-3">
+            Have a project in mind? Want to collaborate? I'd love to hear from
+            you!
+        </p>
+        <p class="text-gray-400 text-sm mb-2">
+            Whether you need a fullstack developer for your team, have a project
+            idea, or just want to connect, feel free to reach out.
+        </p>
+        <p class="text-gray-400 text-sm">
+            I typically respond within 24-48 hours.
+        </p>
+    </div>
+
     <Section title="Contact Form" name="contact-form">
         <div class="w-full">
             <ErrorBoundary client:only="react">

@@ -1,14 +1,17 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import Skills from '../sections/Skills.astro';
-import Me from '../sections/Me.astro';
-import PortfolioPreview from '../sections/PortfolioPreview.astro';
+import Layout from "@layouts/Layout.astro";
+import Skills from "../sections/Skills.astro";
+import Me from "../sections/Me.astro";
+import PortfolioPreview from "../sections/PortfolioPreview.astro";
+
+const description =
+    "Carlos Guajardo - Fullstack Developer from Chile specializing in web and mobile development. Experienced in React, React Native, Laravel, Next.js, and modern JavaScript/TypeScript. View my portfolio and get in touch.";
 ---
 
-<Layout title="Home" hidePageTitle>
-  <Me />
+<Layout title="Home" hidePageTitle description={description}>
+    <Me />
 
-  <PortfolioPreview />
+    <PortfolioPreview />
 
-  <Skills />
+    <Skills />
 </Layout>

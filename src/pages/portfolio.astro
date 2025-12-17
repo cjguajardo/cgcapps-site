@@ -4,11 +4,23 @@ import PortfolioCard from "@components/PortfolioCard.astro";
 import projects from "@data/projects.json";
 import Subtitle from "@components/Subtitle.astro";
 import Section from "@components/Section.astro";
+
+const description =
+    "Explore my portfolio of web and mobile development projects. From Laravel web platforms to React Native apps, Docker tools, and AI integrations. Open source and commercial projects showcasing modern web technologies.";
 ---
 
-<Layout title="Portfolio">
-    <Subtitle text="Here are some of my projects" />
-    <p>Some projects are still a work in progress</p>
+<Layout title="Portfolio" description={description}>
+    <Subtitle text="My Projects & Work" />
+    <div class="text-center mb-8 max-w-2xl mx-auto">
+        <p class="text-gray-300 text-lg mb-2">
+            A collection of web applications, mobile apps, and development tools
+            I've built using modern technologies.
+        </p>
+        <p class="text-gray-400 text-sm">
+            From commercial platforms to open-source libraries, each project
+            showcases different aspects of fullstack development.
+        </p>
+    </div>
 
     <Section name="porfolio-projects">
         <div

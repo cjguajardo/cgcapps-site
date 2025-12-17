@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Get API URL from environment variable
+const API_URL =
+  import.meta.env.PUBLIC_API_URL || "https://cgcapps-api.vercel.app";
+
 /**
  * Represents the geographic information of a location.
  */
@@ -24,8 +28,7 @@ function useGeo() {
   });
 
   useEffect(() => {
-    const url = "https://cgcapps-api.vercel.app/api/geo";
-    // const url = 'http://localhost:3000/api/geo'
+    const url = `${API_URL}/api/geo`;
     axios
       .get(url)
       .then((response) => {

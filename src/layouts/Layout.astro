@@ -8,6 +8,11 @@ import Title from "@components/Title.astro";
 import ScrollToTop from "@components/ScrollToTop.astro";
 import "atropos/css";
 import Bg from "../images/background.webp";
+
+// Get API URL from environment variable
+const API_URL =
+    import.meta.env.PUBLIC_API_URL || "https://cgcapps-api.vercel.app";
+
 interface Props {
     title: string;
     hidePageTitle?: boolean;
@@ -64,7 +69,7 @@ const { title, hidePageTitle } = Astro.props;
         <!-- Preload critical resources -->
         <link rel="preload" href="/css/styles.css" as="style" />
         <link rel="preload" href={Bg.src} as="image" type="image/webp" />
-        <link rel="dns-prefetch" href="https://cgcapps-api.vercel.app" />
+        <link rel="dns-prefetch" href={API_URL} />
         <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
 
         <title>{title} - Carlos Guajardo | CGCApps</title>

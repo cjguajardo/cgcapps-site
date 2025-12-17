@@ -5,6 +5,12 @@ import type { ActionType } from "@types";
 import type { StateType } from "@types";
 import axios from "axios";
 
+// Get configuration from environment variables
+const TURNSTILE_SITE_KEY =
+  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAAN5nJP-g1lrI6nT";
+const API_URL =
+  import.meta.env.PUBLIC_API_URL || "https://cgcapps-api.vercel.app";
+
 const initialState: StateType = {
   show: null,
   errors: { name: null, email: null, message: null },
@@ -67,7 +73,7 @@ function useContactForm() {
     if (validation.success) {
       dispatch({ type: "show-loading" });
       const body = JSON.stringify({ name, email, message, token: state.token });
-      const url = "https://cgcapps-api.vercel.app/api/mail";
+      const url = `${API_URL}/api/mail`;
       axios
         .post(url, { body })
         .then((response) => {
@@ -78,9 +84,10 @@ function useContactForm() {
           dispatch({ type: "show-error" });
         });
 
-      // reset catpcha
-      //@ts-ignore
-      window.turnstile.reset();
+      // reset captcha
+      if (window.turnstile) {
+        window.turnstile.reset();
+      }
     } else {
       dispatch({
         type: "set-errors",
@@ -98,13 +105,10 @@ function useContactForm() {
   }, [state.show]);
 
   React.useEffect(() => {
-    //@ts-ignore
     window.onloadTurnstileCallback = function () {
-      //@ts-ignore
-      if (typeof window.turnstile !== "undefined") {
-        //@ts-ignore
+      if (window.turnstile) {
         window.turnstile.render("#captcha-container", {
-          sitekey: "0x4AAAAAAAN5nJP-g1lrI6nT",
+          sitekey: TURNSTILE_SITE_KEY,
           callback: function (token: string) {
             dispatch({ type: "can-send-mail", payload: "true" });
             dispatch({ type: "set-token", payload: token });

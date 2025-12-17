@@ -55,7 +55,7 @@
   - Skills service (1 instance)
 - [x] Remove commented code in useContactForm.ts
 - [x] Create environment variables for API URLs (created .env.example)
-- [ ] Move Cloudflare Turnstile key to environment variable
+- [x] Move Cloudflare Turnstile key to environment variable
 - [x] Fix contact form to properly clear after successful submission
 - [x] Add proper error handling in Geo component
 - [x] Add error boundaries for React components
@@ -64,25 +64,28 @@
 
 ## TypeScript & Code Quality
 - [x] Fix TypeScript errors in tsconfig.json (added esModuleInterop, allowSyntheticDefaultImports, skipLibCheck)
-- [ ] Fix TypeScript errors in PortfolioCard.astro (remaining type errors)
-- [ ] Fix TypeScript errors in Social.astro (remaining type errors)
-- [ ] Fix TypeScript errors in portfolio.astro (remaining type errors)
-- [ ] Fix TypeScript errors in tools.astro (remaining type errors)
-- [ ] Fix TypeScript errors in Skills.astro (remaining type errors)
-- [ ] Fix TypeScript errors in PortfolioPreview.astro (remaining type errors)
-- [ ] Fix TypeScript errors in [slug].astro (remaining type errors)
-- [ ] Fix TypeScript errors in Magic/index.tsx (remaining type errors)
-- [ ] Fix TypeScript errors in middleware.ts (remaining type errors)
-- [ ] Fix TypeScript errors in Layout.astro (remaining type errors)
-- [ ] Fix TypeScript errors in Me.astro (remaining type errors)
-- [ ] Fix TypeScript errors in Header.astro (remaining type errors)
-- [ ] Fix TypeScript errors in ContactForm/index.tsx (remaining type errors)
-- [ ] Fix TypeScript errors in 404.astro (remaining type errors)
-- [ ] Remove //@ts-ignore comments and fix proper typing
-- [ ] Add proper type definitions where missing
+- [x] Fix TypeScript errors in PortfolioCard.astro (no errors found)
+- [x] Fix TypeScript errors in Social.astro (no errors found)
+- [x] Fix TypeScript errors in portfolio.astro (no errors found)
+- [x] Fix TypeScript errors in tools.astro (no errors found)
+- [x] Fix TypeScript errors in Skills.astro (no errors found)
+- [x] Fix TypeScript errors in PortfolioPreview.astro (no errors found)
+- [x] Fix TypeScript errors in [slug].astro (no errors found)
+- [x] Fix TypeScript errors in Magic/index.tsx (no errors found)
+- [x] Fix TypeScript errors in middleware.ts (no errors found)
+- [x] Fix TypeScript errors in Layout.astro (no errors found)
+- [x] Fix TypeScript errors in Me.astro (no errors found)
+- [x] Fix TypeScript errors in Header.astro (no errors found)
+- [x] Fix TypeScript errors in ContactForm/index.tsx (no errors found)
+- [x] Fix TypeScript errors in 404.astro (no errors found)
+- [x] Remove //@ts-ignore comments and fix proper typing
+- [x] Add proper type definitions where missing
+- [x] Add Cloudflare Turnstile type definitions (declarations.d.ts)
+- [x] Move API URL to environment variable (ContactForm, Geo, Layout)
+- [x] Move Turnstile site key to environment variable (ContactForm)
 
 ## Security Improvements
-- [ ] Move sensitive keys to environment variables
+- [x] Move sensitive keys to environment variables (Turnstile key and API URL now use env vars)
 - [ ] Add rate limiting to contact form
 - [ ] Validate and sanitize all user inputs
 - [ ] Add Content Security Policy headers
@@ -148,6 +151,25 @@
 ### Issues Fixed: 70+
 
 See IMPROVEMENTS.md for detailed documentation of all changes.
+
+## TypeScript & Code Quality Completion (Latest)
+- **All TypeScript Errors Resolved**: Fixed all remaining TypeScript compilation errors
+  - Added proper type definitions for Cloudflare Turnstile API (declarations.d.ts)
+  - Fixed ErrorBoundary to use type-only imports for React types
+  - Added proper types to middleware.ts using MiddlewareHandler
+  - Fixed skills.ts to properly handle JSON structure with typed arrays
+  - Added type property to SkillType interface
+  - Removed all @ts-ignore comments (4 instances removed)
+- **Environment Variables**: Moved all hardcoded values to environment variables
+  - Turnstile site key now uses PUBLIC_TURNSTILE_SITE_KEY
+  - API URL now uses PUBLIC_API_URL in ContactForm, Geo, and Layout
+  - Updated .env.example with all required variables
+- **Code Quality Improvements**:
+  - Fixed skills service logic (constructor pattern, proper typing)
+  - Cleaned up middleware syntax and formatting
+  - Consistent code formatting across TypeScript files
+  - No TypeScript compilation errors (`npx tsc --noEmit` passes clean)
+  - No Astro diagnostics errors or warnings
 
 ## Recent Fixes
 - **ScrollReveal Navigation Issue**: Fixed content not appearing on home page navigation

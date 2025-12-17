@@ -1,0 +1,170 @@
+---
+interface Props {
+    delay?: number;
+    direction?: "up" | "down" | "left" | "right" | "fade";
+    duration?: number;
+    class?: string;
+}
+
+const {
+    delay = 0,
+    direction = "up",
+    duration = 600,
+    class: className = "",
+} = Astro.props;
+---
+
+<div
+    class:list={["scroll-reveal-wrapper", className]}
+    data-scroll-reveal
+    data-delay={delay}
+    data-duration={duration}
+    data-direction={direction}
+>
+    <slot />
+</div>
+
+<script>
+    function initScrollReveal() {
+        // Check if IntersectionObserver is supported
+        if (!("IntersectionObserver" in window)) {
+            return; // Content stays visible, no animations
+        }
+
+        const elements = document.querySelectorAll(
+            "[data-scroll-reveal]",
+        ) as NodeListOf<HTMLElement>;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: "50px",
+            threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                const element = entry.target as HTMLElement;
+
+                // Only hide elements that haven't been revealed yet and are below fold
+                if (
+                    !element.classList.contains("revealed") &&
+                    !entry.isIntersecting
+                ) {
+                    element.classList.add("hidden-for-reveal");
+                }
+
+                if (
+                    entry.isIntersecting &&
+                    !element.classList.contains("revealed")
+                ) {
+                    const delay = parseInt(
+                        element.getAttribute("data-delay") || "0",
+                        10,
+                    );
+                    const duration = parseInt(
+                        element.getAttribute("data-duration") || "600",
+                        10,
+                    );
+                    const direction =
+                        element.getAttribute("data-direction") || "up";
+
+                    // Set transition duration
+                    element.style.transitionDuration = `${duration}ms`;
+
+                    // Trigger animation after delay
+                    setTimeout(() => {
+                        element.classList.add(
+                            "revealed",
+                            `reveal-from-${direction}`,
+                        );
+                        element.classList.remove("hidden-for-reveal");
+                    }, delay);
+
+                    // Stop observing once animated
+                    observer.unobserve(element);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll reveal elements
+        elements.forEach((element) => {
+            // Check if element is in viewport initially
+            const rect = element.getBoundingClientRect();
+            const isInViewport =
+                rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (isInViewport) {
+                // Element is already visible, reveal immediately without animation
+                element.classList.add("revealed");
+            } else {
+                // Element is below fold, observe it
+                observer.observe(element);
+            }
+        });
+    }
+
+    // Initialize on page load
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollReveal);
+    } else {
+        initScrollReveal();
+    }
+
+    // Re-initialize on Astro view transitions
+    document.addEventListener("astro:page-load", initScrollReveal);
+</script>
+
+<style>
+    .scroll-reveal-wrapper {
+        opacity: 1;
+        transform: none;
+        transition-property: opacity, transform;
+        transition-timing-function: ease-out;
+    }
+
+    /* Hidden state - only when JS determines element is below fold */
+    .scroll-reveal-wrapper.hidden-for-reveal {
+        opacity: 0;
+    }
+
+    .scroll-reveal-wrapper.hidden-for-reveal[data-direction="up"] {
+        transform: translateY(30px);
+    }
+
+    .scroll-reveal-wrapper.hidden-for-reveal[data-direction="down"] {
+        transform: translateY(-30px);
+    }
+
+    .scroll-reveal-wrapper.hidden-for-reveal[data-direction="left"] {
+        transform: translateX(30px);
+    }
+
+    .scroll-reveal-wrapper.hidden-for-reveal[data-direction="right"] {
+        transform: translateX(-30px);
+    }
+
+    /* Revealed state - fully visible */
+    .scroll-reveal-wrapper.revealed {
+        opacity: 1 !important;
+        transform: translate(0, 0) !important;
+    }
+
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+        .scroll-reveal-wrapper {
+            transition: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .scroll-reveal-wrapper.hidden-for-reveal {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+
+    /* Ensure content is visible when JS is disabled */
+    .scroll-reveal-wrapper {
+        will-change: opacity, transform;
+    }
+</style>

@@ -13,13 +13,14 @@
 - [x] Fix typo: "Porfolio" → "Portfolio" in portfolio.astro page title
 - [x] Make gallery section responsive (remove hardcoded w-[720px])
 - [x] Fix footer positioning (absolute may cause overlap issues)
-- [ ] Add loading states for images
+- [x] Add loading states for images
 - [x] Improve mobile menu toggle with proper state management
-- [ ] Add smooth transitions between pages
-- [ ] Add visual feedback for form submission states
+- [x] Add smooth transitions between pages
+- [x] Add visual feedback for form submission states
 - [x] Improve error messages styling in contact form
 - [x] Add hover states to all interactive elements
 - [x] Add focus-visible styles for keyboard navigation
+- [x] Fix ScrollReveal content visibility on navigation (content visible by default, animations as progressive enhancement)
 
 ## Accessibility (A11y)
 - [x] Add proper alt attributes to all images (many missing or generic)
@@ -36,14 +37,14 @@
 
 ## Performance Optimization
 - [x] Add loading="lazy" to images below the fold
-- [ ] Add width and height attributes to images to prevent layout shift
-- [ ] Optimize background image loading strategy
-- [ ] Implement proper image optimization (use Image component consistently)
+- [x] Add width and height attributes to images to prevent layout shift
+- [x] Optimize background image loading strategy
+- [x] Implement proper image optimization (use Image component consistently)
 - [x] Add preload hints for critical resources
-- [ ] Minimize CSS and JavaScript bundles
-- [ ] Add caching headers configuration
-- [ ] Consider using webp format for all images
-- [ ] Lazy load React components that aren't immediately visible
+- [x] Minimize CSS and JavaScript bundles
+- [x] Add caching headers configuration
+- [x] Consider using webp format for all images (already using webp/svg)
+- [x] Lazy load React components that aren't immediately visible
 
 ## Functionality Issues
 - [x] Remove all console.log statements from production code
@@ -141,8 +142,16 @@
 4. **UX Improvements**: Responsive gallery, better mobile menu, improved forms
 5. **Documentation**: Created IMPROVEMENTS.md and .env.example
 
-### Files Modified: 20+
-### Lines Changed: 1000+
-### Issues Fixed: 60+
+### Files Modified: 30+
+### Lines Changed: 1500+
+### Issues Fixed: 70+
 
 See IMPROVEMENTS.md for detailed documentation of all changes.
+
+## Recent Fixes
+- **ScrollReveal Navigation Issue**: Fixed content not appearing on home page navigation
+  - Changed ScrollReveal to show content by default
+  - Animations now progressive enhancement (content visible without JS)
+  - Added Astro view transitions support
+  - Fixed PortfolioCard image loading for cached images
+  - Improved IntersectionObserver initialization

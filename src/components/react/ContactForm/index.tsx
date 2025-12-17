@@ -88,42 +88,77 @@ const ContactForm = () => {
 
         {state.show !== null && (
           <div
-            className="absolute w-full rounded-xl h-full"
+            className="absolute w-full rounded-xl h-full z-10 animate-fadeIn"
             role="alert"
             aria-live="polite"
             aria-atomic="true"
           >
-            <div className="absolute backdrop-blur w-full h-full" />
-            <div className="absolute w-full top-1/2 text-white text-center font-bold">
+            <div className="absolute backdrop-blur-md bg-indigo-950/80 w-full h-full rounded-xl" />
+            <div className="absolute w-full top-1/2 -translate-y-1/2 text-white text-center font-bold px-4">
               {state.show === LOADING && (
-                <>
-                  <img
-                    src="/images/loader.svg"
-                    alt="Loading"
-                    className="w-10 mx-auto animate-spin"
-                  />
-                  <span>Hang tight!, I'm working on it!</span>
-                </>
+                <div className="animate-slideUp">
+                  <div className="mb-4">
+                    <img
+                      src="/images/loader.svg"
+                      alt="Loading"
+                      className="w-12 h-12 mx-auto animate-spin"
+                      width="48"
+                      height="48"
+                    />
+                  </div>
+                  <div className="text-lg mb-2">Sending your message...</div>
+                  <div className="text-sm text-gray-300">
+                    Hang tight!, I'm working on it!
+                  </div>
+                  {/* Progress bar */}
+                  <div className="mt-4 w-3/4 mx-auto bg-gray-700 rounded-full h-2 overflow-hidden">
+                    <div className="bg-indigo-500 h-full rounded-full animate-progress"></div>
+                  </div>
+                </div>
               )}
               {state.show === SUCCESS && (
-                <>
-                  <img
-                    src="/images/check.svg"
-                    alt="Success"
-                    className="w-10 mx-auto"
-                  />
-                  <span>Thanks for getting in touch, I appreciate it!</span>
-                </>
+                <div className="animate-bounceIn">
+                  <div className="mb-4 bg-green-500/20 rounded-full w-20 h-20 mx-auto flex items-center justify-center">
+                    <img
+                      src="/images/check.svg"
+                      alt="Success"
+                      className="w-12 h-12"
+                      width="48"
+                      height="48"
+                    />
+                  </div>
+                  <div className="text-xl mb-2 text-green-400">
+                    Message Sent!
+                  </div>
+                  <div className="text-sm text-gray-300">
+                    Thanks for getting in touch, I appreciate it!
+                  </div>
+                </div>
               )}
               {state.show === ERROR && (
-                <>
-                  <img
-                    src="/images/times.svg"
-                    alt="Error"
-                    className="w-10 mx-auto"
-                  />
-                  <span>Oops, sorry about that! Looks like we hit a snag.</span>
-                </>
+                <div className="animate-shake">
+                  <div className="mb-4 bg-red-500/20 rounded-full w-20 h-20 mx-auto flex items-center justify-center">
+                    <img
+                      src="/images/times.svg"
+                      alt="Error"
+                      className="w-12 h-12"
+                      width="48"
+                      height="48"
+                    />
+                  </div>
+                  <div className="text-xl mb-2 text-red-400">
+                    Something went wrong
+                  </div>
+                  <div className="text-sm text-gray-300">
+                    Oops, sorry about that! Looks like we hit a snag.
+                  </div>
+                  <button
+                    onClick={handleClick}
+                    className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-6 rounded-full transition-colors"
+                  >
+                    Try Again
+                  </button>
+                </div>
               )}
             </div>
           </div>

@@ -1,18 +1,27 @@
 ---
-import PortfolioCard from '@components/PortfolioCard.astro';
-import Section from '@components/Section.astro';
-import projects from '@data/projects.json';
-import HeaderButton from '@components/Headerbutton.astro';
+import PortfolioCard from "@components/PortfolioCard.astro";
+import Section from "@components/Section.astro";
+import projects from "@data/projects.json";
+import HeaderButton from "@components/Headerbutton.astro";
+import ScrollReveal from "@components/ScrollReveal.astro";
 
 const highlightedProjects = projects.filter((project) => project.highlight);
 ---
 
 <Section title="Projects" name="projects">
-  <div class="w-full mt-5 columns-1 md:columns-2 xl:columns-3 gap-3">
-    {highlightedProjects.map((project) => <PortfolioCard project={project} />)}
-  </div>
+    <div class="w-full mt-5 columns-1 md:columns-2 xl:columns-3 gap-3">
+        {
+            highlightedProjects.map((project, index) => (
+                <ScrollReveal delay={index * 100} direction="up">
+                    <PortfolioCard project={project} />
+                </ScrollReveal>
+            ))
+        }
+    </div>
 
-  <div class="mt-3 flex flex-col items-center justify-center">
-    <HeaderButton href="/portfolio">View all projects</HeaderButton>
-  </div>
+    <ScrollReveal delay={300} direction="fade">
+        <div class="mt-3 flex flex-col items-center justify-center">
+            <HeaderButton href="/portfolio">View all projects</HeaderButton>
+        </div>
+    </ScrollReveal>
 </Section>

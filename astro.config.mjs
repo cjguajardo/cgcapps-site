@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
-
 import react from "@astrojs/react";
 
 // https://astro.build/config
@@ -16,6 +15,17 @@ export default defineConfig({
     }),
   ],
   site: "https://www.cgcapps.cl",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+    },
+    remotePatterns: [{ protocol: "https" }],
+  },
+  build: {
+    inlineStylesheets: "auto",
+    assets: "_astro",
+  },
+  compressHTML: true,
   vite: {
     assetsInclude: [
       "**/*.svg",
@@ -24,5 +34,16 @@ export default defineConfig({
       "**/*.gif",
       "**/*.webp",
     ],
+    build: {
+      cssCodeSplit: true,
+      minify: "esbuild",
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            react: ["react", "react-dom"],
+          },
+        },
+      },
+    },
   },
 });

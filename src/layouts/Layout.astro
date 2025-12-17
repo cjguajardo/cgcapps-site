@@ -5,6 +5,7 @@ import { ViewTransitions } from "astro:transitions";
 import Magic from "@components/react/Magic";
 import Geo from "@components/react/Geo";
 import Title from "@components/Title.astro";
+import ScrollToTop from "@components/ScrollToTop.astro";
 import "atropos/css";
 import Bg from "../images/background.webp";
 interface Props {
@@ -16,11 +17,7 @@ const { title, hidePageTitle } = Astro.props;
 ---
 
 <!doctype html>
-<html
-    lang="en"
-    transition:animate="fade"
-    style={`background-image: url(${Bg.src});`}
->
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -84,8 +81,8 @@ const { title, hidePageTitle } = Astro.props;
         >
             Skip to main content
         </a>
-        <Magic client:only />
-        <Geo client:only />
+        <Magic client:idle />
+        <Geo client:idle />
         <Header />
         <main
             id="main-content"
@@ -95,14 +92,74 @@ const { title, hidePageTitle } = Astro.props;
             <slot />
         </main>
         <Footer />
+        <ScrollToTop />
 
-        <style is:global>
+        <style is:global define:vars={{ bgImage: `url(${Bg.src})` }}>
+            /* Custom page transition animations */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes fadeOutDown {
+                from {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+            }
+
+            @keyframes scaleIn {
+                from {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            /* Apply smooth transitions to page navigation */
+            @view-transition {
+                navigation: auto;
+            }
+
+            ::view-transition-old(root) {
+                animation: fadeOutDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            ::view-transition-new(root) {
+                animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Smooth transitions for interactive elements */
+            a,
+            button {
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            /* Page load animation */
+            body {
+                animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
             html {
                 scroll-behavior: smooth;
                 font-family: system-ui, sans-serif;
-                background-size: 224px;
+                background-image: var(--bgImage);
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-attachment: fixed;
                 color-scheme: dark light;
                 width: 100vw;
                 height: 100vh;

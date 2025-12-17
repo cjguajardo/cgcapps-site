@@ -19,17 +19,108 @@ if (itemsAlign === undefined) finalItemsAlign = "center";
             "text-indigo-300 hover:bg-indigo-700 hover:text-white  block":
                 !isActive,
         },
-        "z-5 text-base font-medium rounded-full px-3 py-2 text-center flex",
+        "z-5 text-base font-medium rounded-full px-3 py-2 text-center flex relative overflow-hidden",
         { "items-start justify-start": finalItemsAlign === "start" },
         { "items-center justify-center": finalItemsAlign === "center" },
         { "items-end justify-end": finalItemsAlign === "end" },
         "hover:md:rotate-3 hover:md:scale-110 hover:drop-shadow-lg transition-all duration-300 ease-in-out hover:z-10",
+        "hover:shadow-indigo-500/50 hover:shadow-lg",
+        "active:scale-95",
     ]}
     href={href}
     target={target || "_self"}
     rel={rel}
+    data-ripple
 >
     <slot name="before" />
     <slot />
     <slot name="after" />
 </a>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const rippleButtons = document.querySelectorAll("[data-ripple]");
+
+        rippleButtons.forEach((button) => {
+            button.addEventListener("click", function (e: Event) {
+                const mouseEvent = e as MouseEvent;
+                const rect = (this as HTMLElement).getBoundingClientRect();
+                const x = mouseEvent.clientX - rect.left;
+                const y = mouseEvent.clientY - rect.top;
+
+                const ripple = document.createElement("span");
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = "ripple";
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    });
+
+    // Re-initialize on Astro page load
+    document.addEventListener("astro:page-load", () => {
+        const rippleButtons = document.querySelectorAll("[data-ripple]");
+
+        rippleButtons.forEach((button) => {
+            button.addEventListener("click", function (e: Event) {
+                const mouseEvent = e as MouseEvent;
+                const rect = (this as HTMLElement).getBoundingClientRect();
+                const x = mouseEvent.clientX - rect.left;
+                const y = mouseEvent.clientY - rect.top;
+
+                const ripple = document.createElement("span");
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.className = "ripple";
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    });
+</script>
+
+<style>
+    [data-ripple] {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .ripple {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        animation: ripple-animation 0.6s ease-out;
+    }
+
+    @keyframes ripple-animation {
+        from {
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+        }
+        to {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+        }
+    }
+
+    /* Enhanced focus state */
+    [data-ripple]:focus-visible {
+        outline: 2px solid rgb(99, 102, 241);
+        outline-offset: 2px;
+    }
+</style>

@@ -1,0 +1,117 @@
+---
+---
+
+<button
+    id="scroll-to-top"
+    class="fixed bottom-8 right-8 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 z-50 group"
+    aria-label="Scroll to top"
+    title="Scroll to top"
+>
+    <svg
+        class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform duration-200"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
+<script>
+    const scrollToTopButton = document.getElementById("scroll-to-top");
+
+    if (scrollToTopButton) {
+        // Show/hide button based on scroll position
+        const toggleButton = () => {
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            if (scrollPosition > windowHeight * 0.3) {
+                scrollToTopButton.classList.remove("opacity-0", "pointer-events-none");
+                scrollToTopButton.classList.add("opacity-100");
+            } else {
+                scrollToTopButton.classList.add("opacity-0", "pointer-events-none");
+                scrollToTopButton.classList.remove("opacity-100");
+            }
+        };
+
+        // Scroll to top smoothly
+        const scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
+        };
+
+        // Event listeners
+        window.addEventListener("scroll", toggleButton, { passive: true });
+        scrollToTopButton.addEventListener("click", scrollToTop);
+
+        // Initial check
+        toggleButton();
+    }
+
+    // Re-initialize on page navigation (Astro view transitions)
+    document.addEventListener("astro:page-load", () => {
+        const button = document.getElementById("scroll-to-top");
+        if (button) {
+            const toggleButton = () => {
+                const scrollPosition = window.scrollY;
+                const windowHeight = window.innerHeight;
+
+                if (scrollPosition > windowHeight * 0.3) {
+                    button.classList.remove("opacity-0", "pointer-events-none");
+                    button.classList.add("opacity-100");
+                } else {
+                    button.classList.add("opacity-0", "pointer-events-none");
+                    button.classList.remove("opacity-100");
+                }
+            };
+
+            const scrollToTop = () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            };
+
+            window.addEventListener("scroll", toggleButton, { passive: true });
+            button.addEventListener("click", scrollToTop);
+            toggleButton();
+        }
+    });
+</script>
+
+<style>
+    #scroll-to-top {
+        backdrop-filter: blur(8px);
+    }
+
+    #scroll-to-top:hover {
+        transform: scale(1.1);
+    }
+
+    #scroll-to-top:active {
+        transform: scale(0.95);
+    }
+
+    /* Hide on print */
+    @media print {
+        #scroll-to-top {
+            display: none;
+        }
+    }
+
+    /* Adjust position on mobile */
+    @media (max-width: 640px) {
+        #scroll-to-top {
+            bottom: 1.5rem;
+            right: 1.5rem;
+        }
+    }
+</style>

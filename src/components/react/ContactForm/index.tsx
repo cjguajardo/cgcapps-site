@@ -1,7 +1,7 @@
 import React from "react";
-import InputError from "../InputError";
 import { SUCCESS, ERROR, LOADING } from "@constants";
 import useContactForm from "./hooks/useContactForm";
+import { FormInput, FormTextarea } from "../FormInput";
 
 const ContactForm = () => {
   const { state, nameRef, emailRef, messageRef, handleClick } =
@@ -10,63 +10,35 @@ const ContactForm = () => {
   return (
     <div className="flex flex-col justify-items-center w-full relative">
       <form key={state.formKey} aria-label="Contact form">
-        <div className="mb-4 w-full px-5 py-2">
-          <label className="block text-gray-400 font-bold mb-2" htmlFor="name">
-            Name{" "}
-            {state.errors.name && <InputError message={state.errors.name} />}
-          </label>
-          <input
-            ref={nameRef}
-            className="border rounded-full w-full py-2 px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-            id="name"
-            type="text"
-            placeholder="John Doe"
-            aria-required="true"
-            aria-invalid={state.errors.name ? "true" : "false"}
-            aria-describedby={state.errors.name ? "name-error" : undefined}
-          />
-        </div>
+        <FormInput
+          label="Name"
+          id="name"
+          type="text"
+          placeholder="John Doe"
+          error={state.errors.name}
+          inputRef={nameRef}
+          required
+        />
 
-        <div className="mb-4 w-full px-5 py-2">
-          <label className="block text-gray-400 font-bold mb-2" htmlFor="email">
-            Email{" "}
-            {state.errors.email && <InputError message={state.errors.email} />}
-          </label>
-          <input
-            ref={emailRef}
-            className="border rounded-full w-full py-2 px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-            id="email"
-            type="email"
-            placeholder="johndoe@example.com"
-            aria-required="true"
-            aria-invalid={state.errors.email ? "true" : "false"}
-            aria-describedby={state.errors.email ? "email-error" : undefined}
-          />
-        </div>
+        <FormInput
+          label="Email"
+          id="email"
+          type="email"
+          placeholder="johndoe@example.com"
+          error={state.errors.email}
+          inputRef={emailRef}
+          required
+        />
 
-        <div className="mb-4 w-full px-5 py-2">
-          <label
-            className="block text-gray-400 font-bold mb-2"
-            htmlFor="message"
-          >
-            Message{" "}
-            {state.errors.message && (
-              <InputError message={state.errors.message} />
-            )}
-          </label>
-          <textarea
-            ref={messageRef}
-            className="border rounded-xl w-full py-2 px-3 text-white bg-indigo-950/20 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-            id="message"
-            rows={10}
-            placeholder="Enter your message here"
-            aria-required="true"
-            aria-invalid={state.errors.message ? "true" : "false"}
-            aria-describedby={
-              state.errors.message ? "message-error" : undefined
-            }
-          />
-        </div>
+        <FormTextarea
+          label="Message"
+          id="message"
+          placeholder="Enter your message here"
+          error={state.errors.message}
+          textareaRef={messageRef}
+          rows={10}
+          required
+        />
 
         <div
           className="flex mb-4 w-full px-5 py-2 items-center"
